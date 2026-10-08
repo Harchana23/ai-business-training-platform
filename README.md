@@ -12,18 +12,18 @@ This platform transforms business documents and training requirements into an in
 
 It provides separate experiences for administrators and learners while integrating AI into multiple parts of the workflow:
 
-* Business and user management
-* Document ingestion and AI extraction
-* RAG-powered knowledge retrieval
-* AI-generated assessment questions
-* MCQ quizzes and examinations
-* RAG-grounded conversational readiness assessment
-* Learner progression tracking
-* Appointment and eligibility workflows
-* Automated notifications
-* PDF document generation
-* Background processing with retries and job leases
-* Role-based authorization and PostgreSQL Row-Level Security
+- Business and user management
+- Document ingestion and AI extraction
+- RAG-powered knowledge retrieval
+- AI-generated assessment questions
+- MCQ quizzes and examinations
+- RAG-grounded conversational readiness assessment
+- Learner progression tracking
+- Appointment and eligibility workflows
+- Automated notifications
+- PDF document generation
+- Background processing with retries and job leases
+- Role-based authorization and PostgreSQL Row-Level Security
 
 The project was designed as a **full-stack system rather than an AI demo**, with security, reliability, testing, and operational constraints considered at the architecture level.
 
@@ -35,14 +35,14 @@ The project was designed as a **full-stack system rather than an AI demo**, with
 
 Administrative workflows support:
 
-* Business records
-* User and learner management
-* Role-based access
-* Training assignments
-* Business categories
-* Appointments
-* Notifications
-* Assessment configuration
+- Business records
+- User and learner management
+- Role-based access
+- Training assignments
+- Business categories
+- Appointments
+- Notifications
+- Assessment configuration
 
 ---
 
@@ -112,10 +112,10 @@ Grounded Response
 
 The retrieval layer is reused by multiple workflows including:
 
-* Administrative Q&A
-* AI question generation
-* Learner study content
-* Conversational readiness assessment
+- Administrative Q&A
+- AI question generation
+- Learner study content
+- Conversational readiness assessment
 
 The vector database is treated as a retrieval layer while PostgreSQL remains the application system of record.
 
@@ -161,12 +161,12 @@ The platform includes a conversational AI assessment that evaluates learner read
 
 The system combines:
 
-* Persistent interview sessions
-* Predefined assessment flow
-* RAG-based knowledge retrieval
-* Natural-language interaction
-* Structured answer evaluation
-* Final readiness evaluation
+- Persistent interview sessions
+- Predefined assessment flow
+- RAG-based knowledge retrieval
+- Natural-language interaction
+- Structured answer evaluation
+- Final readiness evaluation
 
 Importantly, the application controls the assessment workflow while the LLM handles conversational understanding and evaluation.
 
@@ -202,15 +202,15 @@ See [`docs/ai-interview.md`](docs/ai-interview.md).
 
 Learners have access to an application flow covering:
 
-* Dashboard
-* Study content
-* Quizzes
-* Examinations
-* Conversational readiness assessment
-* Progression tracking
-* Appointments
-* Eligibility
-* Name-card generation
+- Dashboard
+- Study content
+- Quizzes
+- Examinations
+- Conversational readiness assessment
+- Progression tracking
+- Appointments
+- Eligibility
+- Name-card generation
 
 Progression is derived from authoritative application data rather than relying on a single manually maintained status field.
 
@@ -281,13 +281,13 @@ Expensive or failure-prone operations are handled asynchronously.
 
 The project uses a database-backed job model with:
 
-* Durable jobs
-* Job leases
-* Retry attempts
-* Backoff
-* Deterministic identifiers
-* Persisted processing state
-* Resumable workflows
+- Durable jobs
+- Job leases
+- Retry attempts
+- Backoff
+- Deterministic identifiers
+- Persisted processing state
+- Resumable workflows
 
 ```text
              Job Queue
@@ -320,24 +320,24 @@ Testing covers both conventional application behavior and AI-specific failure mo
 
 ### Unit Tests
 
-* Domain logic
-* Validation
-* Assessment logic
-* RAG utilities
-* Interview state
-* Progression
-* Processing helpers
+- Domain logic
+- Validation
+- Assessment logic
+- RAG utilities
+- Interview state
+- Progression
+- Processing helpers
 
 ### Integration Tests
 
-* PostgreSQL
-* Supabase
-* RLS
-* Authentication
-* Document processing
-* RAG
-* AI workflows
-* Background jobs
+- PostgreSQL
+- Supabase
+- RLS
+- Authentication
+- Document processing
+- RAG
+- AI workflows
+- Background jobs
 
 ### End-to-End Tests
 
@@ -345,19 +345,19 @@ Playwright tests cover complete administrative and learner workflows.
 
 ### Security Tests
 
-* RLS isolation
-* Role authorization
-* Cross-user access
-* IDOR scenarios
-* Protected routes
+- RLS isolation
+- Role authorization
+- Cross-user access
+- IDOR scenarios
+- Protected routes
 
 ### AI Failure Tests
 
-* Provider failures
-* Invalid model output
-* Schema validation failures
-* Retrieval failures
-* Processing interruptions
+- Provider failures
+- Invalid model output
+- Schema validation failures
+- Retrieval failures
+- Processing interruptions
 
 See [`docs/testing.md`](docs/testing.md).
 
@@ -503,10 +503,10 @@ See [`docs/adr/0005-eligibility-enforced-in-database.md`](docs/adr/0005-eligibil
 
 ## Requirements
 
-* Node.js
-* pnpm
-* Docker Desktop
-* Supabase CLI
+- Node.js
+- pnpm
+- Docker Desktop
+- Supabase CLI
 
 ## Install
 
@@ -590,50 +590,50 @@ My responsibilities included:
 
 ### Architecture
 
-* Designed the overall application architecture.
-* Defined boundaries between UI, domain logic, database, AI integrations, and background processing.
-* Designed the PostgreSQL schema and relationships.
-* Designed authentication, authorization, and RLS policies.
+- Designed the overall application architecture.
+- Defined boundaries between UI, domain logic, database, AI integrations, and background processing.
+- Designed the PostgreSQL schema and relationships.
+- Designed authentication, authorization, and RLS policies.
 
 ### AI & RAG
 
-* Designed and implemented the document-to-RAG pipeline.
-* Integrated Pinecone vector search.
-* Implemented retrieval filtering and reranking.
-* Integrated Anthropic for conversational and generation workflows.
-* Designed RAG-grounded AI question generation.
-* Implemented structured AI output validation.
-* Designed and implemented the conversational readiness assessment.
+- Designed and implemented the document-to-RAG pipeline.
+- Integrated Pinecone vector search.
+- Implemented retrieval filtering and reranking.
+- Integrated Anthropic for conversational and generation workflows.
+- Designed RAG-grounded AI question generation.
+- Implemented structured AI output validation.
+- Designed and implemented the conversational readiness assessment.
 
 ### Backend
 
-* Built Next.js API routes and server actions.
-* Implemented database operations and CRUD workflows.
-* Implemented business rules and progression logic.
-* Built background processing with queues, leases, retries, and scheduled jobs.
-* Designed workflows around serverless execution constraints.
+- Built Next.js API routes and server actions.
+- Implemented database operations and CRUD workflows.
+- Implemented business rules and progression logic.
+- Built background processing with queues, leases, retries, and scheduled jobs.
+- Designed workflows around serverless execution constraints.
 
 ### Security
 
-* Implemented authentication and role separation.
-* Designed PostgreSQL RLS policies.
-* Implemented cross-user isolation.
-* Added IDOR and authorization tests.
-* Kept privileged operations and external AI credentials server-side.
+- Implemented authentication and role separation.
+- Designed PostgreSQL RLS policies.
+- Implemented cross-user isolation.
+- Added IDOR and authorization tests.
+- Kept privileged operations and external AI credentials server-side.
 
 ### Testing
 
-* Implemented unit tests.
-* Implemented integration tests.
-* Implemented end-to-end tests.
-* Added RLS and IDOR security coverage.
-* Added AI provider failure tests.
-* Added document-processing and large-input failure scenarios.
+- Implemented unit tests.
+- Implemented integration tests.
+- Implemented end-to-end tests.
+- Added RLS and IDOR security coverage.
+- Added AI provider failure tests.
+- Added document-processing and large-input failure scenarios.
 
 ### Frontend
 
-* Built both administrative and learner-facing interfaces.
-* Implemented dashboards, assessments, study flows, interview interfaces, appointments, and progression views.
+- Built both administrative and learner-facing interfaces.
+- Implemented dashboards, assessments, study flows, interview interfaces, appointments, and progression views.
 
 AI-assisted development tools were used during implementation, while the architecture, system design, application logic, integration decisions, testing strategy, and debugging were reviewed and directed throughout development.
 
@@ -669,14 +669,14 @@ Private client information, credentials, production secrets, and sensitive busin
 
 The code and documentation are presented to demonstrate:
 
-* Full-stack architecture
-* AI integration
-* RAG implementation
-* Backend engineering
-* Database design
-* Security architecture
-* Reliability patterns
-* Testing strategy
+- Full-stack architecture
+- AI integration
+- RAG implementation
+- Backend engineering
+- Database design
+- Security architecture
+- Reliability patterns
+- Testing strategy
 
 ---
 
@@ -693,11 +693,11 @@ The code and documentation are presented to demonstrate:
 
 ### Architecture Decision Records
 
-* [ADR 0001 — Next.js + Supabase + Vercel](docs/adr/0001-stack.md)
-* [ADR 0002 — RLS as the Data Isolation Boundary](docs/adr/0002-rls-isolation.md)
-* [ADR 0003 — Derived Progression State](docs/adr/0003-derived-progression.md)
-* [ADR 0004 — Database-Backed Job Queue](docs/adr/0004-notifications-table-queue.md)
-* [ADR 0005 — Database-Enforced Business Rules](docs/adr/0005-eligibility-enforced-in-database.md)
+- [ADR 0001 — Next.js + Supabase + Vercel](docs/adr/0001-stack.md)
+- [ADR 0002 — RLS as the Data Isolation Boundary](docs/adr/0002-rls-isolation.md)
+- [ADR 0003 — Derived Progression State](docs/adr/0003-derived-progression.md)
+- [ADR 0004 — Database-Backed Job Queue](docs/adr/0004-notifications-table-queue.md)
+- [ADR 0005 — Database-Enforced Business Rules](docs/adr/0005-eligibility-enforced-in-database.md)
 
 ---
 
@@ -713,9 +713,9 @@ The key engineering challenge was not simply connecting an LLM API.
 
 It was designing the surrounding system so that AI functionality remained:
 
-* Grounded
-* Validated
-* Secure
-* Testable
-* Recoverable
-* Integrated with deterministic application workflows
+- Grounded
+- Validated
+- Secure
+- Testable
+- Recoverable
+- Integrated with deterministic application workflows

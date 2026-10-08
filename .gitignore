@@ -1,0 +1,33 @@
+# dependencies / build
+node_modules/
+.next/
+out/
+build/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+next-env.d.ts
+
+# environment & secrets
+.env
+.env.*
+!.env.example
+
+# supabase local
+supabase/.branches/
+supabase/.temp/
+
+# editor / os
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# never commit real business documents (PII) — keep samples outside the repo
+*.pdf
+*.xlsx
+*.docx
+!docs/**/*.pdf
+!tests/fixtures/*.pdf

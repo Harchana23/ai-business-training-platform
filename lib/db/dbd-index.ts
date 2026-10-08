@@ -1,0 +1,746 @@
+import 'server-only';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import { chunkPage, type Chunk } from '@/lib/domain/rag/chunk';
+import { MAX_INDEX_ATTEMPTS, directReadMaxPages, retryDelayMinutes } from '@/lib/domain/rag/jobs';
+import {
+  DEFAULT_SLICE_PAGES,
+  MissingPagesError,
+  planSlice,
+  type Slice,
+  type TranscribedPage,
+} from '@/lib/domain/rag/transcript';
+import { transcriptionModel } from '@/lib/integrations/extraction/transcribe';
+import type { DbdExtractor } from '@/lib/integrations/extraction/types';
+import { VectorError, type Passage, type VectorStore } from '@/lib/integrations/vector/types';
+import { slicePdf } from '@/lib/pdf/slice';
+import { createSupabaseAdminClient } from './admin';
+import type { Database } from './database.types';
+
+type Db = SupabaseClient<Database>;
+export type IndexJobRow = Database['public']['Tables']['index_jobs']['Row'];
+
+/** Queues (or resets) the one live index job of a document and marks it `queued` (decision D41). */
+export async function enqueueIndexJob(
+  db: Db,
+  input: { recordId: string; documentId: string; kind?: 'index' | 'reindex' },
+): Promise<void> {
+  const kind = input.kind ?? 'index';
+  const { data: live, error } = await db
+    .from('index_jobs')
+    .select('id')
+    .eq('document_id', input.documentId)
+    .in('kind', ['index', 'reindex'])
+    .in('status', ['queued', 'running'])
+    .maybeSingle();
+  if (error) throw error;
+  if (live) {
+    const { error: e } = await db
+      .from('index_jobs')
+      .update({
+        kind,
+        status: 'queued',
+        next_page: 1,
+        attempts: 0,
+        locked_until: null,
+        last_error: null,
+      })
+      .eq('id', live.id);
+    if (e) throw e;
+  } else {
+    const { error: e } = await db
+      .from('index_jobs')
+      .insert({ record_id: input.recordId, document_id: input.documentId, kind });
+    if (e) throw e;
+  }
+  const { error: docError } = await db
+    .from('dbd_documents')
+    .update({ index_status: 'queued', indexed_pages: 0, index_error: null })
+    .eq('id', input.documentId);
+  if (docError) throw docError;
+}
+
+/**
+ * Queues the transcript fill of a record (P14c), keyed by the oversized document that makes it
+ * due. A live index job on that document wins (its completion queues the fill); a live
+ * transcript job is reused, re-reading the particulars only when asked. Document status is
+ * untouched: the fill is about the record, not the index.
+ */
+export async function enqueueTranscriptJob(
+  db: Db,
+  input: { recordId: string; documentId: string; rereadFacts?: boolean },
+): Promise<'queued' | 'already_live' | 'index_in_progress'> {
+  const { data: liveJobs, error } = await db
+    .from('index_jobs')
+    .select('id, kind')
+    .eq('document_id', input.documentId)
+    .in('status', ['queued', 'running']);
+  if (error) throw error;
+  if ((liveJobs ?? []).some((j) => j.kind === 'index' || j.kind === 'reindex')) {
+    return 'index_in_progress';
+  }
+  const live = (liveJobs ?? []).find((j) => j.kind === 'transcript');
+  if (live) {
+    if (input.rereadFacts) {
+      const { error: e } = await db
+        .from('index_jobs')
+        .update({
+          status: 'queued',
+          next_page: 1,
+          attempts: 0,
+          locked_until: null,
+          last_error: null,
+        })
+        .eq('id', live.id);
+      if (e) throw e;
+    }
+    return 'already_live';
+  }
+  const { error: e } = await db.from('index_jobs').insert({
+    record_id: input.recordId,
+    document_id: input.documentId,
+    kind: 'transcript',
+    // For transcript jobs next_page is a phase: 1 = particulars to (re)read, 2 = only if unread.
+    next_page: input.rereadFacts ? 1 : 2,
+  });
+  if (e) throw e;
+  return 'queued';
+}
+
+/**
+ * Queues the direct read of a record's documents (decision D46) — one live extract job per
+ * record, keyed through its first document. A job already queued is left alone; a running one
+ * finishes first (its result is the same documents).
+ */
+export async function enqueueExtractJob(
+  db: Db,
+  recordId: string,
+): Promise<'queued' | 'already_live' | 'no_document'> {
+  const { data: live, error } = await db
+    .from('index_jobs')
+    .select('id')
+    .eq('record_id', recordId)
+    .eq('kind', 'extract')
+    .in('status', ['queued', 'running'])
+    .maybeSingle();
+  if (error) throw error;
+  if (live) return 'already_live';
+  const { data: first, error: docError } = await db
+    .from('dbd_documents')
+    .select('id')
+    .eq('record_id', recordId)
+    .eq('group', 'pack')
+    .order('position')
+    .limit(1)
+    .maybeSingle();
+  if (docError) throw docError;
+  if (!first) return 'no_document';
+  const { error: e } = await db
+    .from('index_jobs')
+    .insert({ record_id: recordId, document_id: first.id, kind: 'extract' });
+  if (e) throw e;
+  return 'queued';
+}
+
+export async function listChunkIds(db: Db, documentId: string): Promise<string[]> {
+  const { data, error } = await db
+    .from('dbd_chunks')
+    .select('id')
+    .eq('document_id', documentId)
+    .order('page')
+    .order('chunk_index');
+  if (error) throw error;
+  return (data ?? []).map((r) => r.id);
+}
+
+/** Retrieval entry point for every consumer; null when no store is configured. */
+export async function searchRecordPassages(
+  vector: VectorStore | null,
+  recordId: string,
+  query: string,
+  options: { topK?: number; documentTypes?: string[] } = {},
+): Promise<Passage[] | null> {
+  if (!vector) return null;
+  return vector.search({ recordId, query, ...options });
+}
+
+export type AskResult = {
+  question: string;
+  answer: string | null;
+  passages: { document: string; page: number; text: string }[];
+  error: 'empty' | 'not_indexed' | 'unavailable' | null;
+};
+
+/**
+ * "Ask the documents" (spec §8): retrieval over the record's index plus an answer grounded only in
+ * the passages. A dead store reports `unavailable`; a failed answer still shows the passages.
+ */
+export async function askRecordDocuments(
+  db: Db,
+  vector: VectorStore | null,
+  input: {
+    recordId: string;
+    question: string;
+    answer?: (
+      question: string,
+      passages: Passage[],
+      documentNames: Map<string, string>,
+    ) => Promise<string | null>;
+  },
+): Promise<AskResult> {
+  const question = input.question.trim().slice(0, 300);
+  const empty: AskResult = { question, answer: null, passages: [], error: null };
+  if (question.length < 2) return { ...empty, error: 'empty' };
+  if (!vector) return { ...empty, error: 'unavailable' };
+  // This read is the team boundary for the whole function: it runs under the caller's client, so
+  // another team's record yields no documents, reports `not_indexed`, and never reaches the vector
+  // store below. Keep it before the search, and keep it on `db`, not the service role.
+  const { data: docs, error } = await db
+    .from('dbd_documents')
+    .select('id, original_name, index_status')
+    .eq('record_id', input.recordId);
+  if (error) throw error;
+  if (!(docs ?? []).some((d) => d.index_status === 'ready')) {
+    return { ...empty, error: 'not_indexed' };
+  }
+  const names = new Map((docs ?? []).map((d) => [d.id, d.original_name]));
+  let passages: Passage[];
+  try {
+    passages = await vector.search({ recordId: input.recordId, query: question, topK: 5 });
+  } catch (e) {
+    if (e instanceof VectorError) return { ...empty, error: 'unavailable' };
+    throw e;
+  }
+  let answer: string | null = null;
+  if (input.answer) {
+    try {
+      answer = await input.answer(question, passages, names);
+    } catch (e) {
+      console.error('askRecordDocuments: answer failed', e);
+      answer = null;
+    }
+  }
+  return {
+    question,
+    answer,
+    passages: passages.map((p) => ({
+      document: names.get(p.documentId) ?? '',
+      page: p.page,
+      text: p.text,
+    })),
+    error: null,
+  };
+}
+
+/** Runs one transcript fill for a record (the worker's `transcript` dependency, P14c). */
+export type TranscriptRunner = (input: {
+  recordId: string;
+  documentId: string;
+  /** What is left of the run's budget; the runner reads at least one batch regardless. */
+  budgetMs: number;
+  /** `force` re-reads the particulars (a "Read again"); `auto` only when none are stored. */
+  facts: 'auto' | 'force';
+}) => Promise<{ status: 'done' | 'released' | 'skipped'; factsSettled: boolean }>;
+
+/**
+ * Reads a record's documents whole and fills it (the worker's `extract` dependency, D46).
+ * `failed` is for outcomes a retry cannot change (confirmed record, nothing to read, too big).
+ */
+export type ExtractRunner = (input: {
+  recordId: string;
+  documentId: string;
+}) => Promise<{ status: 'done' | 'skipped' | 'failed'; error?: string }>;
+
+/** Reads a record's invoices into rows (D101); a `failed` status closes the job for good. */
+export type InvoicesRunner = (input: {
+  recordId: string;
+}) => Promise<{ status: 'done' | 'failed'; error?: string }>;
+
+export type IndexWorkerDeps = {
+  extractor: DbdExtractor | null;
+  vector: VectorStore | null;
+  /** Reads a record's invoices; without it, invoices jobs are closed unread. */
+  invoices?: InvoicesRunner;
+  /** Stop claiming new slices after this much work; at least one slice per claimed job. */
+  budgetMs?: number;
+  slicePages?: number;
+  now?: () => number;
+  download?: (path: string) => Promise<Uint8Array>;
+  /** Fills a record from its transcripts; without it, transcript jobs are closed unread. */
+  transcript?: TranscriptRunner;
+  /** Reads a record's documents whole; without it, extract jobs are closed unread. */
+  extract?: ExtractRunner;
+  /** Documents with more pages get a transcript fill when they become ready (default from env). */
+  directReadMaxPages?: number;
+  /**
+   * Called once an extract or transcript job of a record is marked done — the moment a record
+   * may have become clean enough to confirm itself (D80). A failure here never fails the job.
+   */
+  afterReading?: (recordId: string) => Promise<unknown>;
+};
+
+export type IndexRunSummary = {
+  claimed: number;
+  slices: number;
+  completed: number;
+  failed: number;
+  skipped: number;
+  /** Jobs put back in the queue with work left (budget) or after a failed attempt (backoff). */
+  released: number;
+  /** Transcript fills that finished (or had nothing to do). */
+  transcripts: number;
+  /** Direct reads that finished (or had nothing to do). */
+  extractions: number;
+  /** Invoice reads that finished (D101). */
+  invoices: number;
+};
+
+async function downloadFromStorage(admin: Db, path: string): Promise<Uint8Array> {
+  const { data, error } = await admin.storage.from('dbd-documents').download(path);
+  if (error || !data) throw new Error(`Could not download ${path}`);
+  return new Uint8Array(await data.arrayBuffer());
+}
+
+async function transcribeWithRetry(
+  extractor: DbdExtractor,
+  bytes: Uint8Array,
+  slice: Slice,
+): Promise<TranscribedPage[]> {
+  const sliced = await slicePdf(bytes, slice);
+  try {
+    return await extractor.transcribe(sliced, slice);
+  } catch (e) {
+    if (!(e instanceof MissingPagesError)) throw e;
+    return extractor.transcribe(sliced, slice);
+  }
+}
+
+/** Persists a slice's pages and chunks; stale chunk ids of those pages leave the store first. */
+async function storeSlice(
+  admin: Db,
+  vector: VectorStore,
+  job: IndexJobRow,
+  documentType: string | null,
+  pages: TranscribedPage[],
+  model: string,
+): Promise<void> {
+  const chunks: Chunk[] = pages.flatMap((p) =>
+    chunkPage({
+      recordId: job.record_id,
+      documentId: job.document_id,
+      documentType,
+      page: p.page,
+      text: p.text,
+    }),
+  );
+  const keep = new Set(chunks.map((c) => c.id));
+  const { data: existing, error: existingError } = await admin
+    .from('dbd_chunks')
+    .select('id')
+    .eq('document_id', job.document_id)
+    .in(
+      'page',
+      pages.map((p) => p.page),
+    );
+  if (existingError) throw existingError;
+  const stale = (existing ?? []).map((r) => r.id).filter((id) => !keep.has(id));
+  if (stale.length > 0) {
+    await vector.remove(stale);
+    const { error } = await admin.from('dbd_chunks').delete().in('id', stale);
+    if (error) throw error;
+  }
+  const { error: pageError } = await admin.from('dbd_pages').upsert(
+    pages.map((p) => ({ document_id: job.document_id, page: p.page, text: p.text, model })),
+    { onConflict: 'document_id,page' },
+  );
+  if (pageError) throw pageError;
+  if (chunks.length > 0) {
+    const { error: chunkError } = await admin.from('dbd_chunks').upsert(
+      chunks.map((c) => ({
+        id: c.id,
+        record_id: c.recordId,
+        document_id: c.documentId,
+        document_type: c.documentType,
+        page: c.page,
+        chunk_index: c.chunkIndex,
+        chunk_text: c.text,
+        char_count: c.text.length,
+      })),
+    );
+    if (chunkError) throw chunkError;
+    await vector.index(chunks);
+  }
+}
+
+/**
+ * The direct extraction classifies a document while its index job may already be running; when
+ * the job finishes with a different type than its slices used, rows and vector metadata are
+ * rewritten (same ids, so the store overwrites in place).
+ */
+async function relabelChunks(
+  admin: Db,
+  vector: VectorStore,
+  documentId: string,
+  documentType: string | null,
+): Promise<void> {
+  const { data, error } = await admin
+    .from('dbd_chunks')
+    .select('id, record_id, document_id, page, chunk_index, chunk_text')
+    .eq('document_id', documentId)
+    .order('page')
+    .order('chunk_index');
+  if (error) throw error;
+  if (!data || data.length === 0) return;
+  const { error: updateError } = await admin
+    .from('dbd_chunks')
+    .update({ document_type: documentType })
+    .eq('document_id', documentId);
+  if (updateError) throw updateError;
+  await vector.index(
+    data.map((r) => ({
+      id: r.id,
+      recordId: r.record_id,
+      documentId: r.document_id,
+      documentType,
+      page: r.page,
+      chunkIndex: r.chunk_index,
+      text: r.chunk_text,
+    })),
+  );
+}
+
+/** The first pages with any text, joined with page markers (a cover sheet alone says little). */
+export function classificationText(pages: TranscribedPage[], count = 2): string {
+  return pages
+    .filter((p) => p.text.trim() !== '')
+    .slice(0, count)
+    .map((p) => `=== PAGE ${p.page} ===\n${p.text}`)
+    .join('\n');
+}
+
+/** Spec §5.6: an untyped document is classified from its first pages; a known type stays. */
+async function classifyDocument(
+  admin: Db,
+  extractor: DbdExtractor,
+  doc: { id: string; document_type: string | null },
+  pages: TranscribedPage[],
+): Promise<void> {
+  const text = classificationText(pages, doc.document_type === null ? 2 : 3);
+  if (text === '') return;
+  try {
+    const type = await extractor.classify(text);
+    if (type === 'other' && doc.document_type !== null) return; // no better answer than before
+    await setDocument(admin, doc.id, { document_type: type });
+    doc.document_type = type;
+  } catch (e) {
+    console.error('classify failed; leaving the type as it was', e);
+  }
+}
+
+async function setDocument(
+  admin: Db,
+  documentId: string,
+  patch: Database['public']['Tables']['dbd_documents']['Update'],
+): Promise<void> {
+  const { error } = await admin.from('dbd_documents').update(patch).eq('id', documentId);
+  if (error) throw error;
+}
+
+async function setJob(
+  admin: Db,
+  jobId: string,
+  patch: Database['public']['Tables']['index_jobs']['Update'],
+): Promise<void> {
+  const { error } = await admin.from('index_jobs').update(patch).eq('id', jobId);
+  if (error) throw error;
+}
+
+/**
+ * The step after a record's reading finishes (D80: a clean record confirms itself). The job is
+ * already done; a failure here is logged and left for the manager's own Confirm.
+ */
+async function settleReading(deps: IndexWorkerDeps, recordId: string): Promise<void> {
+  if (!deps.afterReading) return;
+  try {
+    await deps.afterReading(recordId);
+  } catch (e) {
+    console.error(`after-reading step failed for record ${recordId}:`, e);
+  }
+}
+
+/** Backs a failed attempt off, or fails the job at the ceiling (`onFail` marks the document). */
+async function failAttempt(
+  admin: Db,
+  job: IndexJobRow,
+  message: string,
+  now: () => number,
+  summary: IndexRunSummary,
+  onFail?: () => Promise<void>,
+): Promise<void> {
+  const attempts = message === 'unreadable_pdf' ? MAX_INDEX_ATTEMPTS : job.attempts + 1;
+  if (attempts >= MAX_INDEX_ATTEMPTS) {
+    await setJob(admin, job.id, {
+      status: 'failed',
+      attempts,
+      locked_until: null,
+      last_error: message,
+    });
+    if (onFail) await onFail();
+    summary.failed++;
+  } else {
+    await setJob(admin, job.id, {
+      status: 'queued',
+      attempts,
+      last_error: message,
+      locked_until: new Date(now() + retryDelayMinutes(attempts) * 60_000).toISOString(),
+    });
+    summary.released++;
+  }
+}
+
+/**
+ * One worker run (cron): claims one job at a time and reads slices until the budget is spent.
+ * A job is released with `next_page` advanced when the budget runs out, backed off after a
+ * failed attempt, and marked `done` (document `ready`) after its last page. A document with
+ * more pages than the direct read takes then gets a `transcript` job, which fills its record
+ * from the transcripts in the same resumable way (P14c).
+ */
+export async function processIndexJobs(deps: IndexWorkerDeps): Promise<IndexRunSummary> {
+  const admin = createSupabaseAdminClient();
+  const now = deps.now ?? Date.now;
+  const budgetMs = deps.budgetMs ?? 240_000;
+  const slicePages = deps.slicePages ?? DEFAULT_SLICE_PAGES;
+  const maxDirectPages = deps.directReadMaxPages ?? directReadMaxPages();
+  const download = deps.download ?? ((path: string) => downloadFromStorage(admin, path));
+  const started = now();
+  const summary: IndexRunSummary = {
+    claimed: 0,
+    slices: 0,
+    completed: 0,
+    failed: 0,
+    skipped: 0,
+    released: 0,
+    transcripts: 0,
+    extractions: 0,
+    invoices: 0,
+  };
+
+  while (now() - started < budgetMs || summary.claimed === 0) {
+    const { data: claimed, error } = await admin.rpc('claim_index_jobs', { p_limit: 1 });
+    if (error) throw error;
+    const job = claimed?.[0];
+    if (!job) break;
+    summary.claimed++;
+    const isTranscript = job.kind === 'transcript';
+    const isExtract = job.kind === 'extract';
+    const isInvoices = job.kind === 'invoices';
+
+    // The claim counts an expired `running` lease as a failed attempt (the run was killed before
+    // it could report); the worker's own catch counts the rest. Both meet the same ceiling.
+    if (job.attempts >= MAX_INDEX_ATTEMPTS) {
+      const message = 'worker died repeatedly (lease expired)';
+      await setJob(admin, job.id, { status: 'failed', locked_until: null, last_error: message });
+      if (!isTranscript && !isExtract && !isInvoices) {
+        await setDocument(admin, job.document_id, { index_status: 'failed', index_error: message });
+      }
+      summary.failed++;
+      continue;
+    }
+
+    if (isExtract) {
+      if (!deps.extract || !deps.extractor) {
+        await setJob(admin, job.id, {
+          status: 'done',
+          locked_until: null,
+          last_error: 'no provider',
+        });
+        summary.skipped++;
+        continue;
+      }
+      try {
+        const run = await deps.extract({ recordId: job.record_id, documentId: job.document_id });
+        if (run.status === 'failed') {
+          await setJob(admin, job.id, {
+            status: 'failed',
+            locked_until: null,
+            last_error: run.error ?? 'failed',
+          });
+          summary.failed++;
+        } else {
+          await setJob(admin, job.id, { status: 'done', locked_until: null, last_error: null });
+          summary.extractions++;
+          await settleReading(deps, job.record_id);
+        }
+      } catch (e) {
+        await failAttempt(admin, job, e instanceof Error ? e.message : String(e), now, summary);
+      }
+      continue;
+    }
+
+    if (isInvoices) {
+      if (!deps.invoices || !deps.extractor) {
+        await setJob(admin, job.id, {
+          status: 'done',
+          locked_until: null,
+          last_error: 'no provider',
+        });
+        summary.skipped++;
+        continue;
+      }
+      try {
+        const run = await deps.invoices({ recordId: job.record_id });
+        if (run.status === 'failed') {
+          await setJob(admin, job.id, {
+            status: 'failed',
+            locked_until: null,
+            last_error: run.error ?? 'failed',
+          });
+          summary.failed++;
+        } else {
+          await setJob(admin, job.id, { status: 'done', locked_until: null, last_error: null });
+          summary.invoices++;
+          await settleReading(deps, job.record_id);
+        }
+      } catch (e) {
+        await failAttempt(admin, job, e instanceof Error ? e.message : String(e), now, summary);
+      }
+      continue;
+    }
+
+    if (isTranscript) {
+      if (!deps.transcript || !deps.extractor || !deps.vector) {
+        await setJob(admin, job.id, {
+          status: 'done',
+          locked_until: null,
+          last_error: 'no provider',
+        });
+        summary.skipped++;
+        continue;
+      }
+      try {
+        const run = await deps.transcript({
+          recordId: job.record_id,
+          documentId: job.document_id,
+          budgetMs: Math.max(0, budgetMs - (now() - started)),
+          facts: job.next_page === 1 ? 'force' : 'auto',
+        });
+        if (run.status === 'released') {
+          await setJob(admin, job.id, {
+            status: 'queued',
+            locked_until: null,
+            ...(run.factsSettled ? { next_page: 2 } : {}),
+          });
+          summary.released++;
+          break; // the run's budget is what the fill used up; the next run continues it
+        } else {
+          await setJob(admin, job.id, {
+            status: 'done',
+            locked_until: null,
+            last_error: null,
+            next_page: 2,
+          });
+          summary.transcripts++;
+          await settleReading(deps, job.record_id);
+        }
+      } catch (e) {
+        await failAttempt(admin, job, e instanceof Error ? e.message : String(e), now, summary);
+      }
+      continue;
+    }
+
+    if (!deps.extractor || !deps.vector) {
+      await setJob(admin, job.id, {
+        status: 'done',
+        locked_until: null,
+        last_error: 'no provider',
+      });
+      await setDocument(admin, job.document_id, { index_status: 'skipped' });
+      summary.skipped++;
+      continue;
+    }
+
+    const { data: doc, error: docError } = await admin
+      .from('dbd_documents')
+      .select('id, path, page_count, document_type')
+      .eq('id', job.document_id)
+      .single();
+    if (docError) throw docError;
+
+    try {
+      if (!doc.page_count) throw new Error('unreadable_pdf');
+      const bytes = await download(doc.path);
+      let nextPage = job.next_page;
+      let done = false;
+      await setDocument(admin, doc.id, { index_status: 'indexing' });
+      if (nextPage === 1) {
+        // The transcripts are being (re)written: cached sweeps of the old ones are stale.
+        const { error: sweepError } = await admin
+          .from('dbd_sweeps')
+          .delete()
+          .eq('document_id', doc.id);
+        if (sweepError) throw sweepError;
+      }
+      do {
+        const slice = planSlice(doc.page_count, nextPage, slicePages);
+        if (!slice) {
+          done = true;
+          break;
+        }
+        const pages = await transcribeWithRetry(deps.extractor, bytes, slice);
+        if (slice.firstPage === 1 && doc.document_type === null) {
+          await classifyDocument(admin, deps.extractor, doc, pages);
+        }
+        const model = deps.extractor.name === 'claude' ? transcriptionModel() : deps.extractor.name;
+        await storeSlice(admin, deps.vector, job, doc.document_type, pages, model);
+        nextPage = slice.lastPage + 1;
+        summary.slices++;
+        await setJob(admin, job.id, { next_page: nextPage });
+        await setDocument(admin, doc.id, { indexed_pages: slice.lastPage });
+        done = nextPage > doc.page_count;
+      } while (!done && now() - started < budgetMs);
+
+      if (done) {
+        const { data: fresh } = await admin
+          .from('dbd_documents')
+          .select('document_type')
+          .eq('id', doc.id)
+          .single();
+        let finalType = fresh?.document_type ?? doc.document_type;
+        if (finalType === null || finalType === 'other') {
+          // A cover sheet or a failed call left the document untyped: try again with more pages.
+          const { data: firstPages } = await admin
+            .from('dbd_pages')
+            .select('page, text')
+            .eq('document_id', doc.id)
+            .order('page')
+            .limit(6);
+          const probe = { id: doc.id, document_type: finalType };
+          await classifyDocument(admin, deps.extractor, probe, firstPages ?? []);
+          finalType = probe.document_type;
+        }
+        if (finalType !== doc.document_type) {
+          await relabelChunks(admin, deps.vector, doc.id, finalType);
+        }
+        await setJob(admin, job.id, { status: 'done', locked_until: null, last_error: null });
+        await setDocument(admin, doc.id, {
+          index_status: 'ready',
+          indexed_pages: doc.page_count,
+          index_error: null,
+        });
+        summary.completed++;
+        // Spec §5.5: an oversized document fills its record from the transcripts once ready.
+        if (doc.page_count > maxDirectPages) {
+          await enqueueTranscriptJob(admin, { recordId: job.record_id, documentId: doc.id });
+        }
+      } else {
+        await setJob(admin, job.id, { status: 'queued', locked_until: null });
+        summary.released++;
+      }
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      await failAttempt(admin, job, message, now, summary, () =>
+        setDocument(admin, job.document_id, { index_status: 'failed', index_error: message }),
+      );
+    }
+  }
+  return summary;
+}

@@ -1,0 +1,70 @@
+import { expect, test } from '@playwright/test';
+import { E2E_ADMIN, E2E_PASSWORD } from './fixtures';
+import { loginAs, openManualRecordForm, openRecordTab } from './helpers';
+
+const CRON = { headers: { Authorization: 'Bearer local-cron-secret-for-dev' } };
+
+// The dev server runs without ANTHROPIC_API_KEY, so the fake extractor answers.
+test('uploading a complete certificate fills and confirms the record in the background', async ({
+  page,
+  request,
+}) => {
+  await loginAs(page, E2E_ADMIN.loginId, E2E_PASSWORD);
+  await page.goto('/th/admin/dbd-records/new');
+  await page.getByTestId('upload-first-file').setInputFiles('tests/fixtures/tiny.pdf');
+  await page.getByTestId('upload-first-submit').click();
+  await page.waitForURL(/\/th\/admin\/dbd-records\/[0-9a-f-]{36}\?extraction=queued/);
+
+  // The reading is a job the cron runs (D46): the page says so until the fields arrive.
+  await expect(page.getByTestId('reading-status')).toContainText('เบื้องหลัง');
+  await expect(page.locator('input[name="juristic_id"]')).toHaveValue('');
+  const run = await request.get('/api/cron/index', CRON);
+  expect((await run.json()).extractions).toBeGreaterThanOrEqual(1);
+  await page.reload();
+  await expect(page.getByTestId('reading-status')).toHaveCount(0);
+
+  // The record now carries the values read from the document. A clean pack is accepted at once,
+  // so review-only suggestion badges disappear and the certificate facts become read-only.
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('บริษัท ตัวอย่างการสกัด จำกัด');
+  await expect(page.locator('input[name="juristic_id"]')).toHaveValue('0105569000134');
+  await expect(page.locator('input[name="issued_on"]')).toHaveValue('13 กรกฎาคม 2569');
+  await expect(page.getByTestId('record-status')).toHaveText('confirmed');
+  await expect(page.getByTestId('confirmed-automatically')).toBeVisible();
+  await expect(page.locator('input[name="juristic_id"]')).toHaveAttribute('readonly', '');
+
+  // Level 2 arrived in the business profile and Level 3 classified the document.
+  await expect(page.locator('input[name="province"]')).toHaveValue('ร้อยเอ็ด');
+  const business = page.getByTestId('business-profile');
+  await expect(business.locator('textarea[name="objectives_text"]')).toHaveValue(
+    /^1\. ประกอบกิจการค้าปลีก/,
+  );
+  await expect(business.locator('textarea[name="shareholders_text"]')).toHaveValue(
+    /นางสาวตัวอย่าง ทดสอบ \| ไทย \| 19998/,
+  );
+  await expect(business.locator('input[name="total_shares"]')).toHaveValue('20000');
+  await expect(page.getByTestId('document-list').getByTestId('document-type')).toHaveText(
+    'หนังสือรับรอง',
+  );
+});
+
+test('uploading on an existing record fills only the empty fields', async ({ page, request }) => {
+  await loginAs(page, E2E_ADMIN.loginId, E2E_PASSWORD);
+  await openManualRecordForm(page);
+  await page.locator('input[name="company_name_th"]').fill('บริษัท ชื่อที่พิมพ์เอง จำกัด');
+  await page.getByRole('button', { name: 'บันทึก' }).click();
+  await page.waitForURL(/\/th\/admin\/dbd-records\/[0-9a-f-]{36}$/);
+
+  await openRecordTab(page, 'documents');
+  await expect(page.getByTestId('extract-button')).toBeDisabled();
+  await page.locator('input[name="document"]').setInputFiles('tests/fixtures/tiny.pdf');
+  await page.getByRole('button', { name: 'อัปโหลดและกรอกอัตโนมัติ' }).click();
+  await expect(page.getByTestId('extract-status')).toContainText('เบื้องหลัง');
+  await request.get('/api/cron/index', CRON);
+  await page.reload();
+  await expect(page.locator('input[name="company_name_th"]')).toHaveValue(
+    'บริษัท ชื่อที่พิมพ์เอง จำกัด',
+  );
+  await expect(page.locator('input[name="juristic_id"]')).toHaveValue('0105569000134');
+  await expect(page.getByTestId('record-status')).toHaveText('confirmed');
+  await expect(page.getByTestId('extract-button')).toHaveCount(0);
+});

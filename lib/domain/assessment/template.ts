@@ -1,0 +1,286 @@
+import type { Director } from '../dbd-record';
+import type { Objective, Promoter, Shareholder } from '../dbd-profile';
+import { addCalendarDays, formatDate, type ISODate, type Locale } from '../thai-date';
+import { createRng, shuffleWith } from './random';
+
+/** Record fields that placeholders may reference. */
+export const TEMPLATE_FIELDS = [
+  'company_name_th',
+  'company_name_en',
+  'juristic_id',
+  'certificate_no',
+  'registered_capital',
+  'head_office_address',
+  'registered_on',
+  'issued_on',
+  'directors',
+  'objectives_count',
+  'signing_authority',
+  // Level 1/2 additions (decision D38)
+  'province',
+  'objectives',
+  'business_categories',
+  'shareholders',
+  'promoters',
+  'total_shares',
+  'par_value',
+  // Bank-interview concepts (decision D39): derived counts, company interview answers, the
+  // learner's own role
+  'directors_count',
+  'shareholders_count',
+  'nature_of_business',
+  'products_services',
+  'account_purpose',
+  'monthly_volume',
+  'clients_location',
+  'suppliers_location',
+  'source_of_funds',
+  'business_address',
+  'operations_status',
+  'my_name',
+  'my_position',
+  'my_responsibilities',
+  'my_relationship',
+  'my_shares',
+  'my_share_percent',
+  // The complete learner cheat sheet (2026-10-08): the same frozen facts as the MCQ.
+  'business_purpose',
+  'main_clients',
+  'client_origin',
+  'main_suppliers',
+  'monthly_revenue',
+  'revenue_basis',
+  'average_transaction',
+  'monthly_transactions',
+  'first_incoming_funds',
+  'promptpay_qr_purpose',
+  'customer_profile',
+  'transaction_details',
+  'customer_channels',
+] as const;
+export type TemplateField = (typeof TEMPLATE_FIELDS)[number];
+
+export type TemplateRecord = {
+  company_name_th: string | null;
+  company_name_en: string | null;
+  juristic_id: string | null;
+  certificate_no: string | null;
+  registered_capital: number | string | null;
+  head_office_address: string | null;
+  registered_on: ISODate | null;
+  issued_on: ISODate | null;
+  directors: Director[] | null;
+  objectives_count: number | null;
+  signing_authority: string | null;
+  province: string | null;
+  objectives: Objective[] | null;
+  business_categories: string[] | null;
+  shareholders: Shareholder[] | null;
+  promoters: Promoter[] | null;
+  total_shares: number | null;
+  par_value: number | null;
+  directors_count: number | null;
+  shareholders_count: number | null;
+  nature_of_business: string | null;
+  products_services: string | null;
+  account_purpose: string | null;
+  monthly_volume: string | null;
+  clients_location: string | null;
+  suppliers_location: string | null;
+  source_of_funds: string | null;
+  business_address: string | null;
+  operations_status: string | null;
+  my_name: string | null;
+  my_position: string | null;
+  my_responsibilities: string | null;
+  my_relationship: string | null;
+  my_shares: number | null;
+  my_share_percent: number | null;
+  business_purpose?: string | null;
+  main_clients?: string | null;
+  client_origin?: string | null;
+  main_suppliers?: string | null;
+  monthly_revenue?: string | null;
+  revenue_basis?: string | null;
+  average_transaction?: string | null;
+  monthly_transactions?: string | null;
+  first_incoming_funds?: string | null;
+  promptpay_qr_purpose?: string | null;
+  customer_profile?: string | null;
+  transaction_details?: string | null;
+  customer_channels?: 'with_website' | 'without_website' | null;
+};
+
+export class MissingFieldError extends Error {
+  constructor(public readonly field: string) {
+    super(`Record has no value for ${field}`);
+    this.name = 'MissingFieldError';
+  }
+}
+
+export class TemplateSyntaxError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'TemplateSyntaxError';
+  }
+}
+
+const PLACEHOLDER = /\{([a-z_]+)(?:\|([^}]+))?\}/g;
+const NUMBER_LOCALES: Record<Locale, string> = { th: 'th-TH', en: 'en-US', zh: 'zh-CN' };
+const CUSTOMER_CHANNELS: Record<
+  Locale,
+  Record<Exclude<TemplateRecord['customer_channels'], null | undefined>, string>
+> = {
+  th: {
+    with_website:
+      'หาลูกค้าผ่าน Facebook, TikTok และเว็บไซต์ของบริษัท รวมถึงการแนะนำจากลูกค้าเดิมและลูกค้าที่เข้ามาที่ร้าน',
+    without_website:
+      'หาลูกค้าผ่าน Facebook และ TikTok รวมถึงการแนะนำจากลูกค้าเดิมและลูกค้าที่เข้ามาที่ร้าน',
+  },
+  en: {
+    with_website:
+      'Online through Facebook, TikTok and the company website, as well as referrals and walk-in customers.',
+    without_website:
+      'Online through Facebook and TikTok, as well as referrals and walk-in customers.',
+  },
+  zh: {
+    with_website: '通过 Facebook、TikTok 和公司网站，以及客户推荐和到店客户寻找客户。',
+    without_website: '通过 Facebook 和 TikTok，以及客户推荐和到店客户寻找客户。',
+  },
+};
+
+/** Distinct record fields referenced by a template (for `dbd_field_dependencies`). */
+export function placeholderFields(text: string): TemplateField[] {
+  const found = new Set<TemplateField>();
+  for (const m of text.matchAll(PLACEHOLDER)) {
+    const field = m[1] as TemplateField;
+    if (!(TEMPLATE_FIELDS as readonly string[]).includes(field)) {
+      throw new TemplateSyntaxError(`Unknown placeholder field: ${m[1]}`);
+    }
+    found.add(field);
+  }
+  return [...found];
+}
+
+function isEmpty(v: unknown): boolean {
+  return v === null || v === undefined || v === '' || (Array.isArray(v) && v.length === 0);
+}
+
+function applyNumberVariant(value: number, variant: string): number {
+  const m = /^x(\d+(?:\.\d+)?)$/.exec(variant);
+  if (!m) throw new TemplateSyntaxError(`Unsupported numeric variant: ${variant}`);
+  return Math.round(value * Number(m[1]));
+}
+
+function applyDateVariant(value: ISODate, variant: string): ISODate {
+  const m = /^([+-])(\d+)([dmy])$/.exec(variant);
+  if (!m) throw new TemplateSyntaxError(`Unsupported date variant: ${variant}`);
+  const sign = m[1] === '-' ? -1 : 1;
+  const n = Number(m[2]) * sign;
+  if (m[3] === 'd') return addCalendarDays(value, n);
+  const [y, mo, d] = value.split('-').map(Number);
+  const months = m[3] === 'm' ? n : n * 12;
+  const total = y * 12 + (mo - 1) + months;
+  const ny = Math.floor(total / 12);
+  const nm = (total % 12) + 1;
+  const lastDay = new Date(Date.UTC(ny, nm, 0)).getUTCDate();
+  const nd = Math.min(d, lastDay);
+  return `${ny}-${String(nm).padStart(2, '0')}-${String(nd).padStart(2, '0')}`;
+}
+
+function shuffleDigits(value: string, rng: () => number): string {
+  const digits = value.split('');
+  let out = shuffleWith(digits, rng).join('');
+  // Guarantee the distractor differs from the real value.
+  if (out === value && digits.length > 1) out = out.slice(1) + out[0];
+  return out;
+}
+
+function formatValue(field: TemplateField, value: unknown, locale: Locale): string {
+  switch (field) {
+    case 'customer_channels':
+      return CUSTOMER_CHANNELS[locale][value as 'with_website' | 'without_website'];
+    case 'registered_capital':
+    case 'total_shares':
+    case 'par_value':
+    case 'directors_count':
+    case 'shareholders_count':
+    case 'my_shares':
+    case 'my_share_percent':
+      return Number(value).toLocaleString(NUMBER_LOCALES[locale]);
+    case 'registered_on':
+    case 'issued_on':
+      return formatDate(String(value), locale);
+    case 'directors':
+      return (value as Director[]).map((d) => d.name_th).join(', ');
+    case 'objectives':
+      return (value as Objective[]).map((o) => o.text).join('; ');
+    case 'business_categories':
+      return (value as string[]).join(', ');
+    case 'shareholders':
+      return (value as Shareholder[]).map((sh) => sh.name).join(', ');
+    case 'promoters':
+      return (value as Promoter[]).map((p) => p.name).join(', ');
+    default:
+      return String(value);
+  }
+}
+
+/**
+ * Substitutes `{field}` and `{field|variant}` placeholders. Variants derive deterministic
+ * distractors from the real value: `x2`/`x0.5`/`x10` (numbers), `+1m`/`-1y`/`+10d` (dates),
+ * `shuffle` (digit strings). Missing record values raise MissingFieldError (BR-008).
+ */
+export function renderTemplate(
+  text: string,
+  record: TemplateRecord,
+  seed: string,
+  locale: Locale,
+): string {
+  const rng = createRng(`${seed}:${text}`);
+  return text.replace(PLACEHOLDER, (_match, rawField: string, variant?: string) => {
+    const field = rawField as TemplateField;
+    if (!(TEMPLATE_FIELDS as readonly string[]).includes(field)) {
+      throw new TemplateSyntaxError(`Unknown placeholder field: ${rawField}`);
+    }
+    const value = record[field];
+    if (isEmpty(value)) throw new MissingFieldError(field);
+    if (!variant) return formatValue(field, value, locale);
+
+    if (
+      field === 'registered_capital' ||
+      field === 'objectives_count' ||
+      field === 'total_shares' ||
+      field === 'par_value' ||
+      field === 'directors_count' ||
+      field === 'shareholders_count' ||
+      field === 'my_shares' ||
+      field === 'my_share_percent'
+    ) {
+      return formatValue(field, applyNumberVariant(Number(value), variant), locale);
+    }
+    if (field === 'registered_on' || field === 'issued_on') {
+      return formatValue(field, applyDateVariant(String(value), variant), locale);
+    }
+    if (variant === 'shuffle') return shuffleDigits(String(value), rng);
+    throw new TemplateSyntaxError(`Variant ${variant} is not valid for ${field}`);
+  });
+}
+
+/**
+ * Study-card variant of renderTemplate: a missing value renders as an em dash and unknown
+ * placeholders are left as written, so a card never fails for a learner whose record is partial.
+ */
+export function renderTemplateLenient(
+  text: string,
+  record: TemplateRecord | null,
+  locale: Locale,
+): string {
+  return text.replace(PLACEHOLDER, (match, rawField: string, variant?: string) => {
+    const field = rawField as TemplateField;
+    if (!(TEMPLATE_FIELDS as readonly string[]).includes(field) || variant) return match;
+    const value = record?.[field];
+    if (isEmpty(value)) return '—';
+    return formatValue(field, value, locale);
+  });
+}

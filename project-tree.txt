@@ -1,0 +1,955 @@
+Folder PATH listing for volume Acer
+Volume serial number is A062-EADD
+C:.
+|   .env.example
+|   .gitattributes
+|   .gitignore
+|   .prettierignore
+|   .prettierrc
+|   AGENTS.md
+|   CLAUDE.md
+|   design-qa.md
+|   eslint.config.mjs
+|   next.config.ts
+|   package.json
+|   playwright.config.ts
+|   pnpm-lock.yaml
+|   pnpm-workspace.yaml
+|   postcss.config.mjs
+|   project-tree.txt
+|   proxy.ts
+|   README.md
+|   tsconfig.json
+|   vercel.json
+|   vitest.config.ts
+|   vitest.integration.config.ts
+|   
++---.21st
+|       design.json
+|       DESIGN.md
+|       
++---.github
+|   \---workflows
+|           ci.yml
+|           
++---app
+|   |   favicon.ico
+|   |   globals.css
+|   |   
+|   +---api
+|   |   +---cron
+|   |   |   +---index
+|   |   |   |       route.ts
+|   |   |   |       
+|   |   |   \---notifications
+|   |   |           route.ts
+|   |   |           
+|   |   +---health
+|   |   |       route.ts
+|   |   |       
+|   |   \---tts
+|   |           route.ts
+|   |           
+|   \---[locale]
+|       |   actions.ts
+|       |   layout.tsx
+|       |   page.tsx
+|       |   
+|       +---(admin)
+|       |   |   layout.tsx
+|       |   |   
+|       |   +---@side
+|       |   |   |   default.tsx
+|       |   |   |   
+|       |   |   \---admin
+|       |   |       |   page.tsx
+|       |   |       |   
+|       |   |       +---dbd-records
+|       |   |       |   \---[id]
+|       |   |       |           page.tsx
+|       |   |       |           
+|       |   |       \---[...rest]
+|       |   |               page.tsx
+|       |   |               
+|       |   \---admin
+|       |       |   delete-icon-form.tsx
+|       |       |   login-id-actions.ts
+|       |       |   login-id-errors.ts
+|       |       |   login-id-field.tsx
+|       |       |   page.tsx
+|       |       |   
+|       |       +---appointments
+|       |       |       actions.ts
+|       |       |       month-calendar.tsx
+|       |       |       page.tsx
+|       |       |       staff-form.tsx
+|       |       |       
+|       |       +---business-categories
+|       |       |       actions.ts
+|       |       |       category-form.tsx
+|       |       |       page.tsx
+|       |       |       
+|       |       +---dbd-records
+|       |       |   |   actions.ts
+|       |       |   |   dbd-record-form.tsx
+|       |       |   |   pack-preview.tsx
+|       |       |   |   page.tsx
+|       |       |   |   use-direct-upload.ts
+|       |       |   |   
+|       |       |   +---new
+|       |       |   |       page.tsx
+|       |       |   |       upload-first-form.tsx
+|       |       |   |       
+|       |       |   \---[id]
+|       |       |           address-panel.tsx
+|       |       |           ask-documents.tsx
+|       |       |           category-panel.tsx
+|       |       |           coverage-panel.tsx
+|       |       |           exceptions-panel.tsx
+|       |       |           interview-form.tsx
+|       |       |           links-form.tsx
+|       |       |           page.tsx
+|       |       |           record-data.ts
+|       |       |           record-tab-keys.ts
+|       |       |           record-tabs.tsx
+|       |       |           record-tools.tsx
+|       |       |           training-versions-panel.tsx
+|       |       |           
+|       |       +---exceptions
+|       |       |       page.tsx
+|       |       |       
+|       |       +---interviews
+|       |       |   |   page.tsx
+|       |       |   |   session-result-transcript.tsx
+|       |       |   |   session-view.tsx
+|       |       |   |   
+|       |       |   \---[id]
+|       |       |           page.tsx
+|       |       |           
+|       |       +---learners
+|       |       |   |   page.tsx
+|       |       |   |   result-tag.tsx
+|       |       |   |   
+|       |       |   \---[id]
+|       |       |       |   history-header.tsx
+|       |       |       |   
+|       |       |       +---chatbot
+|       |       |       |   |   page.tsx
+|       |       |       |   |   
+|       |       |       |   \---[sessionId]
+|       |       |       |           page.tsx
+|       |       |       |           
+|       |       |       \---mcq
+|       |       |           |   page.tsx
+|       |       |           |   
+|       |       |           \---[attemptId]
+|       |       |                   page.tsx
+|       |       |                   
+|       |       +---managers
+|       |       |       actions.ts
+|       |       |       new-manager-form.tsx
+|       |       |       page.tsx
+|       |       |       row-controls.tsx
+|       |       |       
+|       |       +---notifications
+|       |       |       actions.ts
+|       |       |       page.tsx
+|       |       |       
+|       |       +---questions
+|       |       |   |   actions.ts
+|       |       |   |   bank-actions.ts
+|       |       |   |   bank-forms.tsx
+|       |       |   |   page.tsx
+|       |       |   |   question-forms.tsx
+|       |       |   |   variant-form.tsx
+|       |       |   |   
+|       |       |   +---check
+|       |       |   |       page.tsx
+|       |       |   |       
+|       |       |   +---concepts
+|       |       |   |   \---[key]
+|       |       |   |           page.tsx
+|       |       |   |           
+|       |       |   +---generate
+|       |       |   |       actions.ts
+|       |       |   |       generate-form.tsx
+|       |       |   |       page.tsx
+|       |       |   |       
+|       |       |   +---legacy
+|       |       |   |       page.tsx
+|       |       |   |       
+|       |       |   +---new
+|       |       |   |       page.tsx
+|       |       |   |       
+|       |       |   +---variants
+|       |       |   |   +---new
+|       |       |   |   |       page.tsx
+|       |       |   |   |       
+|       |       |   |   \---[id]
+|       |       |   |           page.tsx
+|       |       |   |           
+|       |       |   \---[id]
+|       |       |           page.tsx
+|       |       |           
+|       |       +---settings
+|       |       |       actions.ts
+|       |       |       page.tsx
+|       |       |       setting-form.tsx
+|       |       |       
+|       |       \---users
+|       |           |   actions.ts
+|       |           |   companies-panel.tsx
+|       |           |   create-dbd-form.tsx
+|       |           |   create-learner-tabs.tsx
+|       |           |   learner-contact-fields.tsx
+|       |           |   new-user-form.tsx
+|       |           |   page.tsx
+|       |           |   
+|       |           \---[id]
+|       |                   account-controls.tsx
+|       |                   actions.ts
+|       |                   assignment-panel.tsx
+|       |                   contact-form.tsx
+|       |                   page.tsx
+|       |                   role-form.tsx
+|       |                   version-panel.tsx
+|       |                   
+|       +---(auth)
+|       |   \---login
+|       |           actions.ts
+|       |           login-form.tsx
+|       |           page.tsx
+|       |           
+|       \---(learner)
+|           |   layout.tsx
+|           |   
+|           +---appointment
+|           |       page.tsx
+|           |       
+|           +---dashboard
+|           |       company-card.tsx
+|           |       hero.tsx
+|           |       page.tsx
+|           |       progress-card.tsx
+|           |       stage-marks.tsx
+|           |       stage-row.ts
+|           |       stepper.tsx
+|           |       steps-list.tsx
+|           |       
+|           +---exam
+|           |   |   actions.ts
+|           |   |   page.tsx
+|           |   |   start-button.tsx
+|           |   |   
+|           |   \---[attemptId]
+|           |       |   page.tsx
+|           |       |   
+|           |       \---result
+|           |               page.tsx
+|           |               
+|           +---interview
+|           |   |   actions.ts
+|           |   |   page.tsx
+|           |   |   start-button.tsx
+|           |   |   turns.ts
+|           |   |   
+|           |   \---[sessionId]
+|           |           chat.tsx
+|           |           debrief.tsx
+|           |           page.tsx
+|           |           
+|           +---name-card
+|           |       page.tsx
+|           |       
+|           +---quiz
+|           |   |   actions.ts
+|           |   |   attempt-board.tsx
+|           |   |   page.tsx
+|           |   |   question-card.tsx
+|           |   |   start-button.tsx
+|           |   |   
+|           |   \---[attemptId]
+|           |       |   page.tsx
+|           |       |   
+|           |       \---review
+|           |               page.tsx
+|           |               
+|           \---study
+|               |   actions.ts
+|               |   page.tsx
+|               |   view-tracker.tsx
+|               |   
+|               \---[key]
+|                       page.tsx
+|                       
++---artifacts
+|   +---design-qa
+|   |       interview-result-comparison.png
+|   |       interview-result-desktop.png
+|   |       interview-result-mobile.png
+|   |       learner-dashboard-desktop-comparison.png
+|   |       learner-dashboard-desktop.png
+|   |       learner-exam-desktop.png
+|   |       learner-interview-desktop.png
+|   |       learner-name-card-desktop.png
+|   |       learner-name-card-header-mobile.png
+|   |       learner-quiz-desktop.png
+|   |       learner-quiz-header-mobile.png
+|   |       learner-quiz-mobile.png
+|   |       learner-readiness-header-mobile.png
+|   |       learner-study-desktop.png
+|   |       quiz-attempt-history-fixed.png
+|   |       
+|   \---visual-qa
+|       \---simplified-learning-flow
+|               quiz-mobile.png
+|               readiness-mobile.png
+|               study-mobile.png
+|               
++---assets
+|   \---fonts
+|           Sarabun-Bold.ttf
+|           Sarabun-OFL.txt
+|           Sarabun-Regular.ttf
+|           
++---components
+|   |   answer-review.tsx
+|   |   icons.tsx
+|   |   language-toggle.tsx
+|   |   read-aloud-player.tsx
+|   |   sign-out-button.tsx
+|   |   
+|   +---shell
+|   |       back-pill.tsx
+|   |       learner-nav.tsx
+|   |       learner-shell.tsx
+|   |       learner-stage-tabs.tsx
+|   |       shell-header.tsx
+|   |       stage-status.ts
+|   |       step-segments.tsx
+|   |       
+|   \---staff
+|           pdf-file-picker.tsx
+|           staff-nav.tsx
+|           staff-shell.tsx
+|           
++---docs
+|   |   decisions-log.md
+|   |   release-checklist.md
+|   |   security-checklist.md
+|   |   uat-script.md
+|   |   
+|   +---adr
+|   |       0001-stack.md
+|   |       0002-rls-isolation.md
+|   |       0003-derived-progression.md
+|   |       0004-notifications-table-queue.md
+|   |       0005-eligibility-enforced-in-database.md
+|   |       
+|   +---design-qa
+|   |       2026-10-08-simplified-learning-flow.md
+|   |       
+|   +---design_handoff_learner_portal
+|   |   |   Dashboard v4.dc.html
+|   |   |   design-brief.md
+|   |   |   image-slot.js
+|   |   |   Learner Screens.dc.html
+|   |   |   Login.dc.html
+|   |   |   README.md
+|   |   |   support.js
+|   |   |   tokens.proposed.css
+|   |   |   
+|   |   \---assets
+|   |           photo-finance.jpg
+|   |           photo-leadership.jpg
+|   |           photo-market.jpg
+|   |           photo-skyline.jpg
+|   |           photo-team.jpg
+|   |           
+|   +---runbooks
+|   |       operations.md
+|   |       production-setup.md
+|   |       
+|   \---superpowers
+|       +---plans
+|       |       2026-09-11-foundation-p0-p1.md
+|       |       2026-09-11-foundation-p1_5-p2.md
+|       |       2026-09-21-p14a-dbd-index-pipeline.md
+|       |       2026-09-21-p14b-retrieval-consumers.md
+|       |       2026-09-21-p14c-oversized-documents.md
+|       |       2026-09-23-p15a-teams-in-the-database.md
+|       |       2026-09-24-p15b-creating-people.md
+|       |       2026-09-25-p15c-scoping-the-rest.md
+|       |       2026-09-28-p16a-readiness-interview.md
+|       |       2026-09-28-p16b-appointments.md
+|       |       2026-09-30-p17a-facts-and-concepts.md
+|       |       2026-09-30-p17b-training-versions.md
+|       |       2026-10-01-fewer-manager-questions.md
+|       |       2026-10-01-p17c-validation-and-exceptions.md
+|       |       2026-10-01-p17d-mcq-bank-and-recipes.md
+|       |       2026-10-02-p17e-business-knowledge-quiz.md
+|       |       2026-10-06-company-pack.md
+|       |       2026-10-07-manager-booked-appointments.md
+|       |       2026-10-08-simplified-learning-flow.md
+|       |       
+|       \---specs
+|               2026-09-11-p3-study-material-design.md
+|               2026-09-11-p4-evaluation-quiz-design.md
+|               2026-09-11-p5-exam-notifications-design.md
+|               2026-09-11-p8-vapi-call-training-design.md
+|               2026-09-11-p9-admin-hardening-design.md
+|               2026-09-11-thailand-training-portal-foundation-design.md
+|               2026-09-18-p11-ai-question-authoring-design.md
+|               2026-09-18-p12-three-level-dbd-design.md
+|               2026-09-18-p13-bank-interview-concepts-design.md
+|               2026-09-21-p14-dbd-rag-index-design.md
+|               2026-09-23-teams-and-roles-design.md
+|               2026-09-28-bank-readiness-interview-and-appointments-design.md
+|               2026-09-30-learner-record-design.md
+|               2026-09-30-p17-evaluation-architecture-design.md
+|               2026-10-01-two-line-company-record-design.md
+|               2026-10-06-company-pack-design.md
+|               
++---i18n
+|       language-choice.ts
+|       navigation.ts
+|       request.ts
+|       routing.ts
+|       
++---lib
+|   +---auth
+|   |       internal-email.ts
+|   |       session.ts
+|   |       
+|   +---config
+|   |       policy-defaults.ts
+|   |       policy-schema.ts
+|   |       policy.ts
+|   |       
+|   +---content
+|   |       bank-interview-cards.ts
+|   |       mcq-starter-concepts.ts
+|   |       mcq-starter.ts
+|   |       training-syllabus.ts
+|   |       
+|   +---db
+|   |       account-audit.ts
+|   |       admin.ts
+|   |       appointments.ts
+|   |       assessment.ts
+|   |       assignments.ts
+|   |       browser-storage.ts
+|   |       business-categories.ts
+|   |       chunks.ts
+|   |       database.types.ts
+|   |       dbd-index.ts
+|   |       dbd-records.ts
+|   |       derived-facts.ts
+|   |       env.ts
+|   |       exam.ts
+|   |       extraction.ts
+|   |       geo.ts
+|   |       interviews.ts
+|   |       invoices.ts
+|   |       learner-record.ts
+|   |       learner.ts
+|   |       mcq-attempt.ts
+|   |       mcq-bank.ts
+|   |       mcq-context.ts
+|   |       middleware.ts
+|   |       name-cards.ts
+|   |       notifications.ts
+|   |       passages.ts
+|   |       pinning.ts
+|   |       progression.ts
+|   |       provisioning.ts
+|   |       question-gen.ts
+|   |       questions.ts
+|   |       record-form-values.ts
+|   |       server.ts
+|   |       settings.ts
+|   |       study.ts
+|   |       training-sheet.ts
+|   |       training-versions.ts
+|   |       transcript-extraction.ts
+|   |       tts.ts
+|   |       validation.ts
+|   |       
+|   +---domain
+|   |   |   auto-confirm.ts
+|   |   |   bank-interview.ts
+|   |   |   business-category.ts
+|   |   |   dbd-profile.ts
+|   |   |   dbd-record.ts
+|   |   |   document-upload.ts
+|   |   |   eligibility.ts
+|   |   |   extraction-merge.ts
+|   |   |   extraction-plan.ts
+|   |   |   generation-limits.ts
+|   |   |   initials.ts
+|   |   |   learner-contact.ts
+|   |   |   learner-record.ts
+|   |   |   login-id.ts
+|   |   |   name-card.ts
+|   |   |   new-learner.ts
+|   |   |   notifications.ts
+|   |   |   phone.ts
+|   |   |   progression.ts
+|   |   |   stage-progress.ts
+|   |   |   standard-answers.ts
+|   |   |   standard-role.ts
+|   |   |   study-progress.ts
+|   |   |   thai-date.ts
+|   |   |   thai-text.ts
+|   |   |   
+|   |   +---appointments
+|   |   |       month.ts
+|   |   |       slots.ts
+|   |   |       
+|   |   +---assessment
+|   |   |       engine.ts
+|   |   |       random.ts
+|   |   |       template.ts
+|   |   |       
+|   |   +---concepts
+|   |   |       registry.ts
+|   |   |       resolve.ts
+|   |   |       
+|   |   +---facts
+|   |   |       fact-sheet.ts
+|   |   |       snapshot.ts
+|   |   |       
+|   |   +---geo
+|   |   |       address.ts
+|   |   |       resolve.ts
+|   |   |       types.ts
+|   |   |       
+|   |   +---interview
+|   |   |       leak.ts
+|   |   |       pasted.ts
+|   |   |       plan.ts
+|   |   |       types.ts
+|   |   |       verdict.ts
+|   |   |       
+|   |   +---invoices
+|   |   |       answers.ts
+|   |   |       arithmetic.ts
+|   |   |       schema.ts
+|   |   |       
+|   |   +---mcq
+|   |   |       attempt.ts
+|   |   |       context.ts
+|   |   |       coverage.ts
+|   |   |       format.ts
+|   |   |       grammar.ts
+|   |   |       preflight.ts
+|   |   |       render.ts
+|   |   |       result.ts
+|   |   |       sample.ts
+|   |   |       tokens.ts
+|   |   |       validate.ts
+|   |   |       variant.ts
+|   |   |       
+|   |   +---pack
+|   |   |       links.ts
+|   |   |       sort.ts
+|   |   |       
+|   |   +---rag
+|   |   |       chunk.ts
+|   |   |       concepts.ts
+|   |   |       index-status.ts
+|   |   |       jobs.ts
+|   |   |       score.ts
+|   |   |       transcript.ts
+|   |   |       
+|   |   \---validation
+|   |           juristic-id.ts
+|   |           validators.ts
+|   |           
+|   +---integrations
+|   |   +---category-map
+|   |   |       claude.ts
+|   |   |       fake.ts
+|   |   |       index.ts
+|   |   |       types.ts
+|   |   |       
+|   |   +---extraction
+|   |   |       claude.ts
+|   |   |       fake.ts
+|   |   |       index.ts
+|   |   |       invoices.ts
+|   |   |       normalizing.ts
+|   |   |       page-pictures.ts
+|   |   |       schema.ts
+|   |   |       thai-marks.ts
+|   |   |       transcribe.ts
+|   |   |       transcript-schema.ts
+|   |   |       types.ts
+|   |   |       
+|   |   +---interview
+|   |   |       claude.ts
+|   |   |       fake.ts
+|   |   |       index.ts
+|   |   |       types.ts
+|   |   |       
+|   |   +---notify
+|   |   |       email.ts
+|   |   |       fake.ts
+|   |   |       index.ts
+|   |   |       telegram.ts
+|   |   |       types.ts
+|   |   |       
+|   |   +---pdf
+|   |   |       name-card.tsx
+|   |   |       
+|   |   +---question-gen
+|   |   |       claude.ts
+|   |   |       dbd-reference.ts
+|   |   |       fake.ts
+|   |   |       index.ts
+|   |   |       passages.ts
+|   |   |       schema.ts
+|   |   |       types.ts
+|   |   |       validate.ts
+|   |   |       
+|   |   +---rag
+|   |   |       answer.ts
+|   |   |       
+|   |   +---tts
+|   |   |       cache-key.ts
+|   |   |       elevenlabs.ts
+|   |   |       fake.ts
+|   |   |       index.ts
+|   |   |       types.ts
+|   |   |       
+|   |   \---vector
+|   |           fake-loader.ts
+|   |           fake.ts
+|   |           index.ts
+|   |           pinecone.ts
+|   |           types.ts
+|   |           
+|   +---pack
+|   |       unzip.ts
+|   |       
+|   \---pdf
+|           render-pages.ts
+|           slice.ts
+|           
++---messages
+|       en.json
+|       th.json
+|       zh.json
+|       
++---public
+|   |   file.svg
+|   |   globe.svg
+|   |   next.svg
+|   |   vercel.svg
+|   |   window.svg
+|   |   
+|   \---images
+|       \---login
+|               photo-skyline.jpg
+|               
++---scripts
+|       build-geo-migration.mjs
+|       check-client-secrets.mjs
+|       fix-fixture-ids.mjs
+|       generate-simplified-learning-migration.mjs
+|       load-starter-cards.mts
+|       make-fixture-pdf.mjs
+|       spike-extract.mts
+|       vector-setup.mjs
+|       vector-smoke.mjs
+|       write-local-env.mjs
+|       
++---supabase
+|   |   .gitignore
+|   |   config.toml
+|   |   seed.sql
+|   |   seed_questions.sql
+|   |   
+|   \---migrations
+|           20260911000001_identity.sql
+|           20260911000002_dbd_records.sql
+|           20260911000003_assignments_eligibility.sql
+|           20260911000004_preferred_language.sql
+|           20260911000005_study_material.sql
+|           20260911000006_assessment.sql
+|           20260911000007_exam_notifications.sql
+|           20260911000008_name_cards.sql
+|           20260911000009_calls.sql
+|           20260911000010_policy_recompute.sql
+|           20260911000011_question_generation.sql
+|           20260911000012_harden_function_grants.sql
+|           20260911000013_three_level_dbd.sql
+|           20260911000014_bank_interview.sql
+|           20260921000015_dbd_index.sql
+|           20260921000016_question_source_refs.sql
+|           20260921000017_transcript_jobs.sql
+|           20260921000018_extract_jobs.sql
+|           20260923000019_quiz_length.sql
+|           20260923010000_manager_role.sql
+|           20260923010100_team_columns.sql
+|           20260923010200_login_id_counters.sql
+|           20260923010300_team_helpers.sql
+|           20260923010400_team_policies_core.sql
+|           20260923010500_team_policies_record_children.sql
+|           20260923010600_team_policies_activity.sql
+|           20260923010700_staff_and_admin_policies.sql
+|           20260924000000_confirmed_requires_business_answers.sql
+|           20260925000000_team_scoping_hardening.sql
+|           20260925010000_release_login_id.sql
+|           20260928000000_name_card_holder.sql
+|           20260928010000_interview.sql
+|           20260928020000_appointments.sql
+|           20260930000000_typed_login_ids.sql
+|           20260930010000_learner_contact_and_auto_confirm.sql
+|           20261001010000_thai_geography.sql
+|           20261001020000_business_categories.sql
+|           20261001030000_evaluation_concepts.sql
+|           20261002010000_training_versions.sql
+|           20261003010000_training_fact_exceptions.sql
+|           20261004010000_mcq_bank.sql
+|           20261005010000_fewer_questions.sql
+|           20261006010000_mcq_evaluation.sql
+|           20261007010000_company_pack.sql
+|           20261007020000_manager_booked_appointments.sql
+|           20261007030000_manager_deletions.sql
+|           20261008010000_simplified_learning_flow.sql
+|           
++---tests
+|   +---e2e
+|   |       admin-assign.spec.ts
+|   |       admin-dbd.spec.ts
+|   |       admin-reassign.spec.ts
+|   |       admin-settings.spec.ts
+|   |       admin-users.spec.ts
+|   |       ai-questions.spec.ts
+|   |       appointment.spec.ts
+|   |       auth.spec.ts
+|   |       bank-interview.spec.ts
+|   |       company-pack.spec.ts
+|   |       create-learner-and-dbd.spec.ts
+|   |       dashboard-design.spec.ts
+|   |       dbd-index.spec.ts
+|   |       deletion.spec.ts
+|   |       exam-result-design.spec.ts
+|   |       exam.spec.ts
+|   |       extraction.spec.ts
+|   |       facts-and-concepts.spec.ts
+|   |       fixtures.ts
+|   |       global-setup.ts
+|   |       helpers.ts
+|   |       idor.spec.ts
+|   |       interview-result-design.spec.ts
+|   |       interview.spec.ts
+|   |       language.spec.ts
+|   |       large-upload.spec.ts
+|   |       learner-dashboard.spec.ts
+|   |       learner-record.spec.ts
+|   |       learner-shell.spec.ts
+|   |       login-design.spec.ts
+|   |       manager-access.spec.ts
+|   |       manager-manages.spec.ts
+|   |       managers.spec.ts
+|   |       mcq-bank.spec.ts
+|   |       name-card-design.spec.ts
+|   |       name-card.spec.ts
+|   |       navigation.spec.ts
+|   |       oversized-pack.spec.ts
+|   |       quiz-exam-design.spec.ts
+|   |       quiz.spec.ts
+|   |       rag-consumers.spec.ts
+|   |       record-layout.spec.ts
+|   |       seed.ts
+|   |       staff-shell.spec.ts
+|   |       study-card-design.spec.ts
+|   |       study-list-design.spec.ts
+|   |       study.spec.ts
+|   |       three-roles.spec.ts
+|   |       training-versions.spec.ts
+|   |       validation.spec.ts
+|   |       
+|   +---fixtures
+|   |       encrypted.pdf
+|   |       three-pages.pdf
+|   |       tiny.pdf
+|   |       twenty-five-pages.pdf
+|   |       
+|   +---integration
+|   |       appointments.rls.test.ts
+|   |       appointments.test.ts
+|   |       assessment.test.ts
+|   |       assignments.db.test.ts
+|   |       assignments.test.ts
+|   |       business-categories.test.ts
+|   |       dbd-documents.test.ts
+|   |       dbd-index.ask.test.ts
+|   |       dbd-index.rls.test.ts
+|   |       dbd-index.test.ts
+|   |       dbd-index.upload.test.ts
+|   |       dbd-records.db.test.ts
+|   |       dbd-records.rls.test.ts
+|   |       deletion.test.ts
+|   |       derived-facts.test.ts
+|   |       eligibility.parity.test.ts
+|   |       evaluation-concepts.test.ts
+|   |       exam.test.ts
+|   |       exceptions.db.test.ts
+|   |       extraction.test.ts
+|   |       function-grants.test.ts
+|   |       geo.test.ts
+|   |       helpers.ts
+|   |       interviews.failures.test.ts
+|   |       interviews.rls.test.ts
+|   |       interviews.test.ts
+|   |       invoices.test.ts
+|   |       isolation.test.ts
+|   |       learner-contact.test.ts
+|   |       learner-record.test.ts
+|   |       learner.db.test.ts
+|   |       login-ids.test.ts
+|   |       mcq-attempt.test.ts
+|   |       mcq-bank.db.test.ts
+|   |       mcq-bank.test.ts
+|   |       name-card-pdf.test.ts
+|   |       name-cards.test.ts
+|   |       pdf-text.ts
+|   |       pinning.test.ts
+|   |       preferred-language.test.ts
+|   |       profiles.rls.test.ts
+|   |       provisioning.test.ts
+|   |       question-gen.test.ts
+|   |       rag-consumers.test.ts
+|   |       session-guards.test.ts
+|   |       settings.test.ts
+|   |       setup.ts
+|   |       study.test.ts
+|   |       team-boundaries.test.ts
+|   |       team-gates.test.ts
+|   |       team-helpers.test.ts
+|   |       team-isolation.test.ts
+|   |       team-review-fixes.test.ts
+|   |       team-shared-content.test.ts
+|   |       teams.test.ts
+|   |       training-versions.db.test.ts
+|   |       training-versions.test.ts
+|   |       transcript-extraction.test.ts
+|   |       validation.test.ts
+|   |       
+|   +---stubs
+|   |       server-only.ts
+|   |       
+|   \---unit
+|       |   messages.test.ts
+|       |   
+|       +---auth
+|       |       internal-email.test.ts
+|       |       
+|       +---config
+|       |       policy-schema.test.ts
+|       |       
+|       +---content
+|       |       simplified-learning-migration.test.ts
+|       |       training-syllabus.test.ts
+|       |       
+|       +---db
+|       |       chunks.test.ts
+|       |       
+|       +---domain
+|       |   |   assessment.test.ts
+|       |   |   auto-confirm.test.ts
+|       |   |   bank-interview.test.ts
+|       |   |   business-category.test.ts
+|       |   |   business-profile.test.ts
+|       |   |   concept-registry.test.ts
+|       |   |   concept-resolve.test.ts
+|       |   |   dbd-profile.test.ts
+|       |   |   dbd-record.test.ts
+|       |   |   document-upload.test.ts
+|       |   |   eligibility.test.ts
+|       |   |   extraction-merge.test.ts
+|       |   |   extraction-plan.test.ts
+|       |   |   fact-sheet.test.ts
+|       |   |   geo-address.test.ts
+|       |   |   geo-resolve.test.ts
+|       |   |   initials.test.ts
+|       |   |   learner-contact.test.ts
+|       |   |   learner-record.test.ts
+|       |   |   login-id.test.ts
+|       |   |   name-card.test.ts
+|       |   |   new-learner.test.ts
+|       |   |   notifications.test.ts
+|       |   |   progression.test.ts
+|       |   |   rag-chunk.test.ts
+|       |   |   rag-concepts.test.ts
+|       |   |   rag-index-status.test.ts
+|       |   |   rag-score.test.ts
+|       |   |   rag-transcript.test.ts
+|       |   |   stage-progress.test.ts
+|       |   |   standard-answers.test.ts
+|       |   |   standard-role.test.ts
+|       |   |   study-progress.test.ts
+|       |   |   thai-date.test.ts
+|       |   |   thai-text.test.ts
+|       |   |   training-snapshot.test.ts
+|       |   |   
+|       |   +---appointments
+|       |   |       month.test.ts
+|       |   |       slots.test.ts
+|       |   |       
+|       |   +---interview
+|       |   |       leak.test.ts
+|       |   |       pasted.test.ts
+|       |   |       plan.test.ts
+|       |   |       verdict.test.ts
+|       |   |       
+|       |   +---invoices
+|       |   |       arithmetic.test.ts
+|       |   |       
+|       |   +---mcq
+|       |   |       attempt.test.ts
+|       |   |       grammar.test.ts
+|       |   |       render.test.ts
+|       |   |       result.test.ts
+|       |   |       rules.test.ts
+|       |   |       starter.test.ts
+|       |   |       
+|       |   +---pack
+|       |   |       sort.test.ts
+|       |   |       
+|       |   \---validation
+|       |           juristic-id.test.ts
+|       |           validators.test.ts
+|       |           
+|       +---integrations
+|       |       answer.test.ts
+|       |       api-extraction-fixture.ts
+|       |       category-map.test.ts
+|       |       claude-streaming.test.ts
+|       |       extraction-api-schema.test.ts
+|       |       extraction-invoices.test.ts
+|       |       extraction-pictures.test.ts
+|       |       interview-claude.test.ts
+|       |       interview-fake.test.ts
+|       |       passages.test.ts
+|       |       question-gen.test.ts
+|       |       source-refs.test.ts
+|       |       transcribe.test.ts
+|       |       transcript-extraction.test.ts
+|       |       transcript-merge.test.ts
+|       |       tts.test.ts
+|       |       vector.test.ts
+|       |       
+|       +---pack
+|       |       unzip.test.ts
+|       |       
+|       \---pdf
+|               render-pages.test.ts
+|               slice.test.ts
+|               
+\---types
+        pdfjs-worker.d.ts
+        

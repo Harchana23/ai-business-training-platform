@@ -1,0 +1,7 @@
+node_modules
+.next
+pnpm-lock.yaml
+lib/db/database.types.ts
+docs/
+.superpowers/
+.impeccable/

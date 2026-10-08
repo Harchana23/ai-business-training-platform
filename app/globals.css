@@ -1,0 +1,607 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Design handoff, Step 0: the tokens every component points at. Never raw hex in components. */
+@theme {
+  --color-brand-900: #0c1a3a;
+  --color-brand-700: #1c3470;
+  --color-brand-600: #2458c6; /* the 10% accent: CTAs, focus, links */
+  --color-brand-100: #dbe5f8;
+  --color-brand-50: #eef3fc;
+  --color-gold-500: #c8963e; /* completed steps, earned moments only */
+  --color-gold-100: #f6ecd6;
+  --color-gold-300: #e3bd72; /* the medallion's highlight */
+  --color-gold-600: #a87a2a; /* the medallion's shade */
+  --color-gold-700: #6e4c10; /* text on gold-100 (status tags) */
+  --color-ok-600: #1f7a4d;
+  --color-ok-50: #e8f5ee;
+  --color-warn-600: #a15c07;
+  --color-warn-50: #fdf3e3;
+  --color-warn-700: #8a4f06; /* text on warn-50 */
+  --color-bad-600: #b42318;
+  --color-bad-50: #fdecea;
+  --color-ink-900: #111827;
+  --color-ink-700: #374151;
+  --color-ink-500: #5b6472; /* 5.9:1 on white */
+  --color-ink-300: #cbd2dc;
+  --color-ink-100: #e7eaef;
+  --color-ink-50: #f6f7f9;
+  --color-canvas: #e6edf8; /* the page behind the dot grid */
+
+  /* Trirong for headings and key numbers, IBM Plex Sans Thai for everything else; the
+     variables are set on <html> by next/font in app/[locale]/layout.tsx. Chinese falls back to
+     the system CJK fonts. */
+  --font-display: var(--font-trirong), 'Trirong', serif;
+  --font-body:
+    var(--font-plex-thai), 'IBM Plex Sans Thai', ui-sans-serif, system-ui, 'Segoe UI',
+    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  --radius-control: 8px;
+  --radius-card: 16px;
+  --radius-sheet: 24px;
+  --shadow-glass: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 8px 24px rgb(15 31 61 / 0.08);
+  --shadow-raised: 0 2px 6px rgb(15 31 61 / 0.08), 0 12px 32px rgb(15 31 61 / 0.1);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* In the components layer so a utility on the element can still override one property. */
+@layer components {
+  /* Glass on the shell only: header, back pill, progress card, result badge. Never on inputs,
+     option buttons, articles, PDF previews or review lists. */
+  .glass {
+    background: rgb(255 255 255 / 0.62);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgb(255 255 255 / 0.7);
+    box-shadow: var(--shadow-glass);
+  }
+  .glass-strong {
+    background: rgb(255 255 255 / 0.82);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgb(255 255 255 / 0.8);
+    box-shadow: var(--shadow-glass);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass,
+    .glass-strong {
+      background: var(--color-white);
+      border-color: var(--color-ink-100);
+    }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    .glass,
+    .glass-strong {
+      background: var(--color-white);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-color: var(--color-ink-100);
+    }
+  }
+
+  /* The learner canvas: a dot grid over the canvas colour, finer on a phone. */
+  .bg-dotgrid {
+    background:
+      radial-gradient(rgb(28 52 112 / 0.13) 1px, transparent 1.5px) 0 0 / 24px 24px,
+      var(--color-canvas);
+  }
+  @media (max-width: 767px) {
+    .bg-dotgrid {
+      background-size:
+        20px 20px,
+        auto;
+    }
+  }
+
+  /* The scrim over the login photo: keeps white text at 4.5:1 on the band (phone) and the
+     panel (desktop); the desktop version also fades the photo toward the form column. */
+  .scrim-hero {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-brand-900) 78%, transparent),
+      color-mix(in srgb, var(--color-brand-900) 60%, transparent) 45%,
+      color-mix(in srgb, var(--color-brand-900) 90%, transparent)
+    );
+  }
+  @media (min-width: 1024px) {
+    .scrim-hero {
+      background:
+        linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--color-brand-900) 72%, transparent) 0%,
+          color-mix(in srgb, var(--color-brand-900) 35%, transparent) 30%,
+          color-mix(in srgb, var(--color-brand-900) 82%, transparent) 58%,
+          color-mix(in srgb, var(--color-brand-900) 94%, transparent) 88%,
+          color-mix(in srgb, var(--color-brand-900) 50%, transparent) 100%
+        ),
+        linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--color-brand-700) 35%, transparent),
+          transparent 70%
+        );
+    }
+  }
+
+  /* The entrance from the handoff's motion table: opacity and 18px of lift, 700ms, staggered
+     by --rise-delay. Reduced motion switches every animation off (base layer). */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+  .rise {
+    animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--rise-delay, 0ms);
+  }
+
+  /* Dashboard textures: the hatched locked row and the company card's gradient header. */
+  .hatch {
+    background: repeating-linear-gradient(
+      135deg,
+      transparent 0 10px,
+      color-mix(in srgb, var(--color-brand-700) 3.5%, transparent) 10px 11px
+    );
+  }
+  .card-hero {
+    background:
+      repeating-radial-gradient(
+        circle at 100% 0%,
+        rgb(255 255 255 / 0.08) 0 1px,
+        transparent 1px 22px
+      ),
+      linear-gradient(135deg, var(--color-brand-700), var(--color-brand-600));
+  }
+
+  /* Dashboard motion (handoff, motion table): the ring fills, the stepper line draws, the
+     current step pulses. Reduced motion switches them off (base layer). */
+  @keyframes ring-fill {
+    from {
+      stroke-dasharray: 0 326.7;
+    }
+  }
+  .ring-fill {
+    animation: ring-fill 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) 300ms both;
+  }
+  @keyframes line-fill {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  .line-fill {
+    transform-origin: left;
+    animation: line-fill 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) 450ms both;
+  }
+  @keyframes pulse-ring {
+    from {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-600) 45%, transparent);
+    }
+    to {
+      box-shadow: 0 0 0 12px transparent;
+    }
+  }
+  .pulse {
+    animation: pulse-ring 1.8s ease-out 1.2s infinite;
+  }
+
+  /* A study card's rendered Markdown (handoff, 02): body 16/1.75, Trirong headings, the
+     bank-asks table with a brand-50 header row and ink-100 dividers. Under 768px the table
+     stacks: each row becomes a block with the question as its label. */
+  .study-article {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-ink-900);
+  }
+  .study-article > * + * {
+    margin-top: 1em;
+  }
+  .study-article h1,
+  .study-article h2,
+  .study-article h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-brand-900);
+    text-wrap: balance;
+  }
+  .study-article h1 {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  .study-article h2 {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+  .study-article h3 {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .study-article p,
+  .study-article li {
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+  .study-article ul,
+  .study-article ol {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 22px;
+  }
+  .study-article ul {
+    list-style: disc;
+  }
+  .study-article ol {
+    list-style: decimal;
+  }
+  .study-article strong {
+    font-weight: 600;
+  }
+  .study-article a {
+    color: var(--color-brand-600);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .study-article table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .study-article th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-brand-700);
+    background: var(--color-brand-50);
+    border-bottom: 1px solid var(--color-brand-100);
+  }
+  .study-article td {
+    padding: 12px 14px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .study-article td:first-child {
+    color: var(--color-ink-700);
+  }
+  @media (max-width: 767px) {
+    .study-article table,
+    .study-article tbody,
+    .study-article tr,
+    .study-article td {
+      display: block;
+    }
+    .study-article thead {
+      display: none;
+    }
+    .study-article tr {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid var(--color-brand-100);
+      border-radius: var(--radius-card);
+      background: var(--color-brand-50);
+    }
+    .study-article td {
+      padding: 0;
+      border: 0;
+    }
+    .study-article td:first-child {
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 600;
+      color: var(--color-ink-500);
+    }
+    .study-article td + td {
+      margin-top: 5px;
+      font-weight: 600;
+      color: var(--color-brand-900);
+    }
+  }
+
+  /* The band on a passed exam result (handoff, 05): the blue glow and rings turn gold. */
+  .band-gold {
+    background:
+      repeating-radial-gradient(
+        circle at 92% 12%,
+        rgb(200 150 62 / 0.12) 0 1px,
+        transparent 1px 34px
+      ),
+      radial-gradient(900px 520px at 85% 0%, rgb(200 150 62 / 0.28), transparent 60%),
+      linear-gradient(165deg, var(--color-brand-900) 0%, var(--color-brand-700) 100%);
+  }
+
+  /* The medallion in the result badge: a radial gold, a gold-100 halo, and a pop on arrival. */
+  .medallion {
+    background: radial-gradient(
+      circle at 35% 30%,
+      var(--color-gold-300),
+      var(--color-gold-500) 60%,
+      var(--color-gold-600)
+    );
+    box-shadow:
+      0 0 0 6px var(--color-gold-100),
+      0 8px 20px rgb(138 95 20 / 0.35);
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+  .pop {
+    animation: pop 800ms cubic-bezier(0.3, 1.4, 0.5, 1) 400ms both;
+  }
+
+  /* The navy band across the top of every learner page: rings, a blue glow top-right, and the
+     brand gradient underneath. */
+  .band {
+    position: relative;
+    color: var(--color-white);
+    background:
+      repeating-radial-gradient(
+        circle at 92% 12%,
+        rgb(255 255 255 / 0.07) 0 1px,
+        transparent 1px 34px
+      ),
+      radial-gradient(900px 520px at 85% 0%, rgb(36 88 198 / 0.6), transparent 60%),
+      linear-gradient(165deg, var(--color-brand-900) 0%, var(--color-brand-700) 100%);
+  }
+
+  @media (max-width: 767px) {
+    /* Primary learner pages keep their compact phone header, but use the dashboard's full
+       glass account header from the desktop breakpoint upward. */
+    .learner-primary-header {
+      padding-right: 0;
+      padding-left: 0;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .dashboard-home-band {
+      background: var(--color-brand-50);
+      color: var(--color-ink-900);
+      border-bottom: 1px solid var(--color-brand-100);
+    }
+  }
+
+  /* The staff area (admin and manager screens): the learner portal's tokens, denser. Pages
+     render inside `main.staff`; the classes below are the shared patterns every page uses —
+     titles, cards, tables that scroll sideways on a phone, solid inputs, buttons, tags and
+     notices. Never glass on anything read or typed. */
+  .staff h1,
+  .staff-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--color-brand-900);
+    text-wrap: balance;
+  }
+  .staff h2 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--color-brand-900);
+  }
+  @media (min-width: 768px) {
+    .staff h1,
+    .staff-title {
+      font-size: 28px;
+    }
+  }
+  .staff-intro {
+    max-width: 68ch;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-ink-700);
+  }
+  .staff-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+    padding: 16px;
+  }
+  @media (min-width: 768px) {
+    .staff-card {
+      padding: 20px 24px;
+    }
+  }
+  .staff-table-wrap {
+    overflow-x: auto;
+    contain: paint;
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised);
+  }
+  .staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .staff-table thead th {
+    padding: 12px 16px;
+    background: var(--color-brand-50);
+    color: var(--color-brand-700);
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-brand-100);
+  }
+  .staff-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-ink-100);
+  }
+  .staff-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .staff-table tbody tr:hover td {
+    background: var(--color-ink-50);
+  }
+  .staff-input {
+    min-height: 44px;
+    width: 100%;
+    border: 1px solid var(--color-ink-300);
+    border-radius: var(--radius-control);
+    background: var(--color-white);
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-ink-900);
+  }
+  textarea.staff-input {
+    min-height: 96px;
+  }
+  .staff-input[readonly],
+  .staff-input:disabled {
+    background: var(--color-ink-50);
+    color: var(--color-ink-700);
+  }
+  /* A fixed prefix joined to its input: the T- or T-G4- before the typed part of a code (D69). */
+  .staff-input-group {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: stretch;
+  }
+  .staff-input-affix {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-ink-300);
+    border-right: 0;
+    border-radius: var(--radius-control) 0 0 var(--radius-control);
+    background: var(--color-ink-50);
+    padding: 0 12px;
+    color: var(--color-ink-700);
+    white-space: nowrap;
+  }
+  .staff-input-group > .staff-input {
+    min-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .staff-btn,
+  .staff-btn-ghost,
+  .staff-btn-ok {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: var(--radius-control);
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+      background-color 150ms,
+      color 150ms;
+  }
+  .staff-btn {
+    background: var(--color-brand-600);
+    color: var(--color-white);
+  }
+  .staff-btn:hover {
+    background: var(--color-brand-700);
+  }
+  .staff-btn-ghost {
+    border: 1px solid var(--color-ink-300);
+    background: var(--color-white);
+    color: var(--color-ink-700);
+  }
+  .staff-btn-ghost:hover {
+    background: var(--color-ink-50);
+  }
+  .staff-btn-ok {
+    background: var(--color-ok-600);
+    color: var(--color-white);
+  }
+  .staff-btn:disabled,
+  .staff-btn-ghost:disabled,
+  .staff-btn-ok:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .staff-btn-sm {
+    padding: 0 12px;
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    .staff-btn-sm {
+      min-height: 36px;
+    }
+    .staff-input-sm {
+      min-height: 36px;
+      padding: 4px 10px;
+    }
+  }
+  .staff-link {
+    color: var(--color-brand-600);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .staff-link:hover {
+    color: var(--color-brand-700);
+  }
+  .staff-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 1px 10px;
+    font-size: 12px;
+    line-height: 1.7;
+    font-weight: 600;
+    background: var(--color-ink-100);
+    color: var(--color-ink-700);
+  }
+  .staff-notice-ok,
+  .staff-notice-warn,
+  .staff-notice-bad,
+  .staff-notice-info {
+    border-radius: var(--radius-control);
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .staff-notice-ok {
+    background: var(--color-ok-50);
+    color: var(--color-ok-600);
+  }
+  .staff-notice-warn {
+    background: var(--color-warn-50);
+    color: var(--color-warn-700);
+  }
+  .staff-notice-bad {
+    background: var(--color-bad-50);
+    color: var(--color-bad-600);
+  }
+  .staff-notice-info {
+    background: var(--color-brand-50);
+    color: var(--color-brand-700);
+  }
+}

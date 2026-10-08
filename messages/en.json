@@ -1,0 +1,1639 @@
+{
+  "app": {
+    "name": "Business Training Portal",
+    "nameThai": "พอร์ทัลฝึกอบรมธุรกิจ",
+    "language": "Language",
+    "back": "Back",
+    "home": "Home"
+  },
+  "home": {
+    "title": "AI Business Training Platform",
+    "description": "Prepare for your company's bank account verification. Study your own DBD certificate, pass the Business Knowledge Quiz, and take the Bank Readiness Interview with a simulated bank officer."
+  },
+  "auth": {
+    "title": "Sign in",
+    "hint": "Use the login ID and password from your administrator.",
+    "loginId": "Login ID",
+    "password": "Password",
+    "submit": "Sign in",
+    "invalidCredentials": "Invalid login ID or password.",
+    "accountDisabled": "This account is disabled. Please contact your administrator.",
+    "signOut": "Sign out",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}",
+    "accountLabel": "Learner account",
+    "mobileIntro": "Complete your training in order.",
+    "actionHints": {
+      "study": "Learn about your company",
+      "nameCard": "View and download your card",
+      "exam": "Test your knowledge",
+      "interview": "Practise for the bank interview"
+    },
+    "noCompany": "No company has been assigned to you yet. Please contact your administrator.",
+    "company": {
+      "title": "Your company",
+      "name": "Company",
+      "juristicId": "Juristic person ID",
+      "registeredCapital": "Registered capital",
+      "registeredDate": "Registered date",
+      "baht": "THB",
+      "address": "Head office",
+      "directors": "Directors",
+      "issuedOn": "Certificate issued on",
+      "openCertificate": "Open certificate (PDF)",
+      "viewRecord": "View company record",
+      "natureOfBusiness": "What the business does",
+      "productsServices": "Products / services",
+      "shareholders": "Shareholders",
+      "shares": "shares",
+      "businessObjectives": "Business objectives",
+      "businessActivities": "Business activities ({count} items)",
+      "itemCount": "{count} items",
+      "website": "Website",
+      "facebook": "Facebook",
+      "tag": "DBD record"
+    },
+    "appointment": {
+      "available": "Your manager will book the date.",
+      "booked": "Booked: {date} with {manager}"
+    },
+    "hero": {
+      "kicker": "Bank verification preparation"
+    },
+    "next": {
+      "study": "Your next step is the study material. Read the cards about your company before the Business Knowledge Quiz.",
+      "quiz": "Your next step is the practice quiz. It shows what to review before the Business Knowledge Quiz.",
+      "exam": "Your next step is the Business Knowledge Quiz. Passing it unlocks the Bank Readiness Interview.",
+      "nameCard": "Your next step is the name card. Create it before the Bank Readiness Interview.",
+      "interview": "Your next step is the Bank Readiness Interview. The officer asks about your company, in Thai.",
+      "appointment": "You are ready. Your next step is the bank appointment.",
+      "done": "You have completed every step. Well done."
+    },
+    "cta": {
+      "open": "Open {step}",
+      "lastResult": "Review last result"
+    },
+    "progress": {
+      "ring": "{done} of {total} steps done",
+      "stepsDone": "steps done",
+      "noExam": "Not taken yet",
+      "quiz": "Business Knowledge Quiz",
+      "interview": "Bank Readiness Interview",
+      "passMarkNote": "Pass mark {mark}",
+      "interviewStatus": {
+        "done": "Ready",
+        "in_progress": "In progress",
+        "available": "Not started",
+        "pending": "Not started",
+        "locked": "After the quiz"
+      }
+    },
+    "steps": {
+      "title": "Your steps",
+      "hint": "Complete them in order"
+    }
+  },
+  "admin": {
+    "title": "Sections",
+    "nav": {
+      "users": "Create learner & DBD",
+      "questions": "Question bank",
+      "interviews": "Bank Readiness Interviews",
+      "appointments": "Bank appointments",
+      "notifications": "Notifications",
+      "settings": "Policy settings",
+      "managers": "Managers",
+      "learners": "Learner Record",
+      "businessCategories": "Business categories",
+      "exceptions": "Exceptions"
+    },
+    "users": {
+      "title": "Create learner & DBD",
+      "new": "Create learner",
+      "loginId": "Login ID",
+      "password": "Initial password",
+      "newPassword": "New password",
+      "displayName": "Display name",
+      "role": "Role",
+      "status": "Status",
+      "create": "Create user",
+      "resetPassword": "Reset password",
+      "passwordUpdated": "Password updated",
+      "disable": "Disable account",
+      "enable": "Enable account",
+      "progression": "Progression",
+      "company": "Company (the DBD record the learner studies)",
+      "unconfirmedCompany": "{name} — not confirmed yet ({status})",
+      "noConfirmedCompany": "No confirmed DBD record yet — confirm the company’s record before creating a learner.",
+      "untitledCompany": "(company name missing)",
+      "createdFor": "Created {loginId} and assigned to {company}",
+      "team": "Team",
+      "chooseTeam": "Which team?",
+      "noManager": "Create a manager first — every learner belongs to a team.",
+      "appointment": "Appointment",
+      "contact": {
+        "title": "Contact details",
+        "phone": "Phone number",
+        "contactEmail": "Email",
+        "forCard": "(for the name card)",
+        "website": "Website",
+        "facebookPage": "Facebook page",
+        "optional": "(optional)",
+        "facebookPlaceholder": "Page name or link",
+        "save": "Save contact details",
+        "saved": "Saved",
+        "errors": {
+          "phone": "Enter a Thai mobile number, e.g. 081-234-5678",
+          "contactEmail": "Enter a valid email address",
+          "website": "Enter a web address, e.g. example.co.th",
+          "facebookPage": "Enter the page name or its facebook.com link"
+        },
+        "emailPlaceholder": "name@example.com"
+      },
+      "version": {
+        "title": "Training version",
+        "pinned": "On version {n}",
+        "none": "No version pinned yet — the company's facts are not versioned.",
+        "newer": "Version {n} is newer.",
+        "current": "This is the company's current version.",
+        "move": "Move to version {n}",
+        "moveHint": "From now on the learner studies and is evaluated on this version. Refused while a practice quiz, a Business Knowledge Quiz or a Bank Readiness Interview is in progress.",
+        "roleConfirmed": "Role confirmed on {date}",
+        "roleUnconfirmed": "The role has no name yet: pick the learner from the people in the DBD documents above. It is confirmed by itself once it has one.",
+        "messages": {
+          "moved": "Moved to version {n}."
+        },
+        "errors": {
+          "evaluation-in-progress": "A practice quiz, a Business Knowledge Quiz or a Bank Readiness Interview is in progress; try again when it is finished.",
+          "not-active": "That is not the company's current version.",
+          "other-record": "That version belongs to another company.",
+          "not-found": "Not found.",
+          "no-version": "The company has no version yet."
+        }
+      },
+      "tabLearner": "Learner details",
+      "tabCompanies": "Companies (DBD)",
+      "signIn": "Sign-in",
+      "signInIntro": "The learner uses these to log in the first time.",
+      "passwordPlaceholder": "At least 10 characters",
+      "generatePassword": "Generate",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "learnerSection": "Learner",
+      "name": "Name",
+      "namePlaceholder": "Learner's name",
+      "nameCardSection": "Name card information",
+      "companyCard": "Company the learner studies",
+      "chooseConfirmedCompany": "Choose a confirmed company…",
+      "notListed": "Not listed?",
+      "addInCompanies": "Add it in Companies (DBD)",
+      "checklist": {
+        "title": "Before you create",
+        "team": "Team chosen",
+        "company": "Company chosen",
+        "password": "Password, 10+ characters",
+        "name": "Full name",
+        "contact": "Phone and email",
+        "done": "done",
+        "todo": "still to do"
+      },
+      "createLearner": "Create learner",
+      "takenCompany": "{name} — has a learner",
+      "noFreeCompany": "Every confirmed company already has its learner — add a company in Companies (DBD).",
+      "companyTaken": "This company already has a learner. Each company is studied by one learner."
+    },
+    "learners": {
+      "title": "Learner Record",
+      "intro": "Every learner your team is training: their company, Business Knowledge Quiz and Bank Readiness Interview results, and appointment. To add a learner, go to",
+      "toCreate": "Create learner & DBD",
+      "empty": "No learners yet.",
+      "readyToAssign": "Ready to Assign",
+      "deleteLearner": "Delete learner",
+      "deleteLearnerConfirm": "Delete learner {loginId}? Their account and training history will be permanently removed.",
+      "backToRecord": "← Learner Record",
+      "appointment": {
+        "book": "Book date",
+        "change": "Change date",
+        "needsQuiz": "Quiz not passed",
+        "needsInterview": "Interview not ready"
+      },
+      "columns": {
+        "loginId": "Login ID",
+        "company": "Company name",
+        "issuedOn": "DBD issued date",
+        "mcq": "Business Knowledge Quiz",
+        "chatbot": "Bank Readiness Interview",
+        "appointment": "Appointment",
+        "actions": "Actions"
+      },
+      "results": {
+        "pass": "Pass",
+        "retest": "Retest",
+        "fail": "Fail",
+        "in_progress": "In progress",
+        "abandoned": "Abandoned"
+      },
+      "history": {
+        "attempt": "Attempt",
+        "date": "Date",
+        "result": "Result"
+      },
+      "mcq": {
+        "title": "Business Knowledge Quiz history",
+        "empty": "No Business Knowledge Quiz attempts yet.",
+        "score": "Score",
+        "review": "Review",
+        "reviewTitle": "Business Knowledge Quiz attempt {no}",
+        "reviewHeading": "Questions and answers",
+        "backToHistory": "← Business Knowledge Quiz history"
+      },
+      "chatbot": {
+        "title": "Bank Readiness Interview history",
+        "empty": "No Bank Readiness Interviews yet.",
+        "review": "Conversation",
+        "backToHistory": "← Bank Readiness Interview history"
+      }
+    },
+    "createDbd": {
+      "title": "Create DBD",
+      "intro": "Upload the company zip — the DBD pack, the invoices, the agreements and the files with its Facebook page and website — or the DBD PDFs alone. Everything is read in the background (1–3 minutes): the DBD facts, and the money figures from the invoices. When every fact is found, the company confirms itself and can be given to a learner.",
+      "introNoReader": "Upload the company zip or the DBD PDFs. Automatic reading is not set up here, so open the company afterwards to fill it in and confirm it.",
+      "documents": "Company zip, or DBD PDFs",
+      "packPreview": {
+        "title": "Found in {name}",
+        "pack": "{count, plural, one {DBD pack: # file} other {DBD pack: # files}}",
+        "invoices": "{count, plural, =0 {Invoices: none} one {Invoices: #} other {Invoices: #}}",
+        "agreements": "{count, plural, =0 {Agreements: none} one {Agreements: # (stored, not read)} other {Agreements: # (stored, not read)}}",
+        "facebook": "Facebook: {page}",
+        "website": "Website: {site}",
+        "none": "none",
+        "ignored": "{count, plural, one {# other file left out} other {# other files left out}}"
+      },
+      "submit": "Create and analyse",
+      "byHand": "Enter a company by hand instead",
+      "answersInvalid": "Check these details: {fields}",
+      "created": "Uploaded. The documents are being read — the company is listed below and confirms itself when everything is found.",
+      "createdNoReader": "Uploaded. Open the company below to fill it in and confirm it.",
+      "companies": "Companies (DBD)",
+      "noCompanies": "No companies yet.",
+      "unnamed": "(name not read yet)",
+      "statuses": {
+        "confirmed_auto": "Confirmed automatically",
+        "confirmed": "Confirmed",
+        "reading": "Reading documents…",
+        "unread": "Could not be read",
+        "attention": "Needs attention"
+      },
+      "companiesIntro": "Each learner studies one company's DBD record — its study material, questions and bank date. Only confirmed companies can be given to a learner.",
+      "search": "Search name or 13-digit ID",
+      "noMatch": "No company matches “{query}”.",
+      "addCompany": "Add a company that isn't listed",
+      "addCompanyHint": "Upload its DBD documents — it's checked automatically in 1–3 minutes.",
+      "closeAdd": "Close",
+      "columns": {
+        "company": "Company (Thai name)",
+        "juristicId": "Juristic person ID",
+        "issuedOn": "Certificate issued",
+        "team": "Team",
+        "status": "Status",
+        "learner": "Learner",
+        "actions": "Actions"
+      },
+      "assignLearner": "Assign learner",
+      "deleteCompany": "Delete company",
+      "deleteCompanyConfirm": "Delete {name}? The learner account will remain and become ready for another company.",
+      "learnerOtherTeam": "Another team's learner",
+      "learnerAfterConfirm": "Once confirmed"
+    },
+    "loginIdField": {
+      "label": "Login ID",
+      "hint": "One letter and two numbers, e.g. A12. A free code is filled in — keep it, press ↻ for another, or type your own.",
+      "suggest": "Suggest another free code",
+      "checking": "Checking…",
+      "available": "Available",
+      "taken": "This login ID is already taken — choose another",
+      "invalid": "Use one letter and two numbers, e.g. A12",
+      "noTeam": "This team cannot take new learners",
+      "chooseTeam": "Choose a team first",
+      "hintLearner": "Two letters and two numbers, e.g. DA42. A free code is filled in — keep it, press ↻ for another, or type your own.",
+      "invalidLearner": "Use two letters and two numbers, e.g. DA42",
+      "availableKeep": "✓ Available — keep it, press ↻ for another, or type your own"
+    },
+    "dbd": {
+      "title": "DBD records",
+      "new": "New DBD record",
+      "untitled": "(no company name yet)",
+      "save": "Save",
+      "saved": "Saved",
+      "status": "Status",
+      "dateHint": "As printed on the certificate, e.g. 9 เมษายน 2569, 09/04/2569 or 9 April 2026",
+      "directorsHint": "One director per line: Thai name | English name",
+      "documentMissing": "No certificate PDF uploaded",
+      "documentUploaded": "Certificate PDF uploaded",
+      "upload": "Upload PDF",
+      "uploaded": "Uploaded",
+      "errors": {
+        "no-file": "Choose a PDF file",
+        "upload-failed": "The file could not be uploaded (connection lost or not a PDF). Please try again.",
+        "invalid-file": "Only PDF files up to 30 MB are accepted (40 files at most)",
+        "no-document": "The zip holds no PDF. Put the DBD pack in it.",
+        "too-many-files": "The zip holds more than 40 documents. Take some out.",
+        "file-too-large": "A file in the zip is over 30 MB. Reduce it and try again.",
+        "zip-too-large": "The zip is over 200 MB in all. Take some files out.",
+        "cannot-open": "This zip cannot be opened. Make it again and try once more.",
+        "answers-required": "Cannot save: this record is confirmed, so its contact and business answers must be complete first (see below)."
+      },
+      "fields": {
+        "companyNameTh": "Company name (Thai)",
+        "companyNameEn": "Company name (English)",
+        "juristicId": "Juristic person ID (13 digits)",
+        "certificateNo": "Certificate no.",
+        "documentRef": "Document ref.",
+        "registeredOn": "Registration date",
+        "issuedOn": "Certificate issued on",
+        "registeredCapital": "Registered capital (THB)",
+        "headOfficeAddress": "Head office address",
+        "signingAuthority": "Signing authority",
+        "objectivesCount": "Number of objectives",
+        "issuingOffice": "Issuing office",
+        "registrarName": "Registrar",
+        "directors": "Directors",
+        "province": "Province",
+        "objectives": "Business objectives",
+        "businessCategories": "Business categories",
+        "totalShares": "Total shares",
+        "parValue": "Par value (Baht per share)",
+        "paidUpCapital": "Paid-up capital (Baht)",
+        "shareType": "Share type",
+        "shareholders": "Shareholders",
+        "promoters": "Promoters"
+      },
+      "extract": "Extract from PDF",
+      "extracting": "Extracting…",
+      "extracted": "Extraction complete — review the suggested values below, then save and confirm.",
+      "extractHint": "Reads the uploaded certificate again and fills only fields that are still empty.",
+      "extractionNotConfigured": "AI extraction is not configured (set ANTHROPIC_API_KEY).",
+      "reviewSuggestions": "Suggested values from the certificate are shown where the record is still empty. Check every field — especially highlighted ones — then Save and Confirm.",
+      "suggestedFromDocument": "Suggested from the document ({confidence}% confidence)",
+      "lowConfidenceHint": "low confidence, please verify",
+      "extractErrors": {
+        "not_configured": "AI extraction is not configured.",
+        "provider": "The extraction service failed. Try again later.",
+        "invalid_output": "The extraction result was not usable.",
+        "no_document": "Upload the certificate PDF first.",
+        "not_allowed": "This record cannot be extracted.",
+        "too_large": "The documents exceed 30 MB in total; split or compress them"
+      },
+      "uploadFirstTitle": "Upload the DBD certificate (Thai)",
+      "uploadFirstHint": "Choose the Thai PDFs (several at once: certificate, objectives sheet, Bor.Or.Jor.5, Bor.Or.Jor.2). The documents are read and all three levels are filled in automatically; you then review, correct if needed, and confirm.",
+      "uploadFirstNoExtraction": "Document reading is not configured (ANTHROPIC_API_KEY required). The file is stored and you fill in the fields below yourself.",
+      "uploadAndFill": "Upload and fill automatically",
+      "uploadingAndReading": "Uploading…",
+      "uploadFillsHint": "Add more DBD documents (certificate, objectives sheet, Bor.Or.Jor.5, Bor.Or.Jor.2); every file is read and only empty fields are filled.",
+      "orEnterManually": "Or enter the details manually without a file",
+      "reExtract": "Read the document again",
+      "uploadedButNotRead": "The file was uploaded but could not be read ({reason}). Fill the fields yourself or try reading again.",
+      "levels": {
+        "identity": "Level 1 — Company identity (certificate)",
+        "business": "Level 2 — Business profile (objectives sheet / Bor.Or.Jor.5 / Bor.Or.Jor.2)",
+        "document": "Level 3 — DBD document metadata",
+        "interview": "Level 4 — Bank interview answers (facts the DBD does not hold)",
+        "answers": "Contact and business",
+        "answersIntro": "Answers the DBD documents do not hold: from the invoices, or the same for every company; nothing to type."
+      },
+      "documentTypes": {
+        "certificate": "Certificate",
+        "objectives_sheet": "Objectives sheet",
+        "shareholder_list": "Shareholder list (Bor.Or.Jor.5)",
+        "memorandum": "Memorandum (Bor.Or.Jor.2)",
+        "articles": "Articles of association",
+        "other": "Other",
+        "invoice": "Invoice",
+        "agreement": "Agreement",
+        "unknown": "Not classified yet"
+      },
+      "documentGroups": {
+        "pack": "DBD pack",
+        "invoice": "Invoices",
+        "agreement": "Agreements (stored, not read)"
+      },
+      "invoices": {
+        "readAgain": "Read the invoices again",
+        "queued": "The invoices are being read in the background (about 1–3 minutes); reload the page to see the figures.",
+        "failed": "The invoices could not be read ({reason}). Click \"Read the invoices again\".",
+        "notRead": "not read yet",
+        "row": "{date} · {total}",
+        "setAside": "Check this invoice: {reason}",
+        "reasons": {
+          "not_an_invoice": "not an invoice",
+          "no_date": "no date printed",
+          "no_total": "no total printed",
+          "not_baht": "not in baht",
+          "items_do_not_add_up": "the items do not add up to the total"
+        },
+        "few": "{count, plural, one {Estimated from # invoice} other {Estimated from # invoices}}; add more for a steadier figure.",
+        "none": "No invoices yet. Upload them on the Documents tab and the figures below are worked out from them; until then the two amounts can be typed here."
+      },
+      "invoiceFigures": {
+        "title": "From the invoices",
+        "hint": "Worked out from the invoices by the Owner's rule. To change a figure, add or remove invoices and read them again; nothing here is typed.",
+        "monthlyRevenue": "Monthly revenue",
+        "averagePerTransaction": "Average per transaction",
+        "transactionsPerMonth": "Transactions per month",
+        "revenuePerDay": "Revenue per day",
+        "dailyRange": "Lowest and highest day",
+        "itemPriceRange": "Cheapest and dearest item",
+        "dates": "Dates covered",
+        "used": "{count, plural, one {# invoice used} other {# invoices used}}",
+        "baht": "{amount} baht",
+        "range": "{low} – {high}"
+      },
+      "links": {
+        "title": "Company addresses",
+        "hint": "Read from the zip's link files; the name card prints them. Correct them here if needed.",
+        "website": "Website",
+        "facebookPage": "Facebook page",
+        "save": "Save addresses",
+        "saved": "Saved",
+        "invalid": "Enter a web address (example.co.th) and a Facebook page name or link."
+      },
+      "objectivesHint": "One objective per line; a leading number is kept, e.g. \"1. To operate…\"",
+      "onePerLine": "One per line",
+      "shareholdersHint": "One per line: name | nationality | shares",
+      "promotersHint": "One per line: name | nationality",
+      "documents": "Uploaded documents",
+      "removeDocument": "Remove",
+      "sourceDocument": "from {name}",
+      "sourcePage": "page {page}",
+      "fileHint": "One company zip (DBD pack, invoices, agreements, link files) or PDFs; up to 30 MB per file, 40 files and 200 MB in all",
+      "interviewHint": "Only what no document can answer. Everything else the bank asks is filled in below without anyone typing it.",
+      "amountHint": "Write the amount in digits, for example 300,000. Transactions per month are worked out from the two amounts.",
+      "standardAnswers": {
+        "title": "Filled automatically",
+        "hint": "The learner is taught these answers. They come from the DBD, from the invoices, or are the same for every company; nobody types them.",
+        "pending": "Fills in once the answer it is worked out from is written"
+      },
+      "interviewFields": {
+        "contact_email": "Company email",
+        "contact_phone": "Company phone number",
+        "nature_of_business": "What the business does (in plain words)",
+        "products_services": "Products or services it plans to sell",
+        "account_purpose": "Why does the company need a bank account?",
+        "monthly_volume": "Projected monthly inflows/outflows",
+        "clients_location": "Where are the main clients?",
+        "suppliers_location": "Where are the main suppliers?",
+        "source_of_funds": "Source of funds",
+        "business_address": "Actual place of business",
+        "operations_status": "Has the company commenced operations?",
+        "business_purpose": "Why was the company established?",
+        "main_clients": "Main customers",
+        "client_origin": "Where and how customers are found",
+        "main_suppliers": "Main suppliers",
+        "monthly_revenue": "Monthly revenue",
+        "revenue_basis": "What the revenue figure is based on",
+        "average_transaction": "Average amount per transaction",
+        "monthly_transactions": "Transactions per month",
+        "first_incoming_funds": "Where the first money into the account comes from, and why",
+        "promptpay_qr_purpose": "Why the company needs PromptPay / QR",
+        "customer_examples": "Examples of real customers",
+        "customer_profile": "What kind of customers (type, in Thailand or abroad)",
+        "transaction_details": "How past sales were paid (method, typical amounts)"
+      },
+      "saveInterview": "Save interview answers",
+      "index": {
+        "label": "Search index",
+        "status": {
+          "none": "Not indexed",
+          "queued": "Queued",
+          "indexing": "Reading {done}/{total} pages",
+          "ready": "Ready ({total} pages)",
+          "failed": "Failed",
+          "skipped": "Disabled"
+        },
+        "retry": "Retry",
+        "reindex": "Re-index",
+        "hint": "Documents are read five pages at a time in the background (about a minute per run); reload to refresh the status.",
+        "start": "Index",
+        "removeUnavailable": "The document was kept: the search index (Pinecone) is unreachable, so its vectors could not be removed first. Try again later."
+      },
+      "ask": {
+        "title": "Ask the documents",
+        "hint": "Answers come only from the uploaded documents, with the page — use it to check what was read.",
+        "placeholder": "e.g. What is the registered capital? / Who holds shares?",
+        "submit": "Ask",
+        "asking": "Searching…",
+        "passages": "Passages from the documents",
+        "source": "{document} · page {page}",
+        "errors": {
+          "empty": "Type a question first",
+          "not_indexed": "The documents are not indexed yet — wait until the status is \"Ready\"",
+          "unavailable": "Search is disabled (VECTOR_PROVIDER not configured)"
+        },
+        "noAnswer": "No model answer available; showing the passages found"
+      },
+      "deferredFill": "The documents are too long to read in one pass; they are being read in the background and the fields will fill in when the index status is \"Ready\" (reload to see them).",
+      "readingQueued": "The documents are being read in the background (about 1–3 minutes); reload the page to see the filled fields.",
+      "readingFailed": "The documents could not be read ({reason}). Fill the fields yourself or click \"Read the document again\".",
+      "interviewGroups": {
+        "contact": "Company contact",
+        "business": "What the business does",
+        "bank": "The bank's other questions",
+        "customers": "Customers and suppliers",
+        "money": "Money and transactions",
+        "moneyTyped": "Money and transactions (typed, no invoices yet)",
+        "legacy": "Earlier answers"
+      },
+      "team": "Team",
+      "legacyHint": "Written before the new evaluations and still printed on the bank-interview study card. Left blank, they follow the answers above.",
+      "address": {
+        "title": "Registered address (as read against Thai geography)",
+        "status": {
+          "resolved": "Resolved to the subdistrict",
+          "partial": "Partly resolved — check the printed address",
+          "unresolved": "Not resolved"
+        },
+        "issues": {
+          "no_address": "No registered address yet",
+          "province_not_found": "The province could not be found",
+          "district_not_found": "The district could not be found in that province",
+          "subdistrict_not_found": "The subdistrict could not be found in that district",
+          "postcode_mismatch": "The printed postcode does not match the subdistrict"
+        },
+        "parts": {
+          "house_no": "House no.",
+          "subdistrict": "Subdistrict",
+          "district": "District",
+          "province": "Province"
+        },
+        "notStoredYet": "Shown from the printed address; it is stored with the next save."
+      },
+      "category": {
+        "title": "Business category",
+        "auto": "chosen automatically ({confidence}% confidence)",
+        "manual": "chosen by a person",
+        "unmapped": "No category yet",
+        "errors": {
+          "no_text": "Write what the business does first",
+          "not_configured": "Automatic mapping is switched off",
+          "no_categories": "The category list is empty",
+          "failed": "Automatic mapping failed; choose one or map again"
+        },
+        "choose": "Choose the category",
+        "none": "Choose…",
+        "set": "Use this category",
+        "remap": "Map again automatically"
+      },
+      "coverage": {
+        "title": "Evaluation readiness",
+        "introCompany": "Company-level concepts that can already be asked about this company: 29 of the Business Knowledge Quiz and 10 of the Bank Readiness Interview. Each learner's own concepts are checked on their page.",
+        "introAssignment": "Everything this learner will be asked: all 30 Business Knowledge Quiz concepts and all 11 Bank Readiness Interview concepts, their own included.",
+        "mcq": "Business Knowledge Quiz",
+        "interview": "Bank Readiness Interview",
+        "count": "{ready} of {total} ready",
+        "perLearner": "Checked for each learner: {list}",
+        "allReady": "Every concept has what it needs.",
+        "missingFacts": "Still missing",
+        "missingConcepts": "Concepts waiting: {list}",
+        "whatIsMissing": "What's missing ({count})"
+      },
+      "facts": {
+        "company_name_th": "Company name (Thai)",
+        "company_name_en": "Company name (English)",
+        "juristic_id": "Juristic registration number",
+        "registered_on": "Registration date",
+        "registered_capital": "Registered capital",
+        "directors": "Directors",
+        "signing_authority": "Signing authority",
+        "address": "Registered address (resolved)",
+        "shareholders": "Shareholders (with holdings)",
+        "total_shares": "Total shares",
+        "nature_of_business": "What the business does",
+        "products_services": "Products or services",
+        "business_purpose": "Why the company was established",
+        "main_clients": "Main customers",
+        "client_origin": "Where customers come from",
+        "main_suppliers": "Main suppliers",
+        "business_address": "Actual place of business",
+        "monthly_revenue": "Monthly revenue",
+        "revenue_basis": "Basis of the revenue figure",
+        "average_transaction": "Average transaction",
+        "monthly_transactions": "Transactions per month",
+        "source_of_funds": "Source of start-up capital",
+        "first_incoming_funds": "First incoming funds",
+        "account_purpose": "Why the company needs an account",
+        "promptpay_qr_purpose": "Why PromptPay / QR",
+        "customer_examples": "Customer examples",
+        "customer_profile": "Customer profile",
+        "transaction_details": "Transaction details",
+        "operations_started": "Started operating?",
+        "has_existing_customers": "Has customers?",
+        "has_completed_transactions": "Completed sales?",
+        "has_regular_suppliers": "Regular suppliers?",
+        "learner_is_shareholder": "Learner is a shareholder?",
+        "business_category": "Business category",
+        "holder_name": "Learner's name as in the DBD documents",
+        "position": "Learner's position",
+        "director_count": "Number of directors",
+        "shareholder_count": "Number of shareholders",
+        "my_shares": "Learner's shares",
+        "my_share_percent": "Learner's share percentage"
+      },
+      "confirmedAutomatically": "Confirmed automatically: every fact was read from the documents and the business nature was described.",
+      "versions": {
+        "title": "Training versions",
+        "intro": "Learners study and are evaluated on a frozen copy of these facts. A save that changes them makes a new version; nobody moves to it until a person moves them.",
+        "none": "No version yet — it activates when nothing blocks it (see Exceptions).",
+        "active": "Version {n} — active since {date}",
+        "complete": "Complete at company scope: every one of the 29 Business Knowledge Quiz and 10 Bank Readiness Interview concepts resolves.",
+        "incomplete": "Not complete yet — still missing:",
+        "behind": "{count, plural, =0 {Every learner is on this version.} one {# learner is on an older version.} other {# learners are on older versions.}}",
+        "history": "History",
+        "status": {
+          "active": "active",
+          "superseded": "superseded",
+          "draft": "draft"
+        }
+      },
+      "recheck": "Check again",
+      "acceptance": {
+        "accepted": "Accepted by {name}",
+        "acceptedAuto": "Accepted automatically: the reading was clean and the business nature was there.",
+        "waiting": "{count, plural, one {# exception} other {# exceptions}} blocking acceptance",
+        "blocked": "Not accepted yet — settle the exceptions."
+      },
+      "exceptions": {
+        "title": "Exceptions",
+        "intro": "What the validators found. A record is accepted when nothing blocks acceptance; its training version activates when nothing blocks the version. Notes are for review only.",
+        "none": "Nothing open: the record is clean.",
+        "groups": {
+          "acceptance": "Blocking acceptance",
+          "version": "Blocking the training version",
+          "none": "For review"
+        },
+        "kinds": {
+          "missing": "Missing",
+          "low_confidence": "Low confidence",
+          "conflict": "Does not reconcile",
+          "invalid": "Invalid",
+          "geo_mismatch": "Address not resolved",
+          "category_review": "Category to review",
+          "render_failure": "Question could not be rendered"
+        },
+        "rules": {
+          "check_digit": "The check digit does not match ({value}).",
+          "in_future": "The date is in the future ({value}).",
+          "before_registration": "Issued ({value}) before the registration date ({registered_on}).",
+          "shares_over_total": "The holders' shares add up to {sum}, more than the total of {total}.",
+          "shares_under_total": "The holders' shares add up to {sum} of {total}; the list may be partial.",
+          "percent_over_100": "The percentages add up to {percent}%.",
+          "percent_under_100": "The percentages add up to {percent}%; the list may be partial.",
+          "shares_times_par": "Shares × par value gives {expected}, the capital says {actual}.",
+          "count_vs_list": "The certificate says {count} objectives; {listed} are listed.",
+          "names_not_directors": "The signing authority names someone who is not a listed director.",
+          "confidence": "Read with {confidence}% confidence (page {page}).",
+          "geo": "{issues}",
+          "missing": "Needed by: {concepts}",
+          "category": "Best match {candidate} at {confidence}%; choose or map again on the category panel.",
+          "render_failure": "The Business Knowledge Quiz has no approved question it can ask this company on this concept, so a learner could not start the quiz. Check that the fact is on the record and that the question bank has an approved question for it; the notice closes when a quiz starts."
+        },
+        "confirmValue": "The value is right",
+        "dismiss": "Does not apply",
+        "note": "Note (required to dismiss)",
+        "errors": {
+          "not-dismissable": "A missing fact is supplied, not dismissed.",
+          "already-resolved": "Already settled.",
+          "note-required": "Write a note first.",
+          "not-found": "Not found."
+        }
+      },
+      "answersMissing": "Still to fill in before this record is accepted: {fields}",
+      "tabs": {
+        "details": "Company details",
+        "interview": "Bank interview",
+        "documents": "Documents",
+        "exceptions": "Exceptions"
+      },
+      "checks": {
+        "title": "Before it can be used",
+        "documents": "Documents read",
+        "missing": "Nothing missing",
+        "problems": "No conflicts or errors",
+        "accepted": "Accepted",
+        "done": "done",
+        "todo": "still to do",
+        "openExceptions": "See exceptions"
+      },
+      "addDocuments": "Add documents",
+      "teamChip": "Team {code}"
+    },
+    "assignment": {
+      "title": "Assigned company",
+      "choose": "Choose a confirmed DBD record…",
+      "assign": "Assign",
+      "deactivate": "Remove assignment",
+      "availableFrom": "Bank verification available from {date}",
+      "eligibilityPending": "Eligibility date pending — the certificate issue date is missing",
+      "errors": {
+        "no-record": "Choose a record",
+        "already-assigned": "This learner already has an active assignment",
+        "not-confirmed": "Only confirmed records can be assigned",
+        "company-taken": "This company already has a learner. Each company is studied by one learner."
+      }
+    },
+    "questions": {
+      "title": "Question bank",
+      "new": "New question",
+      "key": "Key",
+      "kind": "Kind",
+      "pools": "Pools",
+      "poolQuiz": "Practice quiz",
+      "poolExam": "Business Knowledge Quiz",
+      "active": "Active",
+      "dependencies": "Uses record fields",
+      "status": "Status",
+      "languages": "Languages",
+      "setStatus": "Set status",
+      "approvalHint": "Approval requires Thai, English and Chinese versions. Only approved, active questions are served.",
+      "save": "Save",
+      "saved": "Saved",
+      "missing": "not yet written",
+      "prompt": "Question",
+      "option": "Option {key}",
+      "correctKey": "Correct option",
+      "explanation": "Explanation (shown when wrong)",
+      "ttsEnabled": "Enable Thai read-aloud",
+      "saveLanguage": "Save this language",
+      "placeholderHint": "Placeholders you can use (distractor variants after a pipe):",
+      "generate": "Generate with AI",
+      "all": "All",
+      "batch": "Batch",
+      "filter": "Filter",
+      "preview": "Question",
+      "approve": "Approve",
+      "batchSummary": "This batch produced {produced} question(s); {rejected} rejected (provider: {provider})",
+      "fillMissing": "Fill missing languages with AI",
+      "filling": "Translating…",
+      "fillMissingHint": "Missing: {languages}. Translated from the existing language, keeping '{...}' variables and options unchanged.",
+      "fillDone": "Added {count} language(s). Review before approving.",
+      "fillErrors": {
+        "not_configured": "AI is not configured (ANTHROPIC_API_KEY required)",
+        "provider": "The AI provider returned an error. Try again.",
+        "invalid_output": "The AI returned an invalid result. Try again.",
+        "no_material": "Write at least one language first"
+      },
+      "sources": "Sources",
+      "sourceRef": "{document} · page {page}"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "event": "Event",
+      "channel": "Channel",
+      "destination": "Destination",
+      "status": "Status",
+      "attempts": "Attempts",
+      "lastError": "Last error",
+      "requeue": "Requeue"
+    },
+    "settings": {
+      "title": "Policy settings",
+      "intro": "These values drive the business rules (policy_config). Every change is audited with the owner who made it.",
+      "save": "Save",
+      "saved": "Saved",
+      "yes": "Yes",
+      "no": "No",
+      "unlimited": "Unlimited",
+      "listHint": "One per line",
+      "updatedAt": "Last changed {at}",
+      "options": {
+        "exam_pass_rule": {
+          "any": "Any attempt passed",
+          "latest": "Latest attempt must pass"
+        },
+        "study_completion_tracking": {
+          "viewed": "When viewed",
+          "completed": "When marked completed"
+        }
+      },
+      "errors": {
+        "required": "A value is required",
+        "not_a_number": "Must be a number",
+        "unknown_key": "Unknown setting"
+      },
+      "keys": {
+        "bank_eligibility_days": {
+          "label": "Days before the bank stage opens",
+          "help": "Counted from the certificate issue date (BR-002, default 45). Changing it recomputes every learner's date."
+        },
+        "bank_access_expiry_days": {
+          "label": "Days the bank stage stays open",
+          "help": "Counted from the opening date; blank = never expires"
+        },
+        "quiz_question_count": {
+          "label": "Questions per practice quiz",
+          "help": "Per attempt"
+        },
+        "exam_max_attempts": {
+          "label": "Maximum Business Knowledge Quiz attempts",
+          "help": "Blank = unlimited"
+        },
+        "exam_retry_wait_hours": {
+          "label": "Hours to wait before retaking the Business Knowledge Quiz",
+          "help": "0 = retake immediately"
+        },
+        "exam_pass_rule": {
+          "label": "Business Knowledge Quiz pass rule",
+          "help": "Which result decides the passed status"
+        },
+        "require_exam_pass_for_name_card": {
+          "label": "Require a Business Knowledge Quiz pass for the name card",
+          "help": "When on, learners must pass the Business Knowledge Quiz before creating a card"
+        },
+        "require_exam_pass_for_interview": {
+          "label": "Business Knowledge Quiz pass required before the Bank Readiness Interview",
+          "help": "When on, a learner must pass the Business Knowledge Quiz before starting the Bank Readiness Interview."
+        },
+        "telegram_admin_chat_ids": {
+          "label": "Owner Telegram chat ids",
+          "help": "One per line"
+        },
+        "email_admin_recipients": {
+          "label": "Owner notification emails",
+          "help": "One per line"
+        },
+        "study_completion_tracking": {
+          "label": "Study completion rule",
+          "help": "Count a card when viewed, or only when the learner marks it completed"
+        },
+        "appointment_hours_start": {
+          "label": "Appointment hours start",
+          "help": "First bookable hour of the day, Bangkok time, e.g. 9"
+        },
+        "appointment_hours_end": {
+          "label": "Appointment hours end",
+          "help": "The hour bookings stop, Bangkok time, e.g. 16 (the last slot ends by then)"
+        },
+        "appointment_slot_minutes": {
+          "label": "Slot length (minutes)",
+          "help": "How long each slot lasts, e.g. 60"
+        },
+        "appointment_notice_hours": {
+          "label": "Notice (hours)",
+          "help": "How many hours before a slot a learner may still book or cancel"
+        },
+        "appointment_holidays": {
+          "label": "Bank holidays",
+          "help": "The Bank of Thailand's public holidays, one ISO date (YYYY-MM-DD) per line, substitution days included; add next year's list each December"
+        },
+        "training_auto_accept_confidence_percent": {
+          "label": "Training facts: confidence read as certain (%)",
+          "help": "An extracted fact at or above this raises nothing. Below it, a low-confidence exception is listed for review."
+        },
+        "training_review_confidence_percent": {
+          "label": "Training facts: confidence below which a person must confirm (%)",
+          "help": "Below this, the exception blocks acceptance of the record until a person confirms the value."
+        },
+        "mcq_pass_score": {
+          "label": "Business Knowledge Quiz: correct answers needed to pass (of 30)",
+          "help": "A learner also fails on any of the nine key company facts answered wrong. Applies to attempts started after the change."
+        },
+        "mcq_retest_score": {
+          "label": "Business Knowledge Quiz: correct answers for a retest (of 30)",
+          "help": "From this score up to one below the pass score the result is Retest; lower is Fail."
+        }
+      }
+    },
+    "generate": {
+      "title": "Generate questions with AI",
+      "back": "Question bank",
+      "intro": "Questions are grounded in the DBD company certificate. Pick a reference certificate and a count; the model drafts multiple-choice questions in Thai, English and Chinese, using variables so each learner is asked about their own company. Everything stays a draft until you review and approve it.",
+      "fakeNotice": "Test mode: no ANTHROPIC_API_KEY, so sample questions are generated instead.",
+      "material": "Source material",
+      "materialHint": "Optional extra material for general-knowledge questions: tick study cards, paste text, or upload a file.",
+      "pastedText": "Paste text",
+      "pastedHint": "Paste notes, lesson content, or your existing draft questions…",
+      "file": "Upload a file",
+      "fileHint": "PDF, DOCX, TXT or MD (max 20 MB)",
+      "count": "Number of questions",
+      "templateCount": "Of which ask facts from the learner's certificate",
+      "templateHint": "Defaults to all; the rest test understanding of the document itself.",
+      "difficulty": "Difficulty",
+      "difficultyEasy": "Easy",
+      "difficultyMedium": "Medium",
+      "difficultyHard": "Hard",
+      "pools": "Use in",
+      "poolQuiz": "Practice quiz",
+      "poolExam": "Business Knowledge Quiz",
+      "focus": "Focus (optional)",
+      "focusHint": "e.g. emphasise what bank officers ask",
+      "generate": "Generate questions",
+      "generating": "Generating… (about 1–3 minutes, keep this page open)",
+      "errors": {
+        "not_configured": "AI is not configured (ANTHROPIC_API_KEY required). Contact an admin.",
+        "provider": "The AI provider returned an error. Try again.",
+        "invalid_output": "The AI returned an invalid result. Try again.",
+        "no_material": "Pick a study card, paste text, or upload a file",
+        "pools_required": "Choose at least one pool",
+        "file_too_large": "The file exceeds 20 MB",
+        "nothing_produced": "No question passed validation. Try again."
+      },
+      "reference": "Reference DBD certificate",
+      "referenceNone": "Generic certificate structure (no company)",
+      "referenceHint": "The AI reads this certificate's particulars (and its PDF when uploaded) to ask about the real facts, but never copies its values into a question — every question uses variables so each learner is asked about their own company."
+    },
+    "role": {
+      "title": "The learner's role in the company",
+      "hint": "The bank asks \"how many shares do you hold?\", \"what is your position?\". The name is taken from the DBD documents; the other answers are the same for every learner.",
+      "holderName": "Name as in the DBD documents",
+      "holderHint": "Has to be a name printed in the DBD documents. With one director it is filled in automatically; pick another person only if this learner is someone else.",
+      "position": "Position in the company",
+      "responsibilities": "Main responsibilities",
+      "relationship": "Relationship to the other shareholders",
+      "save": "Save role",
+      "saved": "Saved",
+      "choose": "Choose the person",
+      "automatic": "Filled in automatically: the company’s only director.",
+      "fixed": "The same for every learner",
+      "nameNotInDbd": "Choose a name that is printed in the DBD documents.",
+      "noPeople": "No director or shareholder has been read from the documents yet."
+    },
+    "managers": {
+      "title": "Managers",
+      "new": "New manager",
+      "displayName": "Holder's name",
+      "password": "Initial password",
+      "create": "Create manager",
+      "created": "Created {code} for {name}",
+      "code": "Code",
+      "learners": "Learners",
+      "records": "Companies",
+      "status": "Status",
+      "actions": "Actions",
+      "disable": "Suspend",
+      "enable": "Re-enable",
+      "resetPassword": "Reset password",
+      "passwordUpdated": "Password updated",
+      "suspendHint": "Suspending a manager stops their sign-in. Their learners keep studying and their companies stay visible to you.",
+      "empty": "No managers yet.",
+      "rename": "Rename"
+    },
+    "interviews": {
+      "title": "Bank Readiness Interviews",
+      "intro": "Every Bank Readiness Interview held by a learner of your team, with its verdict and the officer’s assessment of each answer.",
+      "empty": "No interviews yet",
+      "learner": "Learner",
+      "company": "Company",
+      "started": "Started",
+      "status": "Status",
+      "verdict": "Verdict",
+      "open": "Open",
+      "detailTitle": "Interview detail",
+      "summaryTitle": "Interview summary",
+      "summaryIntro": "Results from the readiness interview based on company documents and the learner’s answers.",
+      "overallResult": "Overall result",
+      "correctAnswers": "Correct answers",
+      "readinessStatus": "Readiness status",
+      "interviewDate": "Interview date",
+      "learnerId": "Learner ID",
+      "transcript": "Transcript",
+      "transcriptTitle": "Question & answer transcript",
+      "transcriptIntro": "Review each question, the learner’s answer, and the expected information from the company documents.",
+      "explanation": "Explanation",
+      "expectedAnswer": "Expected answer",
+      "unanswered": "No answer",
+      "assessments": "Assessment by question",
+      "narrative": "The officer’s summary",
+      "noVerdict": "No verdict yet",
+      "back": "Back to the interviews",
+      "statuses": {
+        "in_progress": "In progress",
+        "completed": "Completed",
+        "abandoned": "Abandoned"
+      },
+      "verdicts": {
+        "ready": "Ready — can open the account",
+        "not_ready": "Not yet ready — cannot open the account yet"
+      },
+      "assessment": {
+        "correct": "Correct",
+        "partial": "Partly right",
+        "wrong": "Wrong",
+        "evasive": "Evaded",
+        "pasted": "Pasted",
+        "off_topic": "Off topic"
+      }
+    },
+    "appointments": {
+      "title": "Bank appointments",
+      "intro": "Managers choose one bank date for each learner who passed the quiz and readiness interview.",
+      "bookingTitle": "Book for a learner",
+      "bookingIntro": "Choose a ready learner, then pick or replace their date. There are no time slots.",
+      "chooseLearner": "Learner",
+      "choose": "Choose a learner",
+      "showCalendar": "Show calendar",
+      "needsQuiz": "Pass the Business Knowledge Quiz first",
+      "needsInterview": "Pass the Bank Readiness Interview first",
+      "ownerReadOnly": "Only an owning manager books a learner's date. The Owner can review and cancel appointments here.",
+      "upcoming": "Booked dates",
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "saved": "Appointment date saved",
+      "empty": "No appointments yet",
+      "day": "Day",
+      "time": "Time",
+      "learner": "Learner",
+      "company": "Company",
+      "team": "Team",
+      "cancel": "Cancel",
+      "blocks": "Blocked hours",
+      "block": "Block hours",
+      "unblock": "Unblock",
+      "date": "Date",
+      "fromHour": "From (hour)",
+      "toHour": "To (hour)",
+      "reason": "Reason",
+      "teamFilter": "Team",
+      "adminCalendar": "Owner calendar",
+      "allTeams": "All teams",
+      "show": "Show"
+    },
+    "navGroups": {
+      "team": "Team",
+      "content": "Content",
+      "learners": "Learners",
+      "system": "System"
+    },
+    "roles": {
+      "admin": "Owner",
+      "manager": "Manager"
+    },
+    "home": {
+      "intro": "Pick a section to manage. A manager sees their own team only."
+    },
+    "businessCategories": {
+      "title": "Business categories",
+      "intro": "The controlled list the automatic mapping chooses from and the Business Knowledge Quiz draws business distractors from. Retire a category by switching it off; keys never change.",
+      "key": "Key",
+      "keyHint": "Lower-case letters, digits and _; permanent once created.",
+      "labelTh": "Thai label",
+      "labelEn": "English label",
+      "labelZh": "Chinese label",
+      "sortOrder": "Order",
+      "active": "Active",
+      "add": "Add category",
+      "save": "Save",
+      "saved": "Saved",
+      "errors": {
+        "duplicate": "That key already exists",
+        "invalid": "Check the key and fill every label",
+        "failed": "Could not save"
+      }
+    },
+    "exceptions": {
+      "title": "Exceptions",
+      "intro": "Every open exception on the companies you look after, the ones blocking acceptance first. Open a company to settle them.",
+      "empty": "Nothing open.",
+      "columns": {
+        "company": "Company",
+        "team": "Team",
+        "kind": "Kind",
+        "field": "Field",
+        "blocks": "Holds back",
+        "since": "Since"
+      },
+      "blocks": {
+        "acceptance": "acceptance",
+        "version": "version",
+        "none": "—"
+      },
+      "count": "{count, plural, =0 {No open exceptions} one {# open exception} other {# open exceptions}}"
+    },
+    "filePicker": {
+      "choose": "Choose files",
+      "orDrop": "or drop them here"
+    },
+    "bank": {
+      "title": "Question bank",
+      "intro": "One question per concept, thirty concepts. A concept is ready when it has an approved variant for every case.",
+      "ready": "{ready} of {total} concepts are ready",
+      "checkCompany": "Check a company",
+      "legacy": "Earlier questions",
+      "loadStarter": "{count, plural, one {Add # starter draft} other {Add # starter drafts}}",
+      "starterHint": "A starter question for every one of the thirty concepts. They arrive as drafts for you to read, edit, approve or retire.",
+      "starterLoaded": "{count, plural, =0 {Nothing to add} one {# draft added} other {# drafts added}}",
+      "starterFailed": "Could not add the drafts. Try again.",
+      "approveDrafts": "{count, plural, one {Approve # checked draft} other {Approve # checked drafts}}",
+      "approveDraftsHint": "Every draft counted here has its Thai text and keeps all of the bank’s rules. Read them first: an approved question can be asked of a learner.",
+      "approveDraftsConfirm": "{count, plural, one {Approve this # draft?} other {Approve all # drafts?}} Any of them can be returned to draft later.",
+      "approveDraftsYes": "Yes, approve",
+      "approveDraftsCancel": "Cancel",
+      "approveDraftsDone": "{count, plural, =0 {Nothing was approved} one {# draft approved} other {# drafts approved}}",
+      "approveDraftsFailed": "Could not approve the drafts. Try again.",
+      "columns": {
+        "order": "#",
+        "concept": "Concept",
+        "source": "Reads",
+        "cases": "Cases",
+        "variants": "Variants"
+      },
+      "critical": "critical",
+      "caseAlways": "every company",
+      "caseYes": "{fact}: yes",
+      "caseNo": "{fact}: no",
+      "covered": "covered",
+      "uncovered": "no approved variant",
+      "counts": "{approved} approved · {draft} draft · {retired} retired",
+      "statusFacts": {
+        "operations_started": "Operations started",
+        "has_existing_customers": "Has customers",
+        "has_completed_transactions": "Has completed transactions",
+        "has_regular_suppliers": "Has regular suppliers",
+        "learner_is_shareholder": "Learner is a shareholder"
+      },
+      "sources": {
+        "DBD_FACT": "DBD facts",
+        "BUSINESS_PROFILE": "Business profile",
+        "DERIVED": "Derived",
+        "ROLE": "The learner’s role",
+        "KYC_POLICY": "Policy"
+      },
+      "status": {
+        "draft": "Draft",
+        "approved": "Approved",
+        "retired": "Retired"
+      },
+      "recipes": {
+        "DIRECT_FACT": "Fact as it is",
+        "NUMERIC_VARIATION": "Number varied",
+        "COUNT_VARIATION": "Count varied",
+        "DATE_VARIATION": "Date varied",
+        "ID_MUTATION": "Registration number mutated",
+        "GEOGRAPHY_ALTERNATIVE": "Another place",
+        "BUSINESS_ALTERNATIVE": "Another business",
+        "STATIC": "Fixed text",
+        "COMPOSITE_TEMPLATE": "Text with facts"
+      },
+      "concept": {
+        "back": "Question bank",
+        "facts": "Facts the correct answer may use",
+        "noFacts": "None: the correct answer is a fixed policy text.",
+        "grammarTitle": "Placeholders and recipes",
+        "grammar": "Write a fact in braces. In a wrong option a fact can be varied:",
+        "allTokens": "Every placeholder",
+        "variants": "Variants",
+        "none": "No variants yet.",
+        "newVariant": "New variant",
+        "columns": {
+          "key": "Variant",
+          "when": "For",
+          "prompt": "Thai question",
+          "status": "Status"
+        }
+      },
+      "variant": {
+        "new": "New variant",
+        "structure": "Options",
+        "correct": "Correct",
+        "recipe": "Recipe",
+        "appliesWhen": "Worded for",
+        "thai": "Thai (the text that is approved)",
+        "english": "English (reference)",
+        "chinese": "Chinese (reference)",
+        "prompt": "Question",
+        "option": "Option {key}",
+        "explanation": "Explanation shown after a wrong answer",
+        "inheritHint": "Leave an option blank to take the Thai option when it is placeholders only.",
+        "save": "Save",
+        "saved": "Saved",
+        "statusTitle": "Status",
+        "approve": "Approve",
+        "toDraft": "Back to draft",
+        "retire": "Retire",
+        "approveHint": "Approved on the Thai text. Changing it, the correct option, a recipe or the status it is worded for returns the variant to draft."
+      },
+      "issues": {
+        "unknown_concept": "Unknown concept",
+        "thai_required": "The Thai text is required",
+        "prompt_required": "{where}: the question is blank",
+        "option_required": "{where}: the option is blank",
+        "grammar": "{where}: {detail}",
+        "recipe_mismatch": "{where}: this text is “{detail}”, not the recipe chosen",
+        "prompt_varies": "{where}: only plain facts here, no varied ones",
+        "correct_varies": "{where}: the correct option must not vary a fact",
+        "correct_foreign_fact": "{where}: the correct option uses a fact that is not this concept’s ({detail})",
+        "correct_needs_fact": "{where}: the correct option must use one of the concept’s facts",
+        "duplicate_option": "{where}: the same text as option {detail}",
+        "applies_when_fact": "This concept has no wording for that status",
+        "translation_placeholders": "{where}: must keep the Thai placeholders ({detail})",
+        "failed": "Could not save. Try again."
+      },
+      "preview": {
+        "title": "Preview",
+        "company": "Company",
+        "sample": "Sample company (fictional)",
+        "show": "Show",
+        "redraw": "Draw again",
+        "ok": "Can be asked of this company",
+        "fail": "Cannot be asked of this company: {reason}",
+        "noVersion": "This company has no training version."
+      },
+      "failures": {
+        "no_text": "no text",
+        "not_applicable": "worded for another status",
+        "missing_fact": "a fact is missing ({detail})",
+        "no_category": "no business category is mapped",
+        "no_alternatives": "not enough alternatives to draw from",
+        "out_of_range": "a varied value is out of range ({detail})",
+        "grammar": "a placeholder is not valid ({detail})",
+        "invalid": "the variant breaks a rule ({detail})",
+        "empty_option": "an option comes out empty ({detail})",
+        "duplicate_option": "two options come out the same ({detail})"
+      },
+      "check": {
+        "title": "Check a company",
+        "intro": "What the approved bank can ask one company today, concept by concept.",
+        "company": "Company",
+        "choose": "Choose a company",
+        "learner": "Learner",
+        "companyOnly": "Company only",
+        "run": "Check",
+        "none": "No company has a training version yet.",
+        "summary": "{ok} of {total} concepts can be asked",
+        "columns": {
+          "concept": "Concept",
+          "variant": "Variant",
+          "asks": "It would ask",
+          "result": "Result"
+        },
+        "usable": "can be asked",
+        "blocked": "cannot be asked",
+        "noApproved": "no approved variant"
+      },
+      "where": {
+        "th": "Thai",
+        "en": "English",
+        "zh": "Chinese",
+        "explanation": "Explanation"
+      },
+      "grammar": {
+        "unbalanced": "a brace is opened or closed without its pair",
+        "unknown_token": "unknown placeholder {raw}",
+        "unknown_recipe": "unknown recipe in {raw}",
+        "recipe_not_for_token": "that recipe does not fit this fact: {raw}",
+        "bad_argument": "the recipe’s argument is not valid: {raw}"
+      }
+    }
+  },
+  "stages": {
+    "titles": {
+      "study": "Study material",
+      "quiz": "Practice quiz",
+      "exam": "Business Knowledge Quiz",
+      "nameCard": "Name card",
+      "interview": "Bank Readiness Interview",
+      "appointment": "Bank appointment"
+    },
+    "status": {
+      "locked": "Locked",
+      "pending": "Pending",
+      "available": "Available",
+      "in_progress": "In progress",
+      "done": "Done"
+    },
+    "reasons": {
+      "no_assignment": "No company assigned yet",
+      "exam_required": "Pass the Business Knowledge Quiz first",
+      "before_available_from": "Not yet available",
+      "expired": "Access period has ended",
+      "missing_issue_date": "Certificate issue date missing",
+      "interview_required": "Pass the Bank Readiness Interview first"
+    },
+    "open": "Open",
+    "stepOf": "Step {n} of {total}",
+    "short": {
+      "study": "Study",
+      "quiz": "Practice",
+      "exam": "Quiz",
+      "nameCard": "Card",
+      "interview": "Interview",
+      "appointment": "Booking"
+    }
+  },
+  "progression": {
+    "UNASSIGNED": "Unassigned",
+    "PROVISIONED": "Provisioned",
+    "LEARNING": "Learning",
+    "EXAM_PENDING": "Business Knowledge Quiz pending",
+    "EXAM_PASSED": "Business Knowledge Quiz passed",
+    "WAITING_BANK_ELIGIBILITY": "Waiting for bank eligibility",
+    "BANK_ELIGIBLE": "Bank eligible",
+    "INTERVIEW_STARTED": "Bank Readiness Interview started",
+    "INTERVIEW_READY": "Ready for the bank",
+    "APPOINTMENT_BOOKED": "Appointment booked"
+  },
+  "study": {
+    "title": "Study material",
+    "empty": "No study material yet.",
+    "card": "Card",
+    "notAvailable": "Not available in this language yet",
+    "openPdf": "Open PDF in a new tab",
+    "pdfMissing": "The PDF for this language has not been uploaded yet.",
+    "markCompleted": "Mark as completed",
+    "completed": "Completed",
+    "state": {
+      "new": "New",
+      "viewed": "Viewed",
+      "completed": "Completed"
+    },
+    "readAloud": {
+      "play": "Read aloud",
+      "pause": "Pause",
+      "loading": "Preparing audio…",
+      "error": "Audio is unavailable right now."
+    },
+    "evidence": {
+      "title": "From your documents",
+      "hint": "The actual text of your company's DBD documents for this topic — compare it with your prepared answers.",
+      "source": "{document} · page {page}"
+    },
+    "intro": "{count} cards on what the bank will ask, each filled with your own company's facts.",
+    "continue": "Continue with card {n}",
+    "continueHere": "continue here",
+    "continueShort": "Continue",
+    "review": "Review",
+    "openLesson": "Open",
+    "tabs": {
+      "label": "Training stages",
+      "home": "Home",
+      "study": "Study",
+      "exam": "Quiz",
+      "interview": "Readiness",
+      "nameCard": "Name card"
+    },
+    "lessons": {
+      "identity": {
+        "title": "Company identity",
+        "description": "Company name, registration date and key details"
+      },
+      "ownership": {
+        "title": "Capital and shareholders",
+        "description": "Registered capital and ownership structure"
+      },
+      "business": {
+        "title": "Business operations",
+        "description": "Business type and actual operations"
+      },
+      "role": {
+        "title": "Your role",
+        "description": "Your duties and responsibilities in the company"
+      },
+      "answers": {
+        "title": "Answer confidently",
+        "description": "How to answer the bank's questions"
+      }
+    },
+    "summary": {
+      "ofTotal": "{done} of {total}",
+      "ready": "Ready for the next step",
+      "remaining": "{count} lessons remaining"
+    },
+    "allDone": "All cards done",
+    "cardOf": "Card {n} of {total}",
+    "nextCard": "Card {n}: {title}"
+  },
+  "quiz": {
+    "title": "Practice quiz",
+    "intro": "Practice questions about your company and the process. You see whether each answer is right immediately, with an explanation, and a full review at the end.",
+    "start": "Start the practice quiz",
+    "resume": "Resume the practice quiz",
+    "history": "Previous attempts",
+    "attemptLine": "Attempt {no}: {score} / {max}",
+    "progress": "Question {position} of {total}",
+    "correct": "Correct!",
+    "incorrect": "Incorrect — the correct answer is {key}",
+    "saved": "Answer saved",
+    "submit": "Submit the practice quiz",
+    "reviewTitle": "Practice quiz review",
+    "scoreLine": "Score: {score} / {max}",
+    "errors": {
+      "no_assignment": "No company is assigned to you yet.",
+      "no_questions": "No questions are available for your company yet.",
+      "not_found": "This attempt was not found.",
+      "not_in_progress": "This attempt is already closed.",
+      "already_answered": "This question is already answered.",
+      "unanswered": "Please answer every question first.",
+      "invalid_key": "Unknown option.",
+      "no_version": "Your company's training facts are not ready yet. Ask your manager to check the record."
+    },
+    "answeredOf": "{answered} of {total} answered",
+    "percentDone": "{percent}% complete",
+    "jumpNext": "Go to the next unanswered question",
+    "reviewHeading": "Your answers",
+    "reviewIncorrect": "Incorrect"
+  },
+  "exam": {
+    "title": "Business Knowledge Quiz",
+    "intro": "Shows that you know your company the way the bank will ask about it.",
+    "about": {
+      "title": "How this quiz works",
+      "questions": "{count} questions: one for each thing the bank asks about your company.",
+      "marking": "Each answer is marked right or wrong as soon as you choose it. An answer cannot be changed.",
+      "pass": "Pass: answer {pass} or more questions correctly.",
+      "retest": "Historic attempts may show a retest result.",
+      "fail": "Below {pass}: review the answers and study cards, then try again when you are ready."
+    },
+    "start": "Start the Business Knowledge Quiz",
+    "resume": "Resume the Business Knowledge Quiz",
+    "history": "Previous attempts",
+    "attemptLine": "Attempt {no}: {score} / {max}",
+    "noFeedbackNote": "Answers are saved as you go; results are shown only after you submit.",
+    "feedbackNote": "Each answer is marked as soon as you choose it and cannot be changed. Submit when every question is answered.",
+    "submit": "Submit the Business Knowledge Quiz",
+    "resultTitle": "Business Knowledge Quiz result",
+    "pass": "Passed",
+    "fail": "Not passed",
+    "retest": "Take it again",
+    "scoreLine": "Score: {score} / {max} (passing mark {passingMark}%)",
+    "scoreLineRule": "Score: {score} / {max} (pass at {pass})",
+    "resultNote": "Questions marked ✗ were answered incorrectly; the green option is the correct answer and the struck-through one is what you chose.",
+    "errors": {
+      "max_attempts": "You have used all allowed attempts.",
+      "retry_wait": "Please wait before retaking the Business Knowledge Quiz.",
+      "no_assignment": "No company is assigned to you yet.",
+      "no_questions": "No Business Knowledge Quiz questions are available for your company yet.",
+      "not_found": "This attempt was not found.",
+      "not_in_progress": "This attempt is already closed.",
+      "already_answered": "This question is already answered.",
+      "unanswered": "Please answer every question first.",
+      "invalid_key": "Unknown option.",
+      "no_version": "Your company's training facts are not ready yet. Ask your manager to check the record.",
+      "not_ready": "The quiz is not ready for your company yet. Your manager has been told."
+    },
+    "meta": {
+      "questions": "Questions",
+      "passingMark": "Passing mark",
+      "toPass": "To pass",
+      "attempt": "Attempt"
+    },
+    "reviewHeading": "Your answers",
+    "passedNext": "You passed. The Bank Readiness Interview is now open.",
+    "notPassedNext": "Not passed this time. Review the answers below and try again when you are ready.",
+    "retestNext": "Close: {score} of {max}. You need {pass} to pass — take the quiz again.",
+    "failNext": "Not passed this time. Review the study material, then take the quiz again.",
+    "failCriticalNext": "Not passed: a key company fact was answered wrong. Review the study material, then take the quiz again.",
+    "criticalWrong": "Key facts answered wrong: {list}",
+    "toStudy": "Review the study material",
+    "toInterview": "Go to the Bank Readiness Interview",
+    "retake": "Retake the Business Knowledge Quiz"
+  },
+  "interview": {
+    "title": "Bank Readiness Interview",
+    "intro": "A friendly practice interview using the same company facts you studied.",
+    "thaiOnly": "The interview is entirely in Thai.",
+    "guide": {
+      "eyebrow": "Before you start",
+      "title": "Practise at your own pace",
+      "questions": "Answer 11 short questions",
+      "pass": "Get 9 correct to be ready",
+      "language": "The interview is in Thai (ภาษาไทย)",
+      "repeat": "Practise as many times as you like (ฝึกได้ไม่จำกัด)",
+      "support": "The officer gives you one friendly second chance when an answer needs more detail. This is practice, so take your time."
+    },
+    "start": "Start the interview",
+    "resume": "Continue the interview",
+    "history": "Past interviews",
+    "verdict": {
+      "ready": "Ready",
+      "not_ready": "Not yet ready",
+      "abandoned": "Not finished"
+    },
+    "outcome": {
+      "readyTitle": "Ready for the next step",
+      "practiceTitle": "Keep practising — you are close",
+      "ready": {
+        "title": "Result: you can open the bank account",
+        "detail": "You are ready to go to the bank. Book your appointment."
+      },
+      "not_ready": {
+        "title": "Result: you cannot open the bank account yet",
+        "detail": "Review the answers marked below, then take the interview again."
+      },
+      "abandoned": {
+        "title": "No result: you cannot open the bank account yet",
+        "detail": "The interview was not finished. Take it again from the start."
+      },
+      "scoreReady": "You got {score} out of {maximum}. You needed {required} — you are ready for the next step.",
+      "scorePractice": "You got {score} out of {maximum}. You need {required}; review the answers below and try again."
+    },
+    "chat": {
+      "placeholder": "Type your answer in Thai…",
+      "send": "Send",
+      "end": "End the interview",
+      "typing": "The officer is typing…",
+      "officer": "Bank officer",
+      "you": "You",
+      "limit": "Up to {max} characters",
+      "budget": "Message {n} of {max}"
+    },
+    "debrief": {
+      "title": "Interview result",
+      "reasons": "Your answers, one by one",
+      "reviewNeeded": "A few answers to practise",
+      "correctValue": "On the certificate: {value}",
+      "review": "Review the card",
+      "transcript": "Transcript",
+      "tryAgain": "Try again",
+      "toDashboard": "Dashboard"
+    },
+    "assessment": {
+      "correct": "Correct",
+      "partial": "Partly right",
+      "wrong": "Wrong",
+      "evasive": "Evaded",
+      "pasted": "Pasted",
+      "off_topic": "Off topic"
+    },
+    "concept": {
+      "juristic_id": "Registration number"
+    },
+    "errors": {
+      "not_open": "The interview is not open yet.",
+      "not_configured": "The interviewer is not configured.",
+      "no_assignment": "No company has been assigned to you.",
+      "closed": "This interview has ended.",
+      "too_long": "The message is too long.",
+      "not_found": "Interview not found.",
+      "unknown": "Something went wrong. Please try again.",
+      "expired": "The interview sat idle too long. Please start again.",
+      "no_facts": "The company record has nothing to verify yet. Ask your manager.",
+      "no_version": "Your company's training facts are not ready yet. Ask your manager to check the record."
+    },
+    "closeReason": {
+      "plan_complete": "Every question was asked.",
+      "too_many_evasions": "Closed after the third evaded answer.",
+      "off_topic_limit": "Closed after repeated off-topic answers.",
+      "learner_ended": "You ended the interview early.",
+      "turn_limit": "The interview reached its message limit.",
+      "abandoned": "The interview sat idle for over 30 minutes and was abandoned."
+    }
+  },
+  "appointment": {
+    "title": "Bank appointment",
+    "intro": "Your manager books the date after you pass the Business Knowledge Quiz and Bank Readiness Interview.",
+    "waiting": {
+      "title": "Your manager will book the appointment",
+      "detail": "There is nothing to choose here. Your manager will select the bank date and it will appear on this page."
+    },
+    "week": "Week of {date}",
+    "prevWeek": "Previous week",
+    "nextWeek": "Next week",
+    "holiday": "Bank holiday",
+    "noSlots": "No free slot",
+    "state": {
+      "free": "Free",
+      "booked": "Taken",
+      "blocked": "Unavailable",
+      "past": "Too soon",
+      "outside_window": "Outside your window",
+      "holiday": "Bank holiday"
+    },
+    "booked": {
+      "title": "Your appointment",
+      "line": "{date} with {manager}",
+      "manager": "your manager",
+      "cancel": "Cancel the appointment",
+      "cancelHint": "You can cancel until {hours} hours before"
+    },
+    "errors": {
+      "not_open": "Booking is not open yet.",
+      "already_booked": "You already have an appointment. Cancel it to pick another.",
+      "slot_unavailable": "That slot cannot be booked.",
+      "slot_taken": "Someone just took that slot. Please pick another.",
+      "not_found": "Appointment not found.",
+      "too_late": "Too close to the appointment to cancel. Ask your manager.",
+      "forbidden": "You cannot do that.",
+      "unknown": "Something went wrong. Please try again."
+    }
+  },
+  "nameCard": {
+    "title": "Name card",
+    "intro": "Made for you from your company record and the details your manager gave. Preview it and download the PDF.",
+    "preview": "Name card preview",
+    "previewHint": "Front and back are shown together at a larger size. Select either side to open it full size.",
+    "front": "Front",
+    "back": "Back",
+    "openSide": "Open full-size",
+    "download": "Download PDF",
+    "meta": "Mobile {phone}",
+    "errors": {
+      "no_assignment": "No company is assigned to you yet.",
+      "exam_required": "Pass the Business Knowledge Quiz first to get your name card.",
+      "missing_fields": "Your company record is missing: {fields}. Ask your manager to complete it.",
+      "no_phone": "Your mobile number has not been given yet. Ask your manager to add it.",
+      "no_name": "Your name is not on your company record yet. Ask your manager."
+    }
+  }
+}

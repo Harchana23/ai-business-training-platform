@@ -1,0 +1,1639 @@
+{
+  "app": {
+    "name": "商业培训门户",
+    "nameThai": "พอร์ทัลฝึกอบรมธุรกิจ",
+    "language": "语言",
+    "back": "返回",
+    "home": "首页"
+  },
+  "home": {
+    "title": "泰国商业培训与银行验证门户",
+    "description": "为贵公司的银行账户验证做好准备：研读公司的 DBD 登记证明，通过业务知识测验，并与模拟银行专员进行银行准备面试。"
+  },
+  "auth": {
+    "title": "登录",
+    "hint": "请使用管理员提供的登录 ID 和密码。",
+    "loginId": "登录ID",
+    "password": "密码",
+    "submit": "登录",
+    "invalidCredentials": "登录ID或密码不正确。",
+    "accountDisabled": "此账户已被停用，请联系管理员。",
+    "signOut": "退出登录",
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码"
+  },
+  "dashboard": {
+    "title": "首页",
+    "welcome": "欢迎，{name}",
+    "accountLabel": "学员账户",
+    "mobileIntro": "请按顺序完成培训。",
+    "actionHints": {
+      "study": "了解您的公司",
+      "nameCard": "查看并下载名片",
+      "exam": "测试您的知识",
+      "interview": "练习银行面试"
+    },
+    "noCompany": "尚未为您分配公司，请联系管理员。",
+    "company": {
+      "title": "您的公司",
+      "name": "公司",
+      "juristicId": "法人注册号",
+      "registeredCapital": "注册资本",
+      "registeredDate": "注册日期",
+      "baht": "泰铢",
+      "address": "总部",
+      "directors": "董事",
+      "issuedOn": "证书签发日期",
+      "openCertificate": "打开证书（PDF）",
+      "viewRecord": "查看公司资料",
+      "natureOfBusiness": "公司业务",
+      "productsServices": "产品/服务",
+      "shareholders": "股东",
+      "shares": "股",
+      "businessObjectives": "业务目标",
+      "businessActivities": "业务活动（共 {count} 项）",
+      "itemCount": "{count} 项",
+      "website": "网站",
+      "facebook": "Facebook",
+      "tag": "DBD 记录"
+    },
+    "appointment": {
+      "available": "您的经理将预约日期。",
+      "booked": "已预约：{date} 与 {manager}"
+    },
+    "hero": {
+      "kicker": "银行身份验证准备"
+    },
+    "next": {
+      "study": "下一步是学习资料。请先阅读关于贵公司的学习卡片，再参加业务知识测验。",
+      "quiz": "下一步是练习测验，帮助你了解业务知识测验前需要复习的内容。",
+      "exam": "下一步是业务知识测验。通过后即可解锁银行准备面试。",
+      "nameCard": "下一步是名片。请在银行准备面试前创建名片。",
+      "interview": "下一步是银行准备面试。面试官会用泰语询问贵公司的情况。",
+      "appointment": "你已准备好。下一步是预约银行。",
+      "done": "你已完成所有步骤，做得好。"
+    },
+    "cta": {
+      "open": "前往{step}",
+      "lastResult": "查看上次结果"
+    },
+    "progress": {
+      "ring": "已完成 {total} 步中的 {done} 步",
+      "stepsDone": "已完成步骤",
+      "noExam": "尚未参加",
+      "quiz": "业务知识测验",
+      "interview": "银行准备面试",
+      "passMarkNote": "及格线 {mark}",
+      "interviewStatus": {
+        "done": "已准备好",
+        "in_progress": "练习中",
+        "available": "尚未开始",
+        "pending": "尚未开始",
+        "locked": "通过测验后开放"
+      }
+    },
+    "steps": {
+      "title": "你的步骤",
+      "hint": "请按顺序完成"
+    }
+  },
+  "admin": {
+    "title": "栏目",
+    "nav": {
+      "users": "创建学员与DBD",
+      "questions": "题库",
+      "interviews": "银行准备面试",
+      "appointments": "银行预约",
+      "notifications": "通知",
+      "settings": "策略设置",
+      "managers": "经理",
+      "learners": "学员记录",
+      "businessCategories": "业务类别",
+      "exceptions": "例外"
+    },
+    "users": {
+      "title": "创建学员与DBD",
+      "new": "创建学员",
+      "loginId": "登录ID",
+      "password": "初始密码",
+      "newPassword": "新密码",
+      "displayName": "显示名称",
+      "role": "角色",
+      "status": "状态",
+      "create": "创建用户",
+      "resetPassword": "重置密码",
+      "passwordUpdated": "密码已更新",
+      "disable": "停用账户",
+      "enable": "启用账户",
+      "progression": "进度",
+      "company": "公司（学员使用的 DBD 记录）",
+      "unconfirmedCompany": "{name} — 尚未确认（{status}）",
+      "noConfirmedCompany": "尚无已确认的 DBD 记录，请先确认公司记录再创建学员。",
+      "untitledCompany": "（公司名称缺失）",
+      "createdFor": "已创建 {loginId} 并分配给 {company}",
+      "team": "团队",
+      "chooseTeam": "属于哪个团队？",
+      "noManager": "请先创建经理——每位学员都属于某个团队。",
+      "appointment": "预约",
+      "contact": {
+        "title": "联系方式",
+        "phone": "电话号码",
+        "contactEmail": "电子邮箱",
+        "forCard": "（用于名片）",
+        "website": "网站",
+        "facebookPage": "Facebook主页",
+        "optional": "（选填）",
+        "facebookPlaceholder": "主页名称或链接",
+        "save": "保存联系方式",
+        "saved": "已保存",
+        "errors": {
+          "phone": "请输入泰国手机号码，例如 081-234-5678",
+          "contactEmail": "请输入有效的电子邮箱",
+          "website": "请输入网址，例如 example.co.th",
+          "facebookPage": "请输入主页名称或 facebook.com 链接"
+        },
+        "emailPlaceholder": "name@example.com"
+      },
+      "version": {
+        "title": "培训版本",
+        "pinned": "当前在版本 {n}",
+        "none": "尚未固定版本——公司信息尚未有版本。",
+        "newer": "版本 {n} 更新。",
+        "current": "这已是公司的当前版本。",
+        "move": "移到版本 {n}",
+        "moveHint": "从现在起，学员将按此版本学习和评估。练习测验、业务知识测验或银行准备面试进行中时无法移动。",
+        "roleConfirmed": "角色已于 {date} 确认",
+        "roleUnconfirmed": "角色尚无姓名：请在上方从 DBD 文件中的人员里选择学员。有了姓名后会自动确认。",
+        "messages": {
+          "moved": "已移到版本 {n}。"
+        },
+        "errors": {
+          "evaluation-in-progress": "练习测验、业务知识测验或银行准备面试正在进行中，请在结束后重试。",
+          "not-active": "这不是公司的当前版本。",
+          "other-record": "该版本属于另一家公司。",
+          "not-found": "未找到。",
+          "no-version": "公司尚无版本。"
+        }
+      },
+      "tabLearner": "学员信息",
+      "tabCompanies": "公司（DBD）",
+      "signIn": "登录信息",
+      "signInIntro": "学员首次登录时使用这些信息。",
+      "passwordPlaceholder": "至少 10 个字符",
+      "generatePassword": "生成",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "learnerSection": "学员",
+      "name": "姓名",
+      "namePlaceholder": "学员姓名",
+      "nameCardSection": "名片信息",
+      "companyCard": "学员学习的公司",
+      "chooseConfirmedCompany": "选择已确认的公司…",
+      "notListed": "没有列出？",
+      "addInCompanies": "在“公司（DBD）”中添加",
+      "checklist": {
+        "title": "创建前请确认",
+        "team": "已选择团队",
+        "company": "已选择公司",
+        "password": "密码不少于 10 个字符",
+        "name": "全名",
+        "contact": "电话和邮箱",
+        "done": "已完成",
+        "todo": "待完成"
+      },
+      "createLearner": "创建学员",
+      "takenCompany": "{name} — 已有学员",
+      "noFreeCompany": "所有已确认的公司都已有学员，请在“公司（DBD）”中添加公司。",
+      "companyTaken": "该公司已有学员。每家公司只能有一名学员。"
+    },
+    "learners": {
+      "title": "学员记录",
+      "intro": "您团队正在培训的所有学员：公司、业务知识测验与银行准备面试结果以及预约。如需添加学员，请前往",
+      "toCreate": "创建学员与DBD",
+      "empty": "暂无学员。",
+      "readyToAssign": "可分配公司",
+      "deleteLearner": "删除学员",
+      "deleteLearnerConfirm": "确定删除学员 {loginId} 吗？其账户和培训记录将被永久删除。",
+      "backToRecord": "← 学员记录",
+      "appointment": {
+        "book": "预约日期",
+        "change": "更改日期",
+        "needsQuiz": "测验尚未通过",
+        "needsInterview": "面试尚未准备就绪"
+      },
+      "columns": {
+        "loginId": "登录ID",
+        "company": "公司名称",
+        "issuedOn": "DBD签发日期",
+        "mcq": "业务知识测验",
+        "chatbot": "银行准备面试",
+        "appointment": "预约",
+        "actions": "操作"
+      },
+      "results": {
+        "pass": "通过",
+        "retest": "需重测",
+        "fail": "未通过",
+        "in_progress": "进行中",
+        "abandoned": "已中止"
+      },
+      "history": {
+        "attempt": "次数",
+        "date": "日期",
+        "result": "结果"
+      },
+      "mcq": {
+        "title": "业务知识测验记录",
+        "empty": "暂无业务知识测验记录。",
+        "score": "得分",
+        "review": "查看答题",
+        "reviewTitle": "业务知识测验 第{no}次",
+        "reviewHeading": "题目与答案",
+        "backToHistory": "← 业务知识测验记录"
+      },
+      "chatbot": {
+        "title": "银行准备面试记录",
+        "empty": "暂无银行准备面试记录。",
+        "review": "查看对话",
+        "backToHistory": "← 银行准备面试记录"
+      }
+    },
+    "createDbd": {
+      "title": "创建DBD",
+      "intro": "上传公司 zip 文件（DBD 文件包、发票、合同，以及含 Facebook 主页和网站链接的文件），或只上传 DBD 的 PDF。系统会在后台读取全部内容（1–3 分钟）：DBD 信息，以及根据发票计算的财务数字。信息齐全后，公司会自动确认，并可分配给学员。",
+      "introNoReader": "上传公司 zip 文件或 DBD 的 PDF。此处未设置自动读取，请之后打开公司页面填写并确认。",
+      "documents": "公司 zip 文件，或 DBD 的 PDF",
+      "packPreview": {
+        "title": "在 {name} 中找到",
+        "pack": "DBD 文件包：{count} 个文件",
+        "invoices": "{count, plural, =0 {发票：无} other {发票：# 张}}",
+        "agreements": "{count, plural, =0 {合同：无} other {合同：# 份（仅保存，不读取）}}",
+        "facebook": "Facebook：{page}",
+        "website": "网站：{site}",
+        "none": "无",
+        "ignored": "未使用的其他文件：{count} 个"
+      },
+      "submit": "创建并分析",
+      "byHand": "或手动录入公司信息",
+      "answersInvalid": "请检查以下信息：{fields}",
+      "created": "已上传。系统正在读取文件——公司已列在下方，信息齐全后将自动确认。",
+      "createdNoReader": "已上传。请打开下方的公司页面填写并确认。",
+      "companies": "公司（DBD）",
+      "noCompanies": "暂无公司。",
+      "unnamed": "（名称尚未读取）",
+      "statuses": {
+        "confirmed_auto": "已自动确认",
+        "confirmed": "已确认",
+        "reading": "正在读取文件…",
+        "unread": "无法读取",
+        "attention": "需要处理"
+      },
+      "companiesIntro": "每位学员学习一家公司的 DBD 记录——包括学习资料、题目和银行预约日期。只有已确认的公司才能分配给学员。",
+      "search": "搜索名称或 13 位注册号",
+      "noMatch": "没有与“{query}”匹配的公司。",
+      "addCompany": "添加未列出的公司",
+      "addCompanyHint": "上传其 DBD 文件——系统会在 1–3 分钟内自动检查。",
+      "closeAdd": "关闭",
+      "columns": {
+        "company": "公司（泰文名称）",
+        "juristicId": "法人注册号",
+        "issuedOn": "证书签发日期",
+        "team": "团队",
+        "status": "状态",
+        "learner": "学员",
+        "actions": "操作"
+      },
+      "assignLearner": "分配学员",
+      "deleteCompany": "删除公司",
+      "deleteCompanyConfirm": "确定删除 {name} 吗？学员账户将保留，并可分配给其他公司。",
+      "learnerOtherTeam": "其他团队的学员",
+      "learnerAfterConfirm": "确认后可分配"
+    },
+    "loginIdField": {
+      "label": "登录ID",
+      "hint": "1位字母加2位数字，例如 A12。系统已填入一个可用代码——可直接使用、按 ↻ 换一个，或自行输入。",
+      "suggest": "换一个可用代码",
+      "checking": "正在检查…",
+      "available": "可以使用",
+      "taken": "此登录ID已被使用，请另选一个",
+      "invalid": "请使用1位字母加2位数字，例如 A12",
+      "noTeam": "该团队无法添加新学员",
+      "chooseTeam": "请先选择团队",
+      "hintLearner": "2位字母加2位数字，例如 DA42。系统已填入一个可用代码——可直接使用、按 ↻ 换一个，或自行输入。",
+      "invalidLearner": "请使用2位字母加2位数字，例如 DA42",
+      "availableKeep": "✓ 可以使用——直接使用、按 ↻ 换一个，或自行输入"
+    },
+    "dbd": {
+      "title": "DBD 记录",
+      "new": "新建 DBD 记录",
+      "untitled": "（尚无公司名称）",
+      "save": "保存",
+      "saved": "已保存",
+      "status": "状态",
+      "dateHint": "按证明上的写法，例如 9 เมษายน 2569 或 09/04/2569",
+      "directorsHint": "每行一位董事：泰文名 | 英文名",
+      "documentMissing": "尚未上传证书 PDF",
+      "documentUploaded": "证书 PDF 已上传",
+      "upload": "上传 PDF",
+      "uploaded": "已上传",
+      "errors": {
+        "no-file": "请选择 PDF 文件",
+        "upload-failed": "文件上传失败（连接中断或不是 PDF），请重试。",
+        "invalid-file": "仅接受 30 MB 以内的 PDF 文件（最多 40 个）",
+        "no-document": "zip 文件中没有 PDF，请放入 DBD 文件包。",
+        "too-many-files": "zip 文件中的文档超过 40 个，请移除一部分。",
+        "file-too-large": "zip 中有文件超过 30 MB，请缩小后重试。",
+        "zip-too-large": "zip 文件总计超过 200 MB，请移除部分文件。",
+        "cannot-open": "无法打开此 zip 文件，请重新打包后再试。",
+        "answers-required": "无法保存：该记录已确认，需先补全联系方式与业务信息（见下方）。"
+      },
+      "fields": {
+        "companyNameTh": "公司名称（泰文）",
+        "companyNameEn": "公司名称（英文）",
+        "juristicId": "法人注册号（13 位）",
+        "certificateNo": "证书编号",
+        "documentRef": "文件参考号",
+        "registeredOn": "注册日期",
+        "issuedOn": "证书签发日期",
+        "registeredCapital": "注册资本（泰铢）",
+        "headOfficeAddress": "总部地址",
+        "signingAuthority": "签署权限",
+        "objectivesCount": "经营目的数量",
+        "issuingOffice": "签发机构",
+        "registrarName": "登记官",
+        "directors": "董事",
+        "province": "府",
+        "objectives": "经营目的",
+        "businessCategories": "业务类别",
+        "totalShares": "股份总数",
+        "parValue": "每股面值（泰铢）",
+        "paidUpCapital": "实缴资本（泰铢）",
+        "shareType": "股份类型",
+        "shareholders": "股东",
+        "promoters": "发起人"
+      },
+      "extract": "从 PDF 提取",
+      "extracting": "提取中…",
+      "extracted": "提取完成 — 请检查下方建议值，然后保存并确认。",
+      "extractHint": "重新读取已上传的注册证明，只填写仍为空的字段。",
+      "extractionNotConfigured": "未配置 AI 提取（请设置 ANTHROPIC_API_KEY）。",
+      "reviewSuggestions": "证书中的建议值显示在仍为空的字段中。请逐项核对（尤其是高亮字段），然后保存并确认。",
+      "suggestedFromDocument": "来自文件的建议（置信度 {confidence}%）",
+      "lowConfidenceHint": "置信度较低，请核对",
+      "extractErrors": {
+        "not_configured": "未配置 AI 提取。",
+        "provider": "提取服务失败，请稍后重试。",
+        "invalid_output": "提取结果不可用。",
+        "no_document": "请先上传证书 PDF。",
+        "not_allowed": "此记录无法提取。",
+        "too_large": "文件总大小超过 30 MB，请拆分或压缩"
+      },
+      "uploadFirstTitle": "上传 DBD 注册证明（泰文）",
+      "uploadFirstHint": "选择泰文 PDF（可多选：注册证明、经营目的表、บอจ.5、บอจ.2）。系统会读取文件并自动填写三个级别的信息；然后由您检查、必要时修改并确认。",
+      "uploadFirstNoExtraction": "尚未配置文档读取 AI（需要 ANTHROPIC_API_KEY）。文件会被保存，请在下方自行填写。",
+      "uploadAndFill": "上传并自动填写",
+      "uploadingAndReading": "正在上传…",
+      "uploadFillsHint": "可继续上传更多 DBD 文件（注册证明、经营目的表、บอจ.5、บอจ.2）；系统会读取所有文件，只填写仍为空的字段。",
+      "orEnterManually": "或不使用文件，手动填写",
+      "reExtract": "重新读取文件",
+      "uploadedButNotRead": "文件已上传，但无法读取（{reason}）。请自行填写或重新读取。",
+      "levels": {
+        "identity": "第 1 级 — 公司信息（注册证明）",
+        "business": "第 2 级 — 业务信息（经营目的 / 股东名册 บอจ.5 / 备忘录 บอจ.2）",
+        "document": "第 3 级 — DBD 文件信息",
+        "interview": "第 4 级 — 银行面谈答案（DBD 文件中没有的信息）",
+        "answers": "联系与业务",
+        "answersIntro": "DBD 文件无法提供的答案来自发票，或对每家公司都相同；无需填写。"
+      },
+      "documentTypes": {
+        "certificate": "注册证明",
+        "objectives_sheet": "经营目的表",
+        "shareholder_list": "股东名册（บอจ.5）",
+        "memorandum": "公司备忘录（บอจ.2）",
+        "articles": "公司章程",
+        "other": "其他",
+        "invoice": "发票",
+        "agreement": "合同",
+        "unknown": "尚未分类"
+      },
+      "documentGroups": {
+        "pack": "DBD 文件包",
+        "invoice": "发票",
+        "agreement": "合同（仅保存，不读取）"
+      },
+      "invoices": {
+        "readAgain": "重新读取发票",
+        "queued": "系统正在后台读取发票（约 1–3 分钟），刷新页面查看数字。",
+        "failed": "发票读取失败（{reason}），请点击“重新读取发票”。",
+        "notRead": "尚未读取",
+        "row": "{date} · {total}",
+        "setAside": "请检查此发票：{reason}",
+        "reasons": {
+          "not_an_invoice": "不是发票",
+          "no_date": "未印日期",
+          "no_total": "未印总额",
+          "not_baht": "非泰铢",
+          "items_do_not_add_up": "各项金额之和与总额不符"
+        },
+        "few": "根据 {count} 张发票估算；多添加几张可使数字更稳定。",
+        "none": "尚无发票。请在“文件”标签页上传，系统会据此计算下方数字；在此之前可在此处填写两个金额。"
+      },
+      "invoiceFigures": {
+        "title": "来自发票",
+        "hint": "按系统所有者的规则从发票计算得出。如需更改数字，请添加或删除发票并重新读取；此处无需填写。",
+        "monthlyRevenue": "月收入",
+        "averagePerTransaction": "平均每笔金额",
+        "transactionsPerMonth": "每月交易笔数",
+        "revenuePerDay": "每日收入",
+        "dailyRange": "最低与最高单日",
+        "itemPriceRange": "最低与最高单价",
+        "dates": "涵盖日期",
+        "used": "使用了 {count} 张发票",
+        "baht": "{amount} 泰铢",
+        "range": "{low} – {high}"
+      },
+      "links": {
+        "title": "公司网络地址",
+        "hint": "读取自 zip 中的链接文件，并印在名片上。如有需要可在此修改。",
+        "website": "网站",
+        "facebookPage": "Facebook 主页",
+        "save": "保存地址",
+        "saved": "已保存",
+        "invalid": "请输入网站地址（example.co.th）和 Facebook 主页名称或链接。"
+      },
+      "objectivesHint": "每行一条，可带序号，如 \"1. 经营…\"",
+      "onePerLine": "每行一项",
+      "shareholdersHint": "每行一人：姓名 | 国籍 | 股数",
+      "promotersHint": "每行一人：姓名 | 国籍",
+      "documents": "已上传的文件",
+      "removeDocument": "删除",
+      "sourceDocument": "来自 {name}",
+      "sourcePage": "第 {page} 页",
+      "fileHint": "一个公司 zip 文件（DBD 文件包、发票、合同、链接文件）或多个 PDF；每个文件不超过 30 MB，总计不超过 40 个文件、200 MB",
+      "interviewHint": "仅需填写任何文件都无法回答的问题。银行会问的其他问题已在下方自动填好，无需输入。",
+      "amountHint": "请用数字填写金额，例如 300,000。每月交易笔数由这两个金额计算得出。",
+      "standardAnswers": {
+        "title": "自动填写",
+        "hint": "学员将学习这些答案。它们来自 DBD、来自发票，或对每家公司都相同；无需填写。",
+        "pending": "填写其依据的答案后自动生成"
+      },
+      "interviewFields": {
+        "contact_email": "公司电子邮箱",
+        "contact_phone": "公司电话号码",
+        "nature_of_business": "公司主要做什么业务（简要说明）",
+        "products_services": "计划销售的产品或服务",
+        "account_purpose": "公司为什么需要开设银行账户？",
+        "monthly_volume": "预计每月资金进出金额",
+        "clients_location": "主要客户来自哪里？",
+        "suppliers_location": "主要供应商来自哪里？",
+        "source_of_funds": "资金来源",
+        "business_address": "实际经营地址",
+        "operations_status": "公司是否已开始经营？",
+        "business_purpose": "公司为何成立？",
+        "main_clients": "主要客户",
+        "client_origin": "客户从哪里、如何获得",
+        "main_suppliers": "主要供应商",
+        "monthly_revenue": "月收入",
+        "revenue_basis": "收入数字的依据",
+        "average_transaction": "平均每笔交易金额",
+        "monthly_transactions": "每月交易笔数",
+        "first_incoming_funds": "首笔入账资金从哪里来、用途是什么",
+        "promptpay_qr_purpose": "公司为何需要 PromptPay / QR",
+        "customer_examples": "真实客户示例",
+        "customer_profile": "客户类型（类别，国内或国外）",
+        "transaction_details": "以往销售如何付款（方式、一般金额）"
+      },
+      "saveInterview": "保存面谈答案",
+      "index": {
+        "label": "搜索索引",
+        "status": {
+          "none": "未建索引",
+          "queued": "排队中",
+          "indexing": "正在读取 {done}/{total} 页",
+          "ready": "就绪（{total} 页）",
+          "failed": "失败",
+          "skipped": "已停用"
+        },
+        "retry": "重试",
+        "reindex": "重新建索引",
+        "hint": "系统在后台每次读取 5 页（每轮约 1 分钟），刷新页面查看状态。",
+        "start": "建立索引",
+        "removeUnavailable": "暂时无法删除文件：搜索索引（Pinecone）无响应，为避免索引中残留数据，文件已保留。请稍后重试。"
+      },
+      "ask": {
+        "title": "询问文件",
+        "hint": "仅根据已上传的文件内容回答并标注页码，可用于核对读取结果。",
+        "placeholder": "例如：注册资本是多少？/ 股东有哪些？",
+        "submit": "提问",
+        "asking": "搜索中…",
+        "passages": "文件原文",
+        "source": "{document} · 第 {page} 页",
+        "errors": {
+          "empty": "请先输入问题",
+          "not_indexed": "文件尚未建索引，请等待状态变为“就绪”",
+          "unavailable": "搜索已停用（未配置 VECTOR_PROVIDER）"
+        },
+        "noAnswer": "模型未返回答案，仅显示找到的原文"
+      },
+      "deferredFill": "文件页数较多，系统正在后台分段读取；索引状态为“就绪”后字段会自动填入（刷新页面查看）。",
+      "readingQueued": "系统正在后台读取文件（约 1–3 分钟），请刷新页面查看已填入的字段。",
+      "readingFailed": "无法读取文件（{reason}）。请自行填写或点击“重新读取文件”。",
+      "interviewGroups": {
+        "contact": "公司联系方式",
+        "business": "公司的业务",
+        "bank": "银行的其他问题",
+        "customers": "客户与供应商",
+        "money": "资金与交易",
+        "moneyTyped": "资金与交易（手动填写，尚无发票）",
+        "legacy": "以前的答案"
+      },
+      "team": "团队",
+      "legacyHint": "新评估之前填写的答案，仍会显示在银行面谈学习卡片上。留空时沿用上面的回答。",
+      "address": {
+        "title": "注册地址（按泰国行政区划核对）",
+        "status": {
+          "resolved": "已解析到区/乡",
+          "partial": "部分解析——请核对文件上的地址",
+          "unresolved": "未能解析"
+        },
+        "issues": {
+          "no_address": "尚无注册地址",
+          "province_not_found": "找不到该府",
+          "district_not_found": "在该府找不到该县/区",
+          "subdistrict_not_found": "在该县/区找不到该乡/分区",
+          "postcode_mismatch": "文件上的邮编与乡/分区不符"
+        },
+        "parts": {
+          "house_no": "门牌号",
+          "subdistrict": "乡/分区",
+          "district": "县/区",
+          "province": "府"
+        },
+        "notStoredYet": "根据文件上的地址显示，下次保存时存储。"
+      },
+      "category": {
+        "title": "业务类别",
+        "auto": "自动选择（置信度 {confidence}%）",
+        "manual": "由人员选择",
+        "unmapped": "尚无类别",
+        "errors": {
+          "no_text": "请先填写业务内容",
+          "not_configured": "自动匹配已关闭",
+          "no_categories": "类别列表为空",
+          "failed": "自动匹配失败，请手动选择或重新匹配"
+        },
+        "choose": "选择类别",
+        "none": "请选择…",
+        "set": "使用此类别",
+        "remap": "重新自动匹配"
+      },
+      "coverage": {
+        "title": "评估准备情况",
+        "introCompany": "本公司已可提问的公司层面概念：业务知识测验 29 个、银行准备面试 10 个。学员本人的概念在各学员页面检查。",
+        "introAssignment": "该学员将被问到的全部内容：业务知识测验全部 30 个概念、银行准备面试全部 11 个概念，包括其本人的概念。",
+        "mcq": "业务知识测验",
+        "interview": "银行准备面试",
+        "count": "{total} 个中已就绪 {ready} 个",
+        "perLearner": "按学员检查：{list}",
+        "allReady": "所有概念的信息都已齐全。",
+        "missingFacts": "仍缺少",
+        "missingConcepts": "等待中的概念：{list}",
+        "whatIsMissing": "缺少的信息（{count}）"
+      },
+      "facts": {
+        "company_name_th": "公司名称（泰文）",
+        "company_name_en": "公司名称（英文）",
+        "juristic_id": "法人注册号",
+        "registered_on": "注册日期",
+        "registered_capital": "注册资本",
+        "directors": "董事",
+        "signing_authority": "签字权",
+        "address": "注册地址（已解析）",
+        "shareholders": "股东（含持股数）",
+        "total_shares": "总股数",
+        "nature_of_business": "业务内容",
+        "products_services": "产品或服务",
+        "business_purpose": "公司成立原因",
+        "main_clients": "主要客户",
+        "client_origin": "客户来源",
+        "main_suppliers": "主要供应商",
+        "business_address": "实际经营地点",
+        "monthly_revenue": "月收入",
+        "revenue_basis": "收入依据",
+        "average_transaction": "平均交易额",
+        "monthly_transactions": "每月交易笔数",
+        "source_of_funds": "启动资金来源",
+        "first_incoming_funds": "首笔入账资金",
+        "account_purpose": "开户原因",
+        "promptpay_qr_purpose": "使用 PromptPay / QR 的原因",
+        "customer_examples": "客户示例",
+        "customer_profile": "客户概况",
+        "transaction_details": "交易详情",
+        "operations_started": "是否已开始经营？",
+        "has_existing_customers": "是否已有客户？",
+        "has_completed_transactions": "是否已有成交？",
+        "has_regular_suppliers": "是否有固定供应商？",
+        "learner_is_shareholder": "学员是否为股东？",
+        "business_category": "业务类别",
+        "holder_name": "学员在 DBD 文件中的姓名",
+        "position": "学员职位",
+        "director_count": "董事人数",
+        "shareholder_count": "股东人数",
+        "my_shares": "学员持股数",
+        "my_share_percent": "学员持股比例"
+      },
+      "confirmedAutomatically": "已自动确认：所有信息均已从文件中读取，且已写出业务性质。",
+      "versions": {
+        "title": "培训版本",
+        "intro": "学员学习和评估所依据的是这些信息的冻结副本。改变信息的保存会生成新版本；在人员操作之前，没有学员会被移到新版本。",
+        "none": "尚无版本——没有阻止项时即生效（见例外）。",
+        "active": "版本 {n}——自 {date} 起生效",
+        "complete": "公司层面已完整：业务知识测验 29 个概念和银行准备面试 10 个概念全部可解析。",
+        "incomplete": "尚不完整——仍缺少：",
+        "behind": "{count, plural, =0 {所有学员都在此版本。} other {# 名学员仍在旧版本。}}",
+        "history": "历史",
+        "status": {
+          "active": "生效",
+          "superseded": "已替代",
+          "draft": "草稿"
+        }
+      },
+      "recheck": "重新检查",
+      "acceptance": {
+        "accepted": "由 {name} 接受",
+        "acceptedAuto": "自动接受：读取无问题且已有业务性质。",
+        "waiting": "{count} 个例外阻止接受",
+        "blocked": "尚未接受——请处理例外。"
+      },
+      "exceptions": {
+        "title": "例外",
+        "intro": "校验发现的问题。没有任何阻止接受的例外时记录即被接受；没有任何阻止版本的例外时培训版本即生效。备注仅供复核。",
+        "none": "无待处理例外：记录无问题。",
+        "groups": {
+          "acceptance": "阻止接受",
+          "version": "阻止培训版本",
+          "none": "待复核"
+        },
+        "kinds": {
+          "missing": "缺少",
+          "low_confidence": "置信度低",
+          "conflict": "不一致",
+          "invalid": "无效",
+          "geo_mismatch": "地址无法解析",
+          "category_review": "类别待复核",
+          "render_failure": "题目无法生成"
+        },
+        "rules": {
+          "check_digit": "校验位不匹配（{value}）。",
+          "in_future": "日期在未来（{value}）。",
+          "before_registration": "签发日（{value}）早于注册日（{registered_on}）。",
+          "shares_over_total": "股东持股合计 {sum}，超过总数 {total}。",
+          "shares_under_total": "股东持股合计 {sum}，总数 {total}；名单可能不完整。",
+          "percent_over_100": "比例合计 {percent}%。",
+          "percent_under_100": "比例合计 {percent}%；名单可能不完整。",
+          "shares_times_par": "股数 × 面值为 {expected}，注册资本为 {actual}。",
+          "count_vs_list": "证明记载 {count} 项经营目的，列出 {listed} 项。",
+          "names_not_directors": "签字权提及的人不在董事名单中。",
+          "confidence": "读取置信度 {confidence}%（第 {page} 页）。",
+          "geo": "{issues}",
+          "missing": "所需概念：{concepts}",
+          "category": "最接近 {candidate}，置信度 {confidence}%；请在类别面板选择或重新匹配。",
+          "render_failure": "商业知识测验没有可用于向该公司提问此概念的已批准题目，学员因此无法开始测验。请检查该信息是否已在记录中，以及题库是否有此概念的已批准题目；测验可以开始后，此提示会自动关闭。"
+        },
+        "confirmValue": "该值正确",
+        "dismiss": "不适用",
+        "note": "备注（标记不适用时必填）",
+        "errors": {
+          "not-dismissable": "缺少的信息需要补充，不能忽略。",
+          "already-resolved": "已处理。",
+          "note-required": "请先填写备注。",
+          "not-found": "未找到。"
+        }
+      },
+      "answersMissing": "该记录被接受前还需填写：{fields}",
+      "tabs": {
+        "details": "公司信息",
+        "interview": "银行面谈",
+        "documents": "文件",
+        "exceptions": "例外"
+      },
+      "checks": {
+        "title": "使用前需完成",
+        "documents": "文件已读取",
+        "missing": "信息完整",
+        "problems": "没有冲突或错误",
+        "accepted": "已接受",
+        "done": "已完成",
+        "todo": "待完成",
+        "openExceptions": "查看例外"
+      },
+      "addDocuments": "添加文件",
+      "teamChip": "团队 {code}"
+    },
+    "assignment": {
+      "title": "已分配公司",
+      "choose": "选择已确认的 DBD 记录…",
+      "assign": "分配",
+      "deactivate": "取消分配",
+      "availableFrom": "银行验证自 {date} 起可用",
+      "eligibilityPending": "资格日期待定 — 缺少证书签发日期",
+      "errors": {
+        "no-record": "请选择记录",
+        "already-assigned": "该学员已有生效的分配",
+        "not-confirmed": "仅可分配已确认的记录",
+        "company-taken": "该公司已有学员。每家公司只能有一名学员。"
+      }
+    },
+    "questions": {
+      "title": "题库",
+      "new": "新建题目",
+      "key": "键",
+      "kind": "类型",
+      "pools": "用于",
+      "poolQuiz": "练习测验",
+      "poolExam": "业务知识测验",
+      "active": "启用",
+      "dependencies": "使用的公司字段",
+      "status": "状态",
+      "languages": "语言",
+      "setStatus": "设置状态",
+      "approvalHint": "批准需要泰文、英文和中文版本。仅提供已批准且启用的题目。",
+      "save": "保存",
+      "saved": "已保存",
+      "missing": "尚未编写",
+      "prompt": "题目",
+      "option": "选项 {key}",
+      "correctKey": "正确选项",
+      "explanation": "解释（答错时显示）",
+      "ttsEnabled": "启用泰语朗读",
+      "saveLanguage": "保存此语言",
+      "placeholderHint": "可用的占位符（干扰项变体写在竖线后）：",
+      "generate": "用 AI 生成",
+      "all": "全部",
+      "batch": "生成批次",
+      "filter": "筛选",
+      "preview": "题目",
+      "approve": "批准",
+      "batchSummary": "本批次生成 {produced} 题，剔除 {rejected} 题（服务商：{provider}）",
+      "fillMissing": "用 AI 补全缺少的语言",
+      "filling": "翻译中…",
+      "fillMissingHint": "缺少：{languages}。将从现有语言翻译，保留 '{...}' 变量和选项不变。",
+      "fillDone": "已添加 {count} 种语言，请审核后再批准。",
+      "fillErrors": {
+        "not_configured": "尚未配置 AI（需要 ANTHROPIC_API_KEY）",
+        "provider": "AI 服务商返回错误，请重试。",
+        "invalid_output": "AI 返回的结果无效，请重试。",
+        "no_material": "请先至少填写一种语言"
+      },
+      "sources": "来源",
+      "sourceRef": "{document} · 第 {page} 页"
+    },
+    "notifications": {
+      "title": "通知",
+      "event": "事件",
+      "channel": "渠道",
+      "destination": "目标",
+      "status": "状态",
+      "attempts": "尝试次数",
+      "lastError": "最近错误",
+      "requeue": "重新排队"
+    },
+    "settings": {
+      "title": "策略设置",
+      "intro": "这些值决定系统的业务规则（policy_config）。每次修改都会记录操作的所有者。",
+      "save": "保存",
+      "saved": "已保存",
+      "yes": "是",
+      "no": "否",
+      "unlimited": "不限",
+      "listHint": "每行一个",
+      "updatedAt": "最后修改 {at}",
+      "options": {
+        "exam_pass_rule": {
+          "any": "任一次通过即可",
+          "latest": "最近一次必须通过"
+        },
+        "study_completion_tracking": {
+          "viewed": "打开即算",
+          "completed": "标记完成后才算"
+        }
+      },
+      "errors": {
+        "required": "必须填写",
+        "not_a_number": "必须是数字",
+        "unknown_key": "未知设置"
+      },
+      "keys": {
+        "bank_eligibility_days": {
+          "label": "银行阶段开放前的天数",
+          "help": "从公司注册证明签发日起计算（BR-002，默认 45 天）。修改后会重新计算所有学员的日期。"
+        },
+        "bank_access_expiry_days": {
+          "label": "银行阶段开放的天数",
+          "help": "从开放日起计算；留空 = 永不过期"
+        },
+        "quiz_question_count": {
+          "label": "每次练习测验题数",
+          "help": "每次尝试"
+        },
+        "exam_max_attempts": {
+          "label": "业务知识测验最多次数",
+          "help": "留空 = 不限"
+        },
+        "exam_retry_wait_hours": {
+          "label": "重新参加业务知识测验前需等待的小时数",
+          "help": "0 = 可立即重新参加"
+        },
+        "exam_pass_rule": {
+          "label": "业务知识测验通过规则",
+          "help": "以哪次结果判定通过状态"
+        },
+        "require_exam_pass_for_name_card": {
+          "label": "制作名片需先通过业务知识测验",
+          "help": "开启后，学员须先通过业务知识测验才能制作名片"
+        },
+        "require_exam_pass_for_interview": {
+          "label": "银行准备面试前须通过业务知识测验",
+          "help": "开启后，学员必须先通过业务知识测验才能开始银行准备面试。"
+        },
+        "telegram_admin_chat_ids": {
+          "label": "所有者 Telegram 聊天 ID",
+          "help": "每行一个"
+        },
+        "email_admin_recipients": {
+          "label": "所有者通知邮箱",
+          "help": "每行一个"
+        },
+        "study_completion_tracking": {
+          "label": "学习完成判定",
+          "help": "打开即算完成，或学员标记完成后才算"
+        },
+        "appointment_hours_start": {
+          "label": "预约开始时间（小时）",
+          "help": "每天可预约的第一个小时，曼谷时间，例如 9"
+        },
+        "appointment_hours_end": {
+          "label": "预约结束时间（小时）",
+          "help": "停止预约的小时，曼谷时间，例如 16（最后一个时段在此之前结束）"
+        },
+        "appointment_slot_minutes": {
+          "label": "时段长度（分钟）",
+          "help": "每个时段的时长，例如 60"
+        },
+        "appointment_notice_hours": {
+          "label": "提前通知（小时）",
+          "help": "学员最迟可在时段前多少小时预约或取消"
+        },
+        "appointment_holidays": {
+          "label": "银行假日",
+          "help": "泰国央行公布的公共假日，每行一个 ISO 日期（YYYY-MM-DD），含补假；每年 12 月补充下一年的列表"
+        },
+        "training_auto_accept_confidence_percent": {
+          "label": "培训信息：视为确定的置信度（%）",
+          "help": "提取结果达到或高于此值不会提示；低于此值会列为待复核的例外。"
+        },
+        "training_review_confidence_percent": {
+          "label": "培训信息：低于此置信度须人工确认（%）",
+          "help": "低于此值的例外会阻止记录被接受，直到有人确认该值。"
+        },
+        "mcq_pass_score": {
+          "label": "商业知识测验：通过所需答对题数（共 30 题）",
+          "help": "九项公司关键信息中任何一项答错也视为未通过。仅适用于更改后开始的测验。"
+        },
+        "mcq_retest_score": {
+          "label": "商业知识测验：可重测的答对题数（共 30 题）",
+          "help": "从该分数到比通过分数少一题为“需重测”；低于该分数为“未通过”。"
+        }
+      }
+    },
+    "generate": {
+      "title": "用 AI 生成题目",
+      "back": "题库",
+      "intro": "题目以 DBD 公司注册证明为依据。选择参考证明并设置数量，模型会生成含泰文、英文和中文的选择题，并使用变量让每位学员回答自己公司的信息。所有题目在您审核并批准前均为草稿。",
+      "fakeNotice": "测试模式：未配置 ANTHROPIC_API_KEY，将生成示例题目。",
+      "material": "素材来源",
+      "materialHint": "可选的补充素材（用于常识题）：勾选学习卡片、粘贴文本或上传文件。",
+      "pastedText": "粘贴文本",
+      "pastedHint": "粘贴笔记、课程内容或现有题目草稿…",
+      "file": "上传文件",
+      "fileHint": "PDF、DOCX、TXT 或 MD（最大 20 MB）",
+      "count": "题目数量",
+      "templateCount": "其中询问学员证明信息的题数",
+      "templateHint": "默认全部；其余题目考查对证明文件本身的理解。",
+      "difficulty": "难度",
+      "difficultyEasy": "简单",
+      "difficultyMedium": "中等",
+      "difficultyHard": "困难",
+      "pools": "用于",
+      "poolQuiz": "练习测验",
+      "poolExam": "业务知识测验",
+      "focus": "侧重点（可选）",
+      "focusHint": "例如：侧重银行工作人员常问的问题",
+      "generate": "生成题目",
+      "generating": "正在生成…（约 1–3 分钟，请勿关闭页面）",
+      "errors": {
+        "not_configured": "尚未配置 AI（需要 ANTHROPIC_API_KEY），请联系管理员。",
+        "provider": "AI 服务商返回错误，请重试。",
+        "invalid_output": "AI 返回的结果无效，请重试。",
+        "no_material": "请选择学习卡片、粘贴文本或上传文件",
+        "pools_required": "至少选择一个用途",
+        "file_too_large": "文件超过 20 MB",
+        "nothing_produced": "没有题目通过校验，请重试。"
+      },
+      "reference": "参考的 DBD 注册证明",
+      "referenceNone": "通用证明结构（不指定公司）",
+      "referenceHint": "AI 会阅读该证明的各项内容（以及已上传的 PDF）来设计贴合真实信息的题目，但绝不会把其中的值写入题目——所有题目都使用变量，让每位学员回答自己公司的信息。"
+    },
+    "role": {
+      "title": "学员在公司中的角色",
+      "hint": "银行会问“您持有多少股份？”“您担任什么职位？”。姓名取自 DBD 文件，其余答案对所有学员相同。",
+      "holderName": "DBD 文件中的姓名",
+      "holderHint": "必须是 DBD 文件中印有的姓名。公司只有一位董事时会自动填写；只有当学员是其他人时才需另行选择。",
+      "position": "公司职位",
+      "responsibilities": "主要职责",
+      "relationship": "与其他股东的关系",
+      "save": "保存角色",
+      "saved": "已保存",
+      "choose": "选择人员",
+      "automatic": "已自动填写：公司唯一的董事。",
+      "fixed": "对所有学员相同",
+      "nameNotInDbd": "请选择 DBD 文件中印有的姓名。",
+      "noPeople": "尚未从文件中读取到董事或股东。"
+    },
+    "managers": {
+      "title": "经理",
+      "new": "新增经理",
+      "displayName": "负责人姓名",
+      "password": "初始密码",
+      "create": "创建经理",
+      "created": "已为 {name} 创建 {code}",
+      "code": "代码",
+      "learners": "学员",
+      "records": "公司",
+      "status": "状态",
+      "actions": "操作",
+      "disable": "停用",
+      "enable": "重新启用",
+      "resetPassword": "重置密码",
+      "passwordUpdated": "密码已更新",
+      "suspendHint": "停用经理后其无法登录，但团队中的学员仍可继续学习，公司记录对您依然可见。",
+      "empty": "暂无经理。",
+      "rename": "重命名"
+    },
+    "interviews": {
+      "title": "银行准备面试",
+      "intro": "你团队学员的每一次银行准备面试，附结论与逐题评估。",
+      "empty": "尚无面试",
+      "learner": "学员",
+      "company": "公司",
+      "started": "开始时间",
+      "status": "状态",
+      "verdict": "结论",
+      "open": "打开",
+      "detailTitle": "面试详情",
+      "summaryTitle": "面试总结",
+      "summaryIntro": "根据公司文件和学员回答生成的准备度面试结果。",
+      "overallResult": "总体结果",
+      "correctAnswers": "正确答案",
+      "readinessStatus": "准备状态",
+      "interviewDate": "面试日期",
+      "learnerId": "学员编号",
+      "transcript": "对话记录",
+      "transcriptTitle": "问答记录",
+      "transcriptIntro": "查看每个问题、学员回答以及公司文件中的预期信息。",
+      "explanation": "说明",
+      "expectedAnswer": "预期答案",
+      "unanswered": "未回答",
+      "assessments": "逐题评估",
+      "narrative": "专员总结",
+      "noVerdict": "尚无结论",
+      "back": "返回面试列表",
+      "statuses": {
+        "in_progress": "进行中",
+        "completed": "已完成",
+        "abandoned": "未完成"
+      },
+      "verdicts": {
+        "ready": "已准备好 — 可以开户",
+        "not_ready": "尚未准备好 — 暂时不能开户"
+      },
+      "assessment": {
+        "correct": "正确",
+        "partial": "部分正确",
+        "wrong": "错误",
+        "evasive": "回避",
+        "pasted": "复制粘贴",
+        "off_topic": "答非所问"
+      }
+    },
+    "appointments": {
+      "title": "银行预约",
+      "intro": "经理为已通过业务知识测验和银行准备面试的学员选择银行日期。",
+      "bookingTitle": "为学员预约",
+      "bookingIntro": "选择已准备好的学员，然后选择或更改日期；无需选择时段。",
+      "chooseLearner": "学员",
+      "choose": "选择学员",
+      "showCalendar": "显示日历",
+      "needsQuiz": "请先通过业务知识测验",
+      "needsInterview": "请先通过银行准备面试",
+      "ownerReadOnly": "只有负责该学员的经理可以预约日期。所有者可在此查看和取消预约。",
+      "upcoming": "已预约日期",
+      "prevMonth": "上个月",
+      "nextMonth": "下个月",
+      "saved": "预约日期已保存",
+      "empty": "尚无预约",
+      "day": "日期",
+      "time": "时间",
+      "learner": "学员",
+      "company": "公司",
+      "team": "团队",
+      "cancel": "取消",
+      "blocks": "已封锁时段",
+      "block": "封锁时段",
+      "unblock": "解除封锁",
+      "date": "日期",
+      "fromHour": "从（小时）",
+      "toHour": "至（小时）",
+      "reason": "原因",
+      "teamFilter": "团队",
+      "adminCalendar": "所有者日历",
+      "allTeams": "所有团队",
+      "show": "显示"
+    },
+    "navGroups": {
+      "team": "团队",
+      "content": "内容",
+      "learners": "学员",
+      "system": "系统"
+    },
+    "roles": {
+      "admin": "所有者",
+      "manager": "经理"
+    },
+    "home": {
+      "intro": "选择要管理的板块。经理只能看到自己的团队。"
+    },
+    "businessCategories": {
+      "title": "业务类别",
+      "intro": "自动匹配从此受控列表中选择，业务知识测验也从中生成业务干扰项。停用类别请将其关闭；代码永不更改。",
+      "key": "代码",
+      "keyHint": "小写字母、数字和 _；创建后不可更改。",
+      "labelTh": "泰文名称",
+      "labelEn": "英文名称",
+      "labelZh": "中文名称",
+      "sortOrder": "顺序",
+      "active": "启用",
+      "add": "添加类别",
+      "save": "保存",
+      "saved": "已保存",
+      "errors": {
+        "duplicate": "该代码已存在",
+        "invalid": "请检查代码并填写所有名称",
+        "failed": "无法保存"
+      }
+    },
+    "exceptions": {
+      "title": "例外",
+      "intro": "您负责的公司的所有待处理例外，阻止接受的排在前面。打开公司以处理。",
+      "empty": "无待处理项。",
+      "columns": {
+        "company": "公司",
+        "team": "团队",
+        "kind": "类型",
+        "field": "项目",
+        "blocks": "阻止",
+        "since": "自"
+      },
+      "blocks": {
+        "acceptance": "接受",
+        "version": "版本",
+        "none": "—"
+      },
+      "count": "{count, plural, =0 {无待处理例外} other {# 个待处理例外}}"
+    },
+    "filePicker": {
+      "choose": "选择文件",
+      "orDrop": "或拖放到此处"
+    },
+    "bank": {
+      "title": "题库",
+      "intro": "每个概念一道题，共三十个概念。每种情况都有已批准的题目版本时，该概念即就绪。",
+      "ready": "{total} 个概念中已有 {ready} 个就绪",
+      "checkCompany": "按公司检查",
+      "legacy": "早期题目",
+      "loadStarter": "添加 {count} 道示例草稿",
+      "starterHint": "三十个概念各有一道起始题目。它们以草稿形式加入，供您阅读、编辑、批准或停用。",
+      "starterLoaded": "{count, plural, =0 {没有需要添加的草稿} other {已添加 # 道草稿}}",
+      "starterFailed": "添加草稿失败，请重试。",
+      "approveDrafts": "批准 {count} 道已通过检查的草稿",
+      "approveDraftsHint": "此处计入的草稿均有泰文文本，并符合题库的全部规则。请先阅读：已批准的题目可用于向学员提问。",
+      "approveDraftsConfirm": "确认批准这 {count} 道草稿吗？之后任何一道都可以退回草稿。",
+      "approveDraftsYes": "确认批准",
+      "approveDraftsCancel": "取消",
+      "approveDraftsDone": "{count, plural, =0 {没有批准任何草稿} other {已批准 # 道草稿}}",
+      "approveDraftsFailed": "批准草稿失败，请重试。",
+      "columns": {
+        "order": "#",
+        "concept": "概念",
+        "source": "读取自",
+        "cases": "情况",
+        "variants": "题目版本"
+      },
+      "critical": "关键",
+      "caseAlways": "所有公司",
+      "caseYes": "{fact}：是",
+      "caseNo": "{fact}：否",
+      "covered": "已覆盖",
+      "uncovered": "尚无已批准的版本",
+      "counts": "已批准 {approved} · 草稿 {draft} · 已停用 {retired}",
+      "statusFacts": {
+        "operations_started": "已开始经营",
+        "has_existing_customers": "已有客户",
+        "has_completed_transactions": "已有完成的交易",
+        "has_regular_suppliers": "有固定供应商",
+        "learner_is_shareholder": "学员是股东"
+      },
+      "sources": {
+        "DBD_FACT": "DBD 资料",
+        "BUSINESS_PROFILE": "业务资料",
+        "DERIVED": "推算",
+        "ROLE": "学员的角色",
+        "KYC_POLICY": "政策"
+      },
+      "status": {
+        "draft": "草稿",
+        "approved": "已批准",
+        "retired": "已停用"
+      },
+      "recipes": {
+        "DIRECT_FACT": "原样事实",
+        "NUMERIC_VARIATION": "数值变化",
+        "COUNT_VARIATION": "数量变化",
+        "DATE_VARIATION": "日期变化",
+        "ID_MUTATION": "注册号变位",
+        "GEOGRAPHY_ALTERNATIVE": "其他地点",
+        "BUSINESS_ALTERNATIVE": "其他业务",
+        "STATIC": "固定文字",
+        "COMPOSITE_TEMPLATE": "含事实的文字"
+      },
+      "concept": {
+        "back": "题库",
+        "facts": "正确答案可用的事实",
+        "noFacts": "无：正确答案是固定的政策文字。",
+        "grammarTitle": "占位符与配方",
+        "grammar": "把事实写在花括号里。错误选项中可以这样变化事实：",
+        "allTokens": "全部占位符",
+        "variants": "题目版本",
+        "none": "还没有题目版本。",
+        "newVariant": "新建版本",
+        "columns": {
+          "key": "版本",
+          "when": "适用",
+          "prompt": "泰文题目",
+          "status": "状态"
+        }
+      },
+      "variant": {
+        "new": "新建版本",
+        "structure": "选项",
+        "correct": "正确",
+        "recipe": "配方",
+        "appliesWhen": "适用情况",
+        "thai": "泰文（据此批准）",
+        "english": "英文（参考）",
+        "chinese": "中文（参考）",
+        "prompt": "题目",
+        "option": "选项 {key}",
+        "explanation": "答错后显示的解释",
+        "inheritHint": "选项留空时，若泰文选项只含占位符，则沿用泰文选项。",
+        "save": "保存",
+        "saved": "已保存",
+        "statusTitle": "状态",
+        "approve": "批准",
+        "toDraft": "退回草稿",
+        "retire": "停用",
+        "approveHint": "按泰文文字批准。修改泰文、正确选项、配方或适用情况后，该版本会退回草稿。"
+      },
+      "issues": {
+        "unknown_concept": "未知的概念",
+        "thai_required": "必须有泰文文字",
+        "prompt_required": "{where}：题目为空",
+        "option_required": "{where}：选项为空",
+        "grammar": "{where}：{detail}",
+        "recipe_mismatch": "{where}：该文字属于“{detail}”，与所选配方不符",
+        "prompt_varies": "{where}：此处只能使用原样事实，不能使用变化值",
+        "correct_varies": "{where}：正确选项不得变化事实",
+        "correct_foreign_fact": "{where}：正确选项使用了不属于本概念的事实（{detail}）",
+        "correct_needs_fact": "{where}：正确选项必须使用本概念的一项事实",
+        "duplicate_option": "{where}：与选项 {detail} 的文字相同",
+        "applies_when_fact": "该概念没有针对这种情况的措辞",
+        "translation_placeholders": "{where}：必须保留泰文中的占位符（{detail}）",
+        "failed": "保存失败，请重试。"
+      },
+      "preview": {
+        "title": "预览",
+        "company": "公司",
+        "sample": "示例公司（虚构）",
+        "show": "显示",
+        "redraw": "重新抽取",
+        "ok": "可以向该公司提问",
+        "fail": "不能向该公司提问：{reason}",
+        "noVersion": "该公司还没有培训版本。"
+      },
+      "failures": {
+        "no_text": "没有文字",
+        "not_applicable": "措辞针对另一种情况",
+        "missing_fact": "缺少事实（{detail}）",
+        "no_category": "尚未匹配业务类别",
+        "no_alternatives": "可抽取的备选项不足",
+        "out_of_range": "变化后的数值超出范围（{detail}）",
+        "grammar": "占位符无效（{detail}）",
+        "invalid": "该版本违反规则（{detail}）",
+        "empty_option": "有选项结果为空（{detail}）",
+        "duplicate_option": "有两个选项结果相同（{detail}）"
+      },
+      "check": {
+        "title": "按公司检查",
+        "intro": "已批准的题库今天能向一家公司提出哪些问题，逐个概念列出。",
+        "company": "公司",
+        "choose": "选择公司",
+        "learner": "学员",
+        "companyOnly": "仅公司",
+        "run": "检查",
+        "none": "还没有公司拥有培训版本。",
+        "summary": "{total} 个概念中可提问 {ok} 个",
+        "columns": {
+          "concept": "概念",
+          "variant": "版本",
+          "asks": "将会提问",
+          "result": "结果"
+        },
+        "usable": "可以提问",
+        "blocked": "不能提问",
+        "noApproved": "尚无已批准的版本"
+      },
+      "where": {
+        "th": "泰文",
+        "en": "英文",
+        "zh": "中文",
+        "explanation": "解释"
+      },
+      "grammar": {
+        "unbalanced": "花括号没有成对出现",
+        "unknown_token": "未知的占位符 {raw}",
+        "unknown_recipe": "{raw} 中的配方未知",
+        "recipe_not_for_token": "该配方不适用于此事实：{raw}",
+        "bad_argument": "配方的参数无效：{raw}"
+      }
+    }
+  },
+  "stages": {
+    "titles": {
+      "study": "学习资料",
+      "quiz": "练习测验",
+      "exam": "业务知识测验",
+      "nameCard": "名片",
+      "interview": "银行准备面试",
+      "appointment": "银行预约"
+    },
+    "status": {
+      "locked": "已锁定",
+      "pending": "待定",
+      "available": "可用",
+      "in_progress": "进行中",
+      "done": "已完成"
+    },
+    "reasons": {
+      "no_assignment": "尚未分配公司",
+      "exam_required": "请先通过业务知识测验",
+      "before_available_from": "尚未开放",
+      "expired": "访问期限已结束",
+      "missing_issue_date": "缺少证书签发日期",
+      "interview_required": "请先通过银行准备面试"
+    },
+    "open": "打开",
+    "stepOf": "第 {n} 步（共 {total} 步）",
+    "short": {
+      "study": "学习",
+      "quiz": "练习",
+      "exam": "测验",
+      "nameCard": "名片",
+      "interview": "面试",
+      "appointment": "预约"
+    }
+  },
+  "progression": {
+    "UNASSIGNED": "未分配",
+    "PROVISIONED": "已开通",
+    "LEARNING": "学习中",
+    "EXAM_PENDING": "待通过业务知识测验",
+    "EXAM_PASSED": "业务知识测验已通过",
+    "WAITING_BANK_ELIGIBILITY": "等待银行验证资格",
+    "BANK_ELIGIBLE": "可进行银行验证",
+    "INTERVIEW_STARTED": "已开始银行准备面试",
+    "INTERVIEW_READY": "已准备好",
+    "APPOINTMENT_BOOKED": "已预约银行"
+  },
+  "study": {
+    "title": "学习资料",
+    "empty": "暂无学习资料。",
+    "card": "课程",
+    "notAvailable": "此语言暂无内容",
+    "openPdf": "在新标签页打开 PDF",
+    "pdfMissing": "尚未上传此语言的 PDF。",
+    "markCompleted": "标记为已完成",
+    "completed": "已完成",
+    "state": {
+      "new": "新",
+      "viewed": "已查看",
+      "completed": "已完成"
+    },
+    "readAloud": {
+      "play": "朗读",
+      "pause": "暂停",
+      "loading": "正在准备音频…",
+      "error": "当前无法播放音频。"
+    },
+    "evidence": {
+      "title": "来自您的文件",
+      "hint": "您公司 DBD 文件中与本主题相关的原文，可与准备好的答案对照。",
+      "source": "{document} · 第 {page} 页"
+    },
+    "intro": "{count} 张关于银行会问什么的学习卡片，每张都基于贵公司的真实信息。",
+    "continue": "继续第 {n} 张卡片",
+    "continueHere": "从这里继续",
+    "continueShort": "继续学习",
+    "review": "复习",
+    "openLesson": "打开",
+    "tabs": {
+      "label": "培训阶段",
+      "home": "首页",
+      "study": "学习",
+      "exam": "测验",
+      "interview": "准备度",
+      "nameCard": "名片"
+    },
+    "lessons": {
+      "identity": {
+        "title": "公司身份",
+        "description": "公司名称、注册日期和基本资料"
+      },
+      "ownership": {
+        "title": "资本与股东",
+        "description": "注册资本和股权结构"
+      },
+      "business": {
+        "title": "业务与经营",
+        "description": "业务类型和实际经营情况"
+      },
+      "role": {
+        "title": "您的角色",
+        "description": "您在公司的职责和责任"
+      },
+      "answers": {
+        "title": "自信回答",
+        "description": "回答银行问题的方法"
+      }
+    },
+    "summary": {
+      "ofTotal": "{total} 张中的 {done} 张",
+      "ready": "可以进入下一阶段",
+      "remaining": "还剩 {count} 课"
+    },
+    "allDone": "所有卡片已完成",
+    "cardOf": "第 {n} 张，共 {total} 张",
+    "nextCard": "第 {n} 张：{title}"
+  },
+  "quiz": {
+    "title": "练习测验",
+    "intro": "练习关于您公司和流程的问题。每题作答后立即显示对错和解释，最后可查看完整回顾。",
+    "start": "开始练习测验",
+    "resume": "继续练习测验",
+    "history": "历史记录",
+    "attemptLine": "第 {no} 次：{score} / {max}",
+    "progress": "第 {position} 题，共 {total} 题",
+    "correct": "正确！",
+    "incorrect": "不正确 — 正确答案是 {key}",
+    "saved": "答案已保存",
+    "submit": "提交练习测验",
+    "reviewTitle": "练习测验回顾",
+    "scoreLine": "得分：{score} / {max}",
+    "errors": {
+      "no_assignment": "尚未为您分配公司。",
+      "no_questions": "您的公司暂无可用题目。",
+      "not_found": "未找到该练习测验。",
+      "not_in_progress": "该练习测验已结束。",
+      "already_answered": "此题已作答。",
+      "unanswered": "请先回答所有问题。",
+      "invalid_key": "选项无效。",
+      "no_version": "贵公司的培训信息尚未就绪，请联系经理检查 DBD 记录。"
+    },
+    "answeredOf": "已回答 {answered} / {total} 题",
+    "percentDone": "完成 {percent}%",
+    "jumpNext": "跳到下一道未作答的题",
+    "reviewHeading": "你的答案",
+    "reviewIncorrect": "错误"
+  },
+  "exam": {
+    "title": "业务知识测验",
+    "intro": "检验您是否像银行提问时那样了解自己的公司。",
+    "about": {
+      "title": "测验说明",
+      "questions": "共 {count} 题：银行会就您的公司询问的每一项各一题。",
+      "marking": "选择答案后会立即显示对错，答案不可更改。",
+      "pass": "答对至少 {pass} 题即可通过。",
+      "retest": "旧测验记录可能会显示重新测验结果。",
+      "fail": "低于 {pass} 题时，请复习答案和学习卡，准备好后再试。"
+    },
+    "start": "开始业务知识测验",
+    "resume": "继续业务知识测验",
+    "history": "历史记录",
+    "attemptLine": "第 {no} 次：{score} / {max}",
+    "noFeedbackNote": "答案会即时保存；结果仅在提交后显示。",
+    "feedbackNote": "选择后立即显示对错，且不可更改。全部作答后再提交。",
+    "submit": "提交业务知识测验",
+    "resultTitle": "业务知识测验结果",
+    "pass": "通过",
+    "fail": "未通过",
+    "retest": "需重新测验",
+    "scoreLine": "得分：{score} / {max}（及格线 {passingMark}%）",
+    "scoreLineRule": "得分：{score} / {max}（答对 {pass} 题通过）",
+    "resultNote": "标有 ✗ 的题目回答错误；绿色选项为正确答案，划线的选项是您的选择。",
+    "errors": {
+      "max_attempts": "您已用完允许的测验次数。",
+      "retry_wait": "请稍后再重新参加业务知识测验。",
+      "no_assignment": "尚未为您分配公司。",
+      "no_questions": "您的公司暂无可用的业务知识测验题目。",
+      "not_found": "未找到该测验。",
+      "not_in_progress": "该测验已结束。",
+      "already_answered": "此题已作答。",
+      "unanswered": "请先回答所有问题。",
+      "invalid_key": "选项无效。",
+      "no_version": "贵公司的培训信息尚未就绪，请联系经理检查 DBD 记录。",
+      "not_ready": "针对您公司的测验尚未就绪，已通知您的经理。"
+    },
+    "meta": {
+      "questions": "题数",
+      "passingMark": "及格线",
+      "toPass": "通过标准",
+      "attempt": "第几次"
+    },
+    "reviewHeading": "你的答案",
+    "passedNext": "你已通过。银行准备面试现已开放。",
+    "notPassedNext": "这次未通过。请查看下方答案，准备好后再试一次。",
+    "retestNext": "差一点：{max} 题答对 {score} 题。需答对 {pass} 题才能通过，请重新测验。",
+    "failNext": "本次未通过。请先复习学习资料，再重新测验。",
+    "failCriticalNext": "未通过：答错了公司关键信息。请先复习学习资料，再重新测验。",
+    "criticalWrong": "答错的关键信息：{list}",
+    "toStudy": "复习学习资料",
+    "toInterview": "前往银行准备面试",
+    "retake": "重新参加业务知识测验"
+  },
+  "interview": {
+    "title": "银行准备面试",
+    "intro": "使用您学过的公司资料，进行轻松友好的模拟面试。",
+    "thaiOnly": "面试全程使用泰语。",
+    "guide": {
+      "eyebrow": "开始之前",
+      "title": "按自己的节奏练习",
+      "questions": "回答 11 个简短问题",
+      "pass": "答对 9 题即可通过",
+      "language": "面试使用泰语（ภาษาไทย）",
+      "repeat": "可不限次数练习（ฝึกได้ไม่จำกัด）",
+      "support": "如果回答需要补充，专员会友好地再问一次。这只是练习，请从容作答。"
+    },
+    "start": "开始面试",
+    "resume": "继续面试",
+    "history": "过往面试",
+    "verdict": {
+      "ready": "已准备好",
+      "not_ready": "尚未准备好",
+      "abandoned": "未完成"
+    },
+    "outcome": {
+      "readyTitle": "已准备好进入下一步",
+      "practiceTitle": "继续练习——您已经很接近了",
+      "ready": {
+        "title": "面试结果：可以开立银行账户",
+        "detail": "您已准备好前往银行，现在可以预约。"
+      },
+      "not_ready": {
+        "title": "面试结果：暂时不能开立银行账户",
+        "detail": "请复习下方未答对的问题，然后重新面试。"
+      },
+      "abandoned": {
+        "title": "尚无结果：暂时不能开立银行账户",
+        "detail": "面试未完成，请从头重新面试。"
+      },
+      "scoreReady": "您答对了 {score}/{maximum} 题，通过要求为 {required} 题——您已准备好进入下一步。",
+      "scorePractice": "您答对了 {score}/{maximum} 题，通过要求为 {required} 题。请复习下方答案后再试一次。"
+    },
+    "chat": {
+      "placeholder": "请用泰语输入回答…",
+      "send": "发送",
+      "end": "结束面试",
+      "typing": "专员正在输入…",
+      "officer": "银行专员",
+      "you": "你",
+      "limit": "最多 {max} 个字符",
+      "budget": "第 {n} 条消息（共 {max} 条）"
+    },
+    "debrief": {
+      "title": "面试结果",
+      "reasons": "你的逐题回答",
+      "reviewNeeded": "需要继续练习的答案",
+      "correctValue": "证明文件记载：{value}",
+      "review": "复习卡片",
+      "transcript": "对话记录",
+      "tryAgain": "再试一次",
+      "toDashboard": "首页"
+    },
+    "assessment": {
+      "correct": "正确",
+      "partial": "部分正确",
+      "wrong": "错误",
+      "evasive": "回避",
+      "pasted": "复制粘贴",
+      "off_topic": "答非所问"
+    },
+    "concept": {
+      "juristic_id": "法人注册号"
+    },
+    "errors": {
+      "not_open": "面试尚未开放。",
+      "not_configured": "尚未配置面试官。",
+      "no_assignment": "尚未为你分配公司。",
+      "closed": "本次面试已结束。",
+      "too_long": "消息过长。",
+      "not_found": "找不到面试。",
+      "unknown": "出错了，请重试。",
+      "expired": "面试闲置过久，请重新开始。",
+      "no_facts": "公司记录尚无可核对的信息，请联系你的经理。",
+      "no_version": "贵公司的培训信息尚未就绪，请联系经理检查 DBD 记录。"
+    },
+    "closeReason": {
+      "plan_complete": "所有问题均已问完。",
+      "too_many_evasions": "因三次回避问题而结束。",
+      "off_topic_limit": "因多次答非所问而结束。",
+      "learner_ended": "你提前结束了面试。",
+      "turn_limit": "面试已达到消息上限。",
+      "abandoned": "面试闲置超过 30 分钟，已被放弃。"
+    }
+  },
+  "appointment": {
+    "title": "银行预约",
+    "intro": "通过业务知识测验和银行准备面试后，您的经理将预约日期。",
+    "waiting": {
+      "title": "您的经理将预约",
+      "detail": "此页面无需选择日期。经理选择银行日期后，日期会显示在这里。"
+    },
+    "week": "{date} 当周",
+    "prevWeek": "上一周",
+    "nextWeek": "下一周",
+    "holiday": "银行假日",
+    "noSlots": "无空闲时段",
+    "state": {
+      "free": "空闲",
+      "booked": "已被预约",
+      "blocked": "不可预约",
+      "past": "已过预约时限",
+      "outside_window": "不在可预约期内",
+      "holiday": "银行假日"
+    },
+    "booked": {
+      "title": "你的预约",
+      "line": "{date} 与{manager}",
+      "manager": "您的经理",
+      "cancel": "取消预约",
+      "cancelHint": "最迟可在时段前 {hours} 小时取消"
+    },
+    "errors": {
+      "not_open": "尚不能预约。",
+      "already_booked": "你已有预约，取消后才能重新预约。",
+      "slot_unavailable": "该时段无法预约。",
+      "slot_taken": "该时段刚被他人预约，请选择其他时段。",
+      "not_found": "找不到预约。",
+      "too_late": "距预约时间太近，无法取消，请联系经理。",
+      "forbidden": "无法执行此操作。",
+      "unknown": "出错了，请重试。"
+    }
+  },
+  "nameCard": {
+    "title": "名片",
+    "intro": "根据贵公司的记录和经理提供的信息为您制作。可预览并下载 PDF。",
+    "preview": "名片预览",
+    "previewHint": "正反面以更大尺寸同时显示。选择任一面即可全尺寸打开。",
+    "front": "正面",
+    "back": "背面",
+    "openSide": "全尺寸打开",
+    "download": "下载 PDF",
+    "meta": "手机 {phone}",
+    "errors": {
+      "no_assignment": "尚未为您分配公司。",
+      "exam_required": "请先通过业务知识测验再领取名片。",
+      "missing_fields": "您的公司记录缺少：{fields}。请让经理补全。",
+      "no_phone": "尚未提供您的手机号。请让经理添加。",
+      "no_name": "公司记录中还没有您的姓名。请联系经理。"
+    }
+  }
+}
